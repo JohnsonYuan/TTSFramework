@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/tts/toolsuite" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="keyboard">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="font">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="key">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="word">
+                                <xs:complexType>
+                                    <xs:attribute name="description" type="xs:string" use="optional" />
+                                    <xs:attribute name="grapheme" type="xs:string" use="optional" />
+                                    <xs:attribute name="ipaPronunciation" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ttsPhone" type="xs:string" use="required" />
+                        <xs:attribute name="ipaPhone" type="xs:string" use="required" />
+                        <xs:attribute name="displayedPhone" type="xs:string" use="required" />
+                        <xs:attribute name="vowel" type="xs:string" use="optional" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="lang" type="xs:string" use="required" />
+            <xs:attribute name="version" type="xs:decimal" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

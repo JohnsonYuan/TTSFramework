@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Condition="'$(BUILD_PRODUCT)'=='NT'" Project="$(PkgMsBuild_Corext_3_5)\Microsoft.Build.settings" />
+  <Import Condition="'$(BUILD_PRODUCT)'!='NT'" Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\Common.Proj.inc" />
+  <PropertyGroup Condition="'$(BUILD_PRODUCT)'!='NT'">
+    <DefineConstants>COREXTBRANCH</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" />
+  <PropertyGroup>
+    <GeneratedFromTemplate>BingMsBuild4</GeneratedFromTemplate>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DEC2CFC6-E6C1-4D3D-9C4A-21E025E73FB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Tts.Cosmos</RootNamespace>
+    <AssemblyName>Microsoft.Tts.Cosmos</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DocumentationFile>$(O)\$(AssemblyName).xml</DocumentationFile>
+    <PDBFolder Condition="'$(OutputType)'=='Library'">dll</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='Exe'">exe</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='WinExe'">exe</PDBFolder>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SPEECH_BUILD_TYPE>Server</SPEECH_BUILD_TYPE>
+    <TEST_CODE>1</TEST_CODE>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='amd64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='i386'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <QCustomInput Include="$(INETROOT)\private\dev\speech\tts\shenzhou\tools\offline\extern\scopesdk\amd64\*.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+    <QCustomInput Include="$(INETROOT)\private\dev\speech\tts\shenzhou\tools\Offline\Extern\ScopeSDK\i386\*.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
+    <!--Assembly References-->
+    <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\Scope.exe" />
+    <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\ScopeRuntime.exe" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\VcClient.dll" />
+    <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\TmocVcConfig.cs" />
+    <Compile Include="FlowEngine\FlowHandler.cs" />
+    <Compile Include="Htk\CosmosJob\ConvertSVMToStreamJob.cs" />
+    <Compile Include="Htk\CosmosJob\ExpandFeatureJob.cs" />
+    <Compile Include="Htk\CosmosJob\FormatFeatureJob.cs" />
+    <Compile Include="Htk\CosmosJob\GetF0NccfJob.cs" />
+    <Compile Include="Htk\CosmosJob\GetLpcJob.cs" />
+    <Compile Include="Htk\CosmosJob\GetLpcResidualErrorJob.cs" />
+    <Compile Include="Htk\CosmosJob\GetRelatedFeatureJob.cs" />
+    <Compile Include="Htk\CosmosJob\MergeFeatureJob.cs" />
+    <Compile Include="Htk\CosmosJob\PredictUVJob.cs" />
+    <Compile Include="Htk\CosmosJob\ScaleFeatureJob.cs" />
+    <Compile Include="Htk\CosmosJob\SmoothF0Job.cs" />
+    <Compile Include="Htk\F0Extractor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TMOC\COSMOSHelper.cs" />
+    <Compile Include="TMOC\JobBase.cs" />
+    <Compile Include="TMOC\TmocCorpus.cs" />
+    <Compile Include="TMOC\TmocIO.cs" />
+    <Compile Include="TMOC\TmocSingleton.cs" />
+    <Compile Include="Utility\CosmosParallelComputation.cs" />
+    <Compile Include="Utility\ParallelCompuation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Htk\ScopeHandlers\ExpandFeatureJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.ExpandFeatureJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\FormatFeatureJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.FormatFeatureJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\GetF0NccfJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.GetF0NccfJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\GetLpcJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.GetLpcJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\GetLpcResidualErrorJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.GetLpcResidualErrorJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\GetRelatedFeatureJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.GetRelatedFeatureJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\MergeFeatureJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.MergeFeatureJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\PredictUVJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.PredictUVJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\ConvertSVMToStreamJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.ConvertSVMToStreamJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\ScaleFeatureJob.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.ScaleFeatureJob</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Htk\ScopeHandlers\SmoothF0Job.script">
+      <LogicalName>Microsoft.Tts.Cosmos.Handler.SmoothF0Job</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Config\TmocVcConfig.xsd">
+      <LogicalName>Microsoft.Tts.Cosmos.Config.TmocVcConfig.xsd</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TMOC\VcList.xml">
+      <LogicalName>tmoc.vclist.xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup Condition="'$(BUILD_PRODUCT)'!='NT'">
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).xml">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release\symbols.pri\$(PDBFolder)</DestinationFolder>
+    </Binplace>
+    <Robocopy Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.dll">
+      <DestinationFolder>$(SDROOT)\$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Robocopy>
+    <Robocopy Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.Properties.dll">
+      <DestinationFolder>$(SDROOT)\$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Robocopy>
+  </ItemGroup>
+  <Import Condition="'$(BUILD_PRODUCT)'=='NT'" Project="$(PkgMsBuild_Corext_3_5)\Microsoft.Build.CSharp.targets" />
+  <Import Condition="'$(BUILD_PRODUCT)'!='NT'" Project="$(ExtendedTargetsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))\include.targets" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))' != ''" />
+</Project>

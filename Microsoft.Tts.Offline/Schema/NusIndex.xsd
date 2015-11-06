@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts"
+           elementFormDefault="qualified"
+           xmlns:tts="http://schemas.microsoft.com/tts"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="nonUniformUnit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="domain">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="1" maxOccurs="unbounded" name="nuuGroup">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="text"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="nuuList">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="1" maxOccurs="unbounded" name="nuu">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+                              </xs:sequence>
+                              <xs:attribute name="sid" type="xs:string" use="required" />
+                              <xs:attribute name="start" type="xs:integer" use="required" />
+                              <xs:attribute name="len" type="xs:integer" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name ="emotion" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="LongUnit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+        <xs:element minOccurs="1" maxOccurs="unbounded" name="domain">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="1" maxOccurs="unbounded" name="LongUnitGroup">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="LongUnitList">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="1" maxOccurs="unbounded" name="LU">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="featureSet" type="tts:featureSetType" minOccurs="0" maxOccurs="1"/>
+                              </xs:sequence>
+                              <xs:attribute name="sid" type="xs:string" use="required" />
+                              <xs:attribute name="PhoneStart" type="xs:integer" use="required" />
+                              <xs:attribute name="PhoneLenth" type="xs:integer" use="required" />
+                              <xs:attribute name="FrameStart" type="xs:integer" use="required" />
+                              <xs:attribute name="FrameLenth" type="xs:integer" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="featureSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="feature">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

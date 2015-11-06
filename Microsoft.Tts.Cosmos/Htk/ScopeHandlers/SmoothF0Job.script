@@ -1,0 +1,18 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithSF0 string = @"@@WAVEDATACORPUSWITHSF0@@";
+#DECLARE MinF0Value string = @"@@MINF0VALUE@@";
+#DECLARE MaxF0Value string = @"@@MAXF0VALUE@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureSF0 = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING SmoothF0WithUVJob(@MinF0Value, @MaxF0Value);
+
+ssFeature = SELECT * FROM waveFeatureSF0;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithSF0;

@@ -1,0 +1,12 @@
+﻿<UserControl x:Uid="UserControl_1" x:Class="Microsoft.Tts.UI.Controls.Trajectory.TimeAxisScrollbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="20" Width="300"
+    AutomationProperties.Name="TimeAxisScrollbar">
+    <Grid x:Uid="Grid_1">
+        <ScrollBar x:Uid="_scrollBar" Name="_scrollBar" Orientation="Horizontal" AutomationProperties.Name="ScrollBar"
+          ViewportSize="{Binding Path=ActualWidth,ElementName=_scrollBar}"
+          LargeChange="{Binding Path=ActualWidth,ElementName=_scrollBar}"
+          MouseWheel="OnHorScrollBarMouseWheel" ValueChanged="OnScrollbarValueChanged" SnapsToDevicePixels="True" />
+    </Grid>
+</UserControl>

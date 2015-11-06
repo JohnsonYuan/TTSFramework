@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<offline xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <truncateRules lang="ru-RU">
+    <truncateRule side="Right">
+      <phone value="l" />
+      <phone value="lj" />
+      <phone value="m" />
+      <phone value="mj" />
+    </truncateRule>
+    <truncateRule side="Left">
+      <phone value="l" />
+      <phone value="lj" />
+      <phone value="m" />
+      <phone value="mj" />
+    </truncateRule>
+    <truncateRule side="Right">
+      <phone value="n" />
+      <phone value="nj" />
+      <phone value="r" />
+      <phone value="rj" />
+    </truncateRule>
+    <truncateRule side="Left">
+      <phone value="n" />
+      <phone value="nj" />
+      <phone value="r" />
+      <phone value="rj" />
+    </truncateRule>
+    <truncateRule side="Right">
+      <phone value="y" />
+    </truncateRule>
+    <truncateRule side="Left">
+      <phone value="y" />
+    </truncateRule>
+  </truncateRules>
+</offline>

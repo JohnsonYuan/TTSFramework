@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.microsoft.com/tts"
+           xmlns:mstns="http://schemas.microsoft.com/tts"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:element name="scriptComments">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="languagesData" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="languageData" minOccurs="1" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="phoneSet">
+                                    <xs:complexType>
+                                        <xs:attribute name="path" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="unitTable">
+                                    <xs:complexType>
+                                        <xs:attribute name="path" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                </xs:element>
+                                <xs:element name="schema">
+                                    <xs:complexType>
+                                        <xs:attribute name="path" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="language" type="xs:string" use="required" />
+                            <xs:attribute name="path" type="xs:string" use="required" />
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="scriptFile" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+            <xs:attribute name="mapPath" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filelist" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="waveDir" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="alignmentDir" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+            <xs:attribute name="mapped" type="xs:boolean" use="optional" default="false"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="domains" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="domain" type="NamedEntityValueType" minOccurs="0" maxOccurs="unbounded">
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute name="lang" type="xs:language" use="required"/>
+      <xs:attribute name="updateSentence" type="xs:boolean" use="optional" default="true"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

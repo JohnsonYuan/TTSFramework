@@ -1,0 +1,20 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0NCCFRF string = @"@@WAVEDATACORPUSWITHF0NCCFRF@@";
+#DECLARE FrameShift string = @"@@FRAMESHIFT@@";
+#DECLARE FrameLength string = @"@@FRAMELENGTH@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureRF = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING GetRelatedFeatureJob(@FrameShift, @FrameLength);
+
+ssFeature = 
+    SELECT * 
+    FROM waveFeatureRF;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0NCCFRF;

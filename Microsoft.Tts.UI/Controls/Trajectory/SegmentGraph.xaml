@@ -1,0 +1,12 @@
+﻿<UserControl x:Uid="_graphSystem" x:Class="Microsoft.Tts.UI.Controls.Trajectory.SegmentGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="_graphSystem">
+  <Grid x:Uid="Grid_1">
+     <Canvas 
+       x:Uid="_graph"
+       x:Name="_graph"
+       Width="{Binding Width,ElementName=_graphSystem}"
+       Height="{Binding Height,ElementName=_graphSystem}" />
+  </Grid>
+</UserControl>

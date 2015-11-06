@@ -1,0 +1,117 @@
+﻿<UserControl x:Uid="UserControl_1" x:Class="Microsoft.Tts.UI.Controls.Acoustic.AcousticEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Acoustic="clr-namespace:Microsoft.Tts.UI.Controls.Acoustic"
+             xmlns:customTrajectory="clr-namespace:Microsoft.Tts.UI.Controls.Trajectory"
+             Height="300" Width="400">
+    <Grid x:Uid="Grid_1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_1" Width="25" />
+            <ColumnDefinition x:Uid="ColumnDefinition_2" x:Name="_midColumn"/>
+            <ColumnDefinition x:Uid="ColumnDefinition_3" Width="50" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_7" Height="20"/>
+            <RowDefinition x:Uid="RowDefinition_8" Height="20" />
+            <RowDefinition x:Uid="RowDefinition_1" Height="50*"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="5" />
+            <RowDefinition x:Uid="RowDefinition_3" Height="50*"/>
+            <RowDefinition x:Uid="RowDefinition_4" Height="5" />
+            <RowDefinition x:Uid="RowDefinition_5" Height="50*"/>
+            <RowDefinition x:Uid="RowDefinition_6" Height="25" />
+        </Grid.RowDefinitions>
+        <GridSplitter x:Uid="gridSplitter1" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Name="gridSplitter1" VerticalAlignment="Stretch" Background="LightYellow" BorderBrush="LightBlue" BorderThickness="1" SnapsToDevicePixels="True" />
+        <GridSplitter x:Uid="gridSplitter2" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Name="gridSplitter2" VerticalAlignment="Stretch" Background="LightYellow" BorderBrush="LightBlue" BorderThickness="1" SnapsToDevicePixels="True" />
+        <TextBlock 
+            x:Uid="textBlock1" Grid.Column="0" Grid.Row="2" Name="textBlock1" 
+            Text="F0" 
+            FontSize="12"
+            RenderTransformOrigin="0.5,0.5"
+            IsHitTestVisible="False"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock.RenderTransform>
+                <RotateTransform x:Uid="RotateTransform_2" Angle="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock 
+            x:Uid="textBlock2" Grid.Column="0" Grid.Row="4" Name="textBlock2" 
+            Text="Gain" 
+            FontSize="12"
+            RenderTransformOrigin="0.5,0.5"
+            IsHitTestVisible="False"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock.RenderTransform>
+                <RotateTransform x:Uid="RotateTransform_3" Angle="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock 
+            x:Uid="textBlock3" Grid.Column="0" Grid.Row="6" Name="textBlock3" 
+            Text="Wave" 
+            FontSize="12"
+            RenderTransformOrigin="0.5,0.5"
+            IsHitTestVisible="False"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock.RenderTransform>
+                <RotateTransform x:Uid="RotateTransform_4" Angle="-90"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <customTrajectory:SegmentGraph
+          x:Uid="_wordSegmentGraph" 
+          x:Name="_wordSegmentGraph"
+          Grid.Column="1" Grid.Row="0"
+          Width="{Binding Path=ActualWidth,ElementName=_f0Editor}"
+          Height="20" />
+        <customTrajectory:SegmentGraph
+          x:Uid="_phoneSegmentGraph" 
+          x:Name="_phoneSegmentGraph"
+          Grid.Column="1" Grid.Row="1"
+          Width="{Binding Path=ActualWidth,ElementName=_f0Editor}"
+          Height="20" />
+        <Acoustic:F0Editor
+            x:Uid="_f0Editor" Grid.Row="2" Grid.Column="1"
+            x:Name="_f0Editor">
+        </Acoustic:F0Editor>
+        <customTrajectory:AxisRuler
+            x:Uid="_f0YAxis" x:Name="_f0YAxis" Grid.Row="2" Grid.Column="2"
+            IsBoxToValue="False"
+            IsRulerLeft="False" >
+        </customTrajectory:AxisRuler>
+        <Acoustic:GainEditor
+            x:Uid="_gainEditor" Grid.Row="4" Grid.Column="1"
+            x:Name="_gainEditor">
+        </Acoustic:GainEditor>
+        <customTrajectory:AxisRuler
+            x:Uid="_gainYAxis" x:Name="_gainYAxis" Grid.Row="4" Grid.Column="2"
+            IsBoxToValue="False"
+            IsRulerLeft="False" >
+        </customTrajectory:AxisRuler>
+        <Acoustic:WaveFormViewer
+            x:Uid="_waveForm" Grid.Row="6" Grid.Column="1"
+            x:Name="_waveForm">
+        </Acoustic:WaveFormViewer>
+        <customTrajectory:AxisRuler
+            x:Uid="_waveformYAxis" x:Name="_waveformYAxis" Grid.Row="6" Grid.Column="2"
+            IsBoxToValue="False"
+            IsRulerLeft="False" >
+        </customTrajectory:AxisRuler>
+        <customTrajectory:DurationGraph
+            x:Uid="_durations" Grid.Row="1" Grid.Column="1"
+            Grid.RowSpan="6"
+            x:Name="_durations">
+        </customTrajectory:DurationGraph>
+        <customTrajectory:TimeAxisScrollbar
+            x:Uid="_timeAxisScallbar" x:Name="_timeAxisScallbar"
+            Width="{Binding Path=ActualWidth,ElementName=_f0Editor}"
+            Height="25"
+            Grid.Column="1"
+            Grid.Row="8" 
+            Focusable="True">
+        </customTrajectory:TimeAxisScrollbar>
+        <customTrajectory:ZoomControl x:Uid="_zoomControl" Grid.Column="2" Grid.Row="7" HorizontalAlignment="Stretch" x:Name="_zoomControl" VerticalAlignment="Stretch" />
+    </Grid>
+</UserControl>

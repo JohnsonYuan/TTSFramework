@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="en-US">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="-sp-" id ="4">
+    <feature>silence shortpause</feature>
+  </phone>
+  <phone name="1" id="5">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="6">
+    <feature>substress</feature>
+  </phone>
+  <phone name="aa" id="7">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ae" id="8">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ah" id="9">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ao" id="10">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="aw" id="11">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ax" id="12">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ay" id="13">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="b" id="14">
+    <feature>consonant  voiced  plosive  bilabial</feature>
+  </phone>
+  <phone name="ch" id="15">
+    <feature>consonant  affricate  palatal</feature>
+  </phone>
+  <phone name="d" id="16">
+    <feature>consonant  voiced  plosive  alveolar</feature>
+  </phone>
+  <phone name="dh" id="17">
+    <feature>consonant  voiced  fricative  dental</feature>
+  </phone>
+  <phone name="eh" id="18">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="er" id="19">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ey" id="20">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="f" id="21">
+    <feature>consonant  fricative  labiodental</feature>
+  </phone>
+  <phone name="g" id="22">
+    <feature>consonant  voiced  plosive  velar</feature>
+  </phone>
+  <phone name="h" id="23">
+    <feature>consonant  fricative  glottal</feature>
+  </phone>
+  <phone name="ih" id="24">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="iy" id="26">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="jh" id="27">
+    <feature>consonant  voiced  affricate  palatal</feature>
+  </phone>
+  <phone name="k" id="28">
+    <feature>consonant  plosive  velar</feature>
+  </phone>
+  <phone name="l" id="29">
+    <feature>consonant  sonorant  liquid  alveolar  voiced</feature>
+  </phone>
+  <phone name="m" id="30">
+    <feature>consonant  sonorant  nasal  bilabial  voiced</feature>
+  </phone>
+  <phone name="n" id="31">
+    <feature>consonant  sonorant  nasal  alveolar  voiced</feature>
+  </phone>
+  <phone name="ng" id="32">
+    <feature>consonant  sonorant  nasal  velar  voiced</feature>
+  </phone>
+  <phone name="ow" id="33">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="oy" id="34">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="p" id="35">
+    <feature>consonant  plosive  bilabial</feature>
+  </phone>
+  <phone name="r" id="36">
+    <feature>consonant  voiced  sonorant  liquid  palatal</feature>
+  </phone>
+  <phone name="s" id="37">
+    <feature>consonant  fricative  alveolar</feature>
+  </phone>
+  <phone name="sh" id="38">
+    <feature>consonant  fricative  palatal</feature>
+  </phone>
+  <phone name="t" id="39">
+    <feature>consonant  plosive  alveolar</feature>
+  </phone>
+  <phone name="th" id="40">
+    <feature>consonant  fricative  dental</feature>
+  </phone>
+  <phone name="uh" id="41">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="uw" id="42">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="v" id="43">
+    <feature>consonant  voiced  fricative  labiodental</feature>
+  </phone>
+  <phone name="w" id="44">
+    <feature>consonant  voiced  sonorant  glide  bilabial</feature>
+  </phone>
+  <phone name="y" id="45">
+    <feature>consonant  voiced  sonorant  glide  palatal</feature>
+  </phone>
+  <phone name="z" id="46">
+    <feature>consonant  voiced  fricative  alveolar</feature>
+  </phone>
+  <phone name="zh" id="47">
+    <feature>consonant  fricative  palatal</feature>
+  </phone>
+</phoneSet>

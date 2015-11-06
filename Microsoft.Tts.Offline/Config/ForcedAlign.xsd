@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/tts/toolsuite" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <xs:complexType name="HViteParameters">
+    <xs:attribute name="t" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:element name="forcedAlign">
+    <xs:complexType>
+      <xs:all minOccurs="0" >
+        <xs:element name="traceLevel" maxOccurs="1" minOccurs="0" >
+          <xs:complexType>
+            <xs:attribute name="value" type="xs:integer" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="languageData" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="phoneSet" maxOccurs="1" minOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="unitTable" maxOccurs="1" minOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ttsToSrPhone" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="phoneQuestions" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="srModelDir" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="path" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="path" type="xs:string" />
+            <xs:attribute name="language" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="speaker" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="primaryLanguage" type="xs:string" use="required" />
+            <xs:attribute name="gender" type="genderValueType" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="scriptDir" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="wave16kDir" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="customizedModelDir" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="applySRModel" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="value" type="xs:boolean" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="hybridSDModel" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="value" type="xs:boolean" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sdParameters" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="minUtteranceNumber" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:integer" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pruneLevel" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="level" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:integer">
+                        <xs:enumeration value="-1"/>
+                        <xs:enumeration value="0"/>
+                        <xs:enumeration value="1"/>
+                        <xs:enumeration value="2"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="advancedConfigure" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ignoreTone" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:boolean" use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="keepSRPhones" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:boolean" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="silenceDurationThresh" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:long" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="outputDir" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="fileList" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="path" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="workSite" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="genderValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Female" />
+      <xs:enumeration value="Male" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

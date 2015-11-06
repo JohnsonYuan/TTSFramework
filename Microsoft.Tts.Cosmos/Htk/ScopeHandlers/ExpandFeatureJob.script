@@ -1,0 +1,17 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0EXP string = @"@@WAVEDATACORPUSWITHF0EXP@@";
+#DECLARE Dimension string = @"@@DIMENSION@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureEXP = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING ExpandFeatureJob(@Dimension);
+
+ssFeature = SELECT * FROM waveFeatureEXP;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0EXP;

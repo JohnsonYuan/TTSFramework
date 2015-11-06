@@ -1,0 +1,18 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WAVEDATACORPUSWITHF0NCCFRFERR string = @"@@WAVEDATACORPUSWITHF0NCCFRFERR@@";
+#DECLARE FrameShift string = @"@@FRAMESHIFT@@";
+#DECLARE FrameLength string = @"@@FRAMELENGTH@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureERR = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING GetLpcResidualErrorJob(@FrameShift, @FrameLength);
+
+ssFeature = SELECT * FROM waveFeatureERR;
+OUTPUT ssFeature TO SSTREAM @WAVEDATACORPUSWITHF0NCCFRFERR;

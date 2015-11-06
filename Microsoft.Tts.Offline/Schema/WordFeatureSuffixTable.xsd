@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:complexType name="WordFeatureSuffixTableType">
+    <xs:sequence>
+      <xs:element name="nounSuffixes" type="nounSuffixesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="adjSuffixes" type="adjSuffixesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="verbSuffixes" type="verbSuffixesType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="separatorChars" type="separatorCharsType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="nounSuffixesType">
+    <xs:sequence>
+      <xs:element name="nounSuffix" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="adjSuffixesType">
+    <xs:sequence>
+      <xs:element name="adjSuffix" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verbSuffixesType">
+    <xs:sequence>
+      <xs:element name="verbSuffix" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="separatorCharsType">
+    <xs:sequence>
+      <xs:element name="separatorChar" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="wordFeatureSuffixTable" type="WordFeatureSuffixTableType"/>
+</xs:schema>

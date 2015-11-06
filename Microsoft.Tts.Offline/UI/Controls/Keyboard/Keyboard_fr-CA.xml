@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<keyboard lang="fr-CA" version="1.0" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+    <font name="Arial Unicode MS" />
+    <key ttsPhone="1" ipaPhone="ˈ" displayedPhone="ˈ">
+        <word description="Primary stress" />
+    </key>
+    <key ttsPhone="ax" ipaPhone="ə" vowel="True" displayedPhone="ə">
+        <word grapheme="demande" ipaPronunciation="d̪əmãˈd̪" />
+    </key>
+    <key ttsPhone="ae" ipaPhone="a" vowel="True" displayedPhone="a">
+        <word grapheme="ami" ipaPronunciation="amiˈ" />
+    </key>
+    <key ttsPhone="iy" ipaPhone="i" vowel="True" displayedPhone="i">
+        <word grapheme="rififi" ipaPronunciation="ʁififiˈ" />
+    </key>
+    <key ttsPhone="uw" ipaPhone="u" vowel="True" displayedPhone="u">
+        <word grapheme="jour" ipaPronunciation="ʒuʁˈ" />
+    </key>
+    <key ttsPhone="ey" ipaPhone="e" vowel="True" displayedPhone="e">
+        <word grapheme="blé" ipaPronunciation="bleˈ" />
+    </key>
+    <key ttsPhone="eu" ipaPhone="ø" vowel="True" displayedPhone="ø">
+        <word grapheme="feu" ipaPronunciation="føˈ" />
+    </key>
+    <key ttsPhone="eh" ipaPhone="ɛ" vowel="True" displayedPhone="ɛ">
+        <word grapheme="fait" ipaPronunciation="fɛˈ" />
+    </key>
+    <key ttsPhone="an" ipaPhone="ã" vowel="True" displayedPhone="ã">
+        <word grapheme="enfant" ipaPronunciation="ãfãˈ" />
+    </key>
+    <key ttsPhone="l_t" ipaPhone="t̪‿" vowel="False" displayedPhone="t~">
+        <word grapheme="petit enfant" ipaPronunciation="pət̪iˈt̪‿/ãfãˈ" />
+    </key>
+    <key ttsPhone="on" ipaPhone="õ" vowel="True" displayedPhone="õ">
+        <word grapheme="son" ipaPronunciation="sõˈn‿" />
+    </key>
+    <key ttsPhone="l_n" ipaPhone="n‿" vowel="False" displayedPhone="n~">
+        <word grapheme="son ami" ipaPronunciation="sõˈn‿/amiˈ" />
+    </key>
+    <key ttsPhone="f" ipaPhone="f" vowel="False" displayedPhone="f">
+        <word grapheme="fleur" ipaPronunciation="flœʁˈ" />
+    </key>
+    <key ttsPhone="g" ipaPhone="g" vowel="False" displayedPhone="g">
+        <word grapheme="gateau" ipaPronunciation="gat̪oˈ" />
+    </key>
+    <key ttsPhone="l_z" ipaPhone="z‿" vowel="False" displayedPhone="z~">
+        <word grapheme="des arbres" ipaPronunciation="d̪eˈz‿/aʁˈbʁ" />
+    </key>
+    <key ttsPhone="in" ipaPhone="ẽ" vowel="True" displayedPhone="ẽ">
+        <word grapheme="Indien" ipaPronunciation="ẽd̪jẽˈ" />
+    </key>
+    <key ttsPhone="un" ipaPhone="œ̃" vowel="True" displayedPhone="œ̃">
+        <word grapheme="l’un" ipaPronunciation="lœ̃ˈn‿" />
+    </key>
+    <key ttsPhone="af" ipaPhone="ɑ" vowel="True" displayedPhone="ɑ">
+        <word grapheme=" pâte" ipaPronunciation="pɑˈt̪" />
+    </key>
+    <key ttsPhone="k" ipaPhone="k" vowel="False" displayedPhone="k">
+        <word grapheme="kangourou" ipaPronunciation="kãguʁuˈ" />
+    </key>
+    <key ttsPhone="l" ipaPhone="l" vowel="False" displayedPhone="l">
+        <word grapheme="loupe" ipaPronunciation="luˈp" />
+    </key>
+    <key ttsPhone="m" ipaPhone="m" vowel="False" displayedPhone="m">
+        <word grapheme="Marie" ipaPronunciation="maʁiˈ" />
+    </key>
+    <key ttsPhone="n" ipaPhone="n" vowel="False" displayedPhone="n">
+        <word grapheme="noble" ipaPronunciation="noˈbl" />
+    </key>
+    <key ttsPhone="ng" ipaPhone="ŋ" vowel="False" displayedPhone="ŋ">
+        <word grapheme="parking" ipaPronunciation="paʁkiˈŋ" />
+    </key>
+    <key ttsPhone="ow" ipaPhone="o" vowel="True" displayedPhone="o">
+        <word grapheme="beau" ipaPronunciation="boˈ" />
+    </key>
+    <key ttsPhone="d" ipaPhone="d̪" vowel="False" displayedPhone="d">
+        <word grapheme="dur" ipaPronunciation="d̪yˈʁ" />
+    </key>
+    <key ttsPhone="p" ipaPhone="p" vowel="False" displayedPhone="p">
+        <word grapheme="prix" ipaPronunciation="pʁiˈ" />
+    </key>
+    <key ttsPhone="r" ipaPhone="ʁ" vowel="False" displayedPhone="ʁ">
+        <word grapheme="pure" ipaPronunciation="pyˈʁ" />
+    </key>
+    <key ttsPhone="s" ipaPhone="s" vowel="False" displayedPhone="s">
+        <word grapheme="salut" ipaPronunciation="salyˈ" />
+    </key>
+    <key ttsPhone="sh" ipaPhone="ʃ" vowel="False" displayedPhone="ʃ">
+        <word grapheme="chapeau" ipaPronunciation="ʃapoˈ" />
+    </key>
+    <key ttsPhone="t" ipaPhone="t̪" vowel="False" displayedPhone="t">
+        <word grapheme="tard" ipaPronunciation="t̪aˈʁ" />
+    </key>
+    <key ttsPhone="zh" ipaPhone="ʒ" vowel="False" displayedPhone="ʒ">
+        <word grapheme="jolie" ipaPronunciation="ʒɔliˈ" />
+    </key>
+    <key ttsPhone="oe" ipaPhone="œ" vowel="True" displayedPhone="œ">
+        <word grapheme="heure" ipaPronunciation="œˈʁ" />
+    </key>
+    <key ttsPhone="v" ipaPhone="v" vowel="False" displayedPhone="v">
+        <word grapheme="vrai" ipaPronunciation="vʁɛˈ" />
+    </key>
+    <key ttsPhone="w" ipaPhone="w" vowel="False" displayedPhone="w">
+        <word grapheme="oiseau" ipaPronunciation="wazoˈ" />
+    </key>
+    <key ttsPhone="y" ipaPhone="j" vowel="False" displayedPhone="j">
+        <word grapheme="faille" ipaPronunciation="faˈj" />
+    </key>
+    <key ttsPhone="z" ipaPhone="z" vowel="False" displayedPhone="z">
+        <word grapheme="zone" ipaPronunciation="zoˈn" />
+    </key>
+    <key ttsPhone="uy" ipaPhone="y" vowel="True" displayedPhone="y">
+        <word grapheme="flûte" ipaPronunciation="flyˈt̪" />
+    </key>
+    <key ttsPhone="b" ipaPhone="b" vowel="False" displayedPhone="b">
+        <word grapheme="bateau" ipaPronunciation="bat̪oˈ" />
+    </key>
+    <key ttsPhone="gn" ipaPhone="ɲ" vowel="False" displayedPhone="ɲ">
+        <word grapheme="ligne" ipaPronunciation="liˈɲ" />
+    </key>
+    <key ttsPhone="oh" ipaPhone="ɔ" vowel="True" displayedPhone="ɔ">
+        <word grapheme="porte" ipaPronunciation="pɔˈʁt̪" />
+    </key>
+    <key ttsPhone="hw" ipaPhone="ɥ" vowel="False" displayedPhone="ɥ">
+        <word grapheme="nuit" ipaPronunciation="nɥiˈ" />
+    </key>
+</keyboard>

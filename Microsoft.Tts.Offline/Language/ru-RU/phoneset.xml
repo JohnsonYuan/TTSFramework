@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet lang="ru-RU" version="1.0" xmlns="http://schemas.microsoft.com/tts">
+  <syllableStructure>
+    <vowelCount min="0" max="1" />
+  </syllableStructure>
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="3" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="a" id="6">
+    <feature>back vowel sonorant</feature>
+  </phone>
+  <phone name="ah" id="7">
+    <feature>back vowel sonorant</feature>
+  </phone>
+  <phone name="ax" id="8">
+    <feature>back vowel sonorant</feature>
+  </phone>
+  <phone name="b" id="9">
+    <feature>consonant plosive bilabial</feature>
+  </phone>
+  <phone name="bj" id="10">
+    <feature>consonant palatal plosive bilabial</feature>
+  </phone>
+  <phone name="ch" id="11">
+    <feature>consonant palatal affricate</feature>
+  </phone>
+  <phone name="d" id="12">
+    <feature>consonant plosive dental alveolar</feature>
+  </phone>
+  <phone name="dj" id="13">
+    <feature>consonant palatal plosive dental alveolar</feature>
+  </phone>
+  <phone name="e" id="14">
+    <feature>vowel sonorant</feature>
+  </phone>
+  <phone name="f" id="15">
+    <feature>consonant fricative labiodental</feature>
+  </phone>
+  <phone name="fj" id="16">
+    <feature>consonant palatal fricative labiodental</feature>
+  </phone>
+  <phone name="g" id="17">
+    <feature>consonant plosive velar</feature>
+  </phone>
+  <phone name="gj" id="18">
+    <feature>consonant palatal plosive velar</feature>
+  </phone>
+  <phone name="i" id="19">
+    <feature>front vowel sonorant</feature>
+  </phone>
+  <phone name="ih" id="20">
+    <feature>front vowel sonorant</feature>
+  </phone>
+  <phone name="ix" id="21">
+    <feature>vowel sonorant</feature>
+  </phone>
+  <phone name="k" id="22">
+    <feature>consonant plosive velar</feature>
+  </phone>
+  <phone name="kj" id="23">
+    <feature>consonant palatal plosive velar</feature>
+  </phone>
+  <phone name="l" id="24">
+    <feature>consonant sonorant</feature>
+  </phone>
+  <phone name="lj" id="25">
+    <feature>consonant palatal sonorant dental alveolar</feature>
+  </phone>
+  <phone name="m" id="26">
+    <feature>consonant sonorant bilabial</feature>
+  </phone>
+  <phone name="mj" id="27">
+    <feature>consonant palatal sonorant bilabial</feature>
+  </phone>
+  <phone name="n" id="28">
+    <feature>consonant sonorant dental alveolar</feature>
+  </phone>
+  <phone name="nj" id="29">
+    <feature>consonant palatal sonorant dental alveolar</feature>
+  </phone>
+  <phone name="o" id="30">
+    <feature>back vowel sonorant</feature>
+  </phone>
+  <phone name="p" id="31">
+    <feature>consonant plosive bilabial</feature>
+  </phone>
+  <phone name="pj" id="32">
+    <feature>consonant palatal plosive bilabial</feature>
+  </phone>
+  <phone name="r" id="33">
+    <feature>consonant sonorant dental alveolar</feature>
+  </phone>
+  <phone name="rj" id="34">
+    <feature>consonant palatal sonorant dental alveolar</feature>
+  </phone>
+  <phone name="s" id="35">
+    <feature>consonant fricative dental alveolar</feature>
+  </phone>
+  <phone name="sc" id="36">
+    <feature>consonant alveolar palatal fricative</feature>
+  </phone>
+  <phone name="sh" id="37">
+    <feature>consonant fricative</feature>
+  </phone>
+  <phone name="sj" id="38">
+    <feature>consonant palatal fricative dental alveolar</feature>
+  </phone>
+  <phone name="t" id="39">
+    <feature>consonant plosive dental alveolar</feature>
+  </phone>
+  <phone name="tj" id="40">
+    <feature>consonant palatal plosive dental alveolar</feature>
+  </phone>
+  <phone name="ts" id="41">
+    <feature>consonant affricate labiodental</feature>
+  </phone>
+  <phone name="u" id="42">
+    <feature>back vowel sonorant</feature>
+  </phone>
+  <phone name="v" id="43">
+    <feature>consonant fricative labiodental</feature>
+  </phone>
+  <phone name="vj" id="44">
+    <feature>consonant palatal fricative labiodental</feature>
+  </phone>
+  <phone name="x" id="45">
+    <feature>consonant fricative velar</feature>
+  </phone>
+  <phone name="xj" id="46">
+    <feature>consonant palatal fricative velar</feature>
+  </phone>
+  <phone name="y" id="47">
+    <feature>consonant palatal sonorant</feature>
+  </phone>
+  <phone name="z" id="48">
+    <feature>consonant fricative dental alveolar</feature>
+  </phone>
+  <phone name="zh" id="49">
+    <feature>consonant fricative</feature>
+  </phone>
+  <phone name="zj" id="50">
+    <feature>consonant palatal fricative dental alveolar</feature>
+  </phone>
+</phoneSet>

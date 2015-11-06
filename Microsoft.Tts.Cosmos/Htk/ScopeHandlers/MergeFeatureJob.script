@@ -1,0 +1,16 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0MERG string = @"@@WAVEDATACORPUSWITHF0MERG@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureMERG = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING MergeFeatureJob();
+
+ssFeature = SELECT * FROM waveFeatureMERG;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0MERG;

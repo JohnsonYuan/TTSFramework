@@ -1,0 +1,21 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE GetLPCTool string = @"@@GETLPCTOOl@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0NCCFRFLPC string = @"@@WAVEDATACORPUSWITHF0NCCFRFLPC@@";
+#DECLARE FftDim string = @"@@FFTDIM@@";
+#DECLARE LpcOrder string = @"@@LPCORDER@@";
+#DECLARE SecondsPerFrame string = @"@@SECONDSPERFRAME@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+RESOURCE @GetLPCTool;
+
+waveFeatureLPC = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING GetLpcJob(@FftDim, @LpcOrder, @SecondsPerFrame);
+
+ssFeature = SELECT * FROM waveFeatureLPC;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0NCCFRFLPC;

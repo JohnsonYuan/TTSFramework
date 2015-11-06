@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts/toolsuite" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts/toolsuite" xmlns:mstns="http://schemas.microsoft.com/tts/toolsuite" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="spsCompilationConfigType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="fixedPoint" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="enable" type="xs:boolean" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dynamicFeature" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="layout" type="dynamicWindowLayout" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="stringPool" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="hasQuestion" type="xs:boolean" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="model" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="type" type="modelType" use="required" />
+          <xs:attribute name="mergeStream" type="xs:boolean" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="dynamicWindowLayout">
+    <xs:restriction base="xs:string">
+      <xs:enumeration  value="StaticDeltaAcceleration"/>
+      <xs:enumeration  value="StaticDelta"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="modelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration  value="Lsp"/>
+      <xs:enumeration  value="Duration"/>
+      <xs:enumeration  value="FundamentalFrequency"/>
+      <xs:enumeration  value="Mbe"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

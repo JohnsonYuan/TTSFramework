@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\common.proj.inc" />
+  <ItemGroup>
+    <ProjectFile Include=".\Aggregator\Aggregator.csproj" />
+    <ProjectFile Include=".\DistributeComputing\DistributeComputing.csproj" />
+    <ProjectFile Include=".\JobSubmitter\JobSubmitter.csproj" />
+    <ProjectFile Include=".\ProcessClient\ProcessClient.csproj" />
+    <ProjectFile Include=".\ProcessServer\ProcessServer.csproj" />
+    <ProjectFile Include=".\Script\Script.proj" />
+  </ItemGroup>
+  <Import Project="$(ExtendedTargetsPath)\Traversal.targets" />
+</Project>

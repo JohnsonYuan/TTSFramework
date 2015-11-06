@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:complexType name="ParallelStructTableType">
+    <xs:sequence>
+      <xs:element name="segmentWords" type="segmentWordsType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="triggerWords" type="triggerWordsType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="segmentWordsType">
+    <xs:sequence>
+      <xs:element name="segmentWord" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+          <xs:attribute name="pos" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="triggerWordsType">
+    <xs:sequence>
+      <xs:element name="triggerWord" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="text" type="xs:string" use="required" />
+          <xs:attribute name="pos" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="parallelStructTable" type="ParallelStructTableType"/>
+</xs:schema>

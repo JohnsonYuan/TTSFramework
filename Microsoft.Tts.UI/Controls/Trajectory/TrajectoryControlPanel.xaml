@@ -1,0 +1,61 @@
+﻿<UserControl
+  x:Uid="_controlPanel"
+  x:Class="Microsoft.Tts.UI.Controls.Trajectory.TrajectoryControlPanel"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:custom="clr-namespace:Microsoft.Tts.UI.Controls.Trajectory"
+  x:Name="_controlPanel"
+  AutomationProperties.Name="TrajectoryControlPanel">
+    <UserControl.Resources>
+        <Style x:Uid="ResourceDictionary_1" x:Key="ButtonStyle" />
+    </UserControl.Resources>
+  <Grid x:Uid="Grid_1">
+    <WrapPanel x:Uid="WrapPanel_1">
+    <custom:TimeAxisScrollbar
+        x:Uid="_timeScrollBar"
+        x:Name="_timeScrollBar"
+        Width="100">
+    </custom:TimeAxisScrollbar>
+    <custom:ZoomControl 
+        x:Uid="_zoomControl" 
+        x:Name="_zoomControl" 
+        AutomationProperties.Name="ZoomControl"
+        Width="50" />
+    <CheckBox 
+      x:Uid="CheckBox_1" 
+      x:Name="_showDeltaCheckBox"
+      Margin="10,0,0,0"
+      VerticalAlignment="Bottom"
+      IsChecked="{Binding DeltaShowed}"
+      AutomationProperties.Name="ShowDeltaCheckBox">Delta</CheckBox>
+    <CheckBox
+      x:Uid="CheckBox_2" 
+      x:Name="_showAccelerationCheckBox"
+      Margin="10,0,0,0"
+      VerticalAlignment="Bottom"
+      IsChecked="{Binding AccelerationShowed}"
+      AutomationProperties.Name="ShowAccelerationCheckBox">Acceleration</CheckBox>
+    <CheckBox
+      x:Uid="CheckBox_waveform" 
+      x:Name="_waveformCheckBox"
+      Margin="10,0,0,0"
+      VerticalAlignment="Bottom"
+      IsChecked="{Binding WaveformShowed}"
+      AutomationProperties.Name="ShowWaveformCheckBox">Waveform</CheckBox>
+    <CheckBox 
+      x:Uid="CheckBox_3"
+      x:Name="_showTrajectoryCheckBox"
+      Margin="10,0,0,0" 
+      VerticalAlignment="Bottom" 
+      IsChecked="{Binding TrajectoryDisplayController.TrajectoryShowed}"
+      AutomationProperties.Name="ShowTrajectoryCheckBox">Trajectory</CheckBox>
+    <CheckBox
+      x:Uid="CheckBox_4"
+      x:Name="_showModelDataCheckBox"
+      Margin="10,0,0,0" 
+      VerticalAlignment="Bottom" 
+      IsChecked="{Binding TrajectoryDisplayController.ModelDataShowed}"
+      AutomationProperties.Name="ShowModelDataCheckBox">Model data</CheckBox>
+    </WrapPanel>
+  </Grid>
+</UserControl>

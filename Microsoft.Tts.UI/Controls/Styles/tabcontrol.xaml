@@ -1,0 +1,57 @@
+﻿<ResourceDictionary 
+  x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary x:Uid="ResourceDictionary_2" Source="Shared.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  
+  <!-- SimpleStyles: TabControl -->
+  <Style x:Uid="Style_1" x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
+    <Setter x:Uid="Setter_1" Property="OverridesDefaultStyle" Value="True" />
+    <Setter x:Uid="Setter_2" Property="SnapsToDevicePixels" Value="True" />
+    <Setter x:Uid="Setter_3" Property="ItemContainerStyle" Value="{StaticResource TabItemStyle}"/>
+    <Setter x:Uid="Setter_4" Property="Template">
+      <Setter.Value>
+        <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type TabControl}">
+          <Grid x:Uid="Grid_1" KeyboardNavigation.TabNavigation="Local">
+            <Grid.RowDefinitions>
+              <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+              <RowDefinition x:Uid="RowDefinition_2" Height="*"/>
+            </Grid.RowDefinitions>
+            <TabPanel 
+              x:Uid="HeaderPanel" Name="HeaderPanel"
+              Grid.Row="0"
+              Panel.ZIndex="1" 
+              Margin="0,0,4,-1" 
+              IsItemsHost="True"
+              KeyboardNavigation.TabIndex="1"
+              Background="Transparent" />
+            <Border 
+              x:Uid="Border" Name="Border" 
+              Grid.Row="1" 
+              Background="{StaticResource WindowBackgroundBrush}" 
+              BorderBrush="{StaticResource SolidBorderBrush}" 
+              BorderThickness="1" 
+              CornerRadius="2" 
+              KeyboardNavigation.TabNavigation="Local"
+              KeyboardNavigation.DirectionalNavigation="Contained"
+              KeyboardNavigation.TabIndex="2" >
+              <ContentPresenter 
+                x:Uid="PART_SelectedContentHost" Name="PART_SelectedContentHost"
+                Margin="2"
+                ContentSource="SelectedContent" />
+            </Border>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger x:Uid="Trigger_1" Property="IsEnabled" Value="False">
+              <Setter x:Uid="Setter_5" Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+              <Setter x:Uid="Setter_6" TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DomainConfig" targetNamespace="http://schemas.microsoft.com/tts/toolsuite" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts/toolsuite" xmlns:mstns="http://schemas.microsoft.com/tts/toolsuite" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="domains">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="scripts" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="script" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                        </xs:sequence>
+                        <xs:attribute name="from" type="xs:string" />
+                        <xs:attribute name="to" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="digitals" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="digital" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                        </xs:sequence>
+                        <xs:attribute name="word" type="xs:string" />
+                        <xs:attribute name="group" type="xs:unsignedInt" />
+                        <xs:attribute name="sentenceId" type="xs:string" />
+                        <xs:attribute name="wordIndex" type="xs:unsignedInt" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="acronyms" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="acronym" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                        </xs:sequence>
+                        <xs:attribute name="word" type="xs:string" />
+                        <xs:attribute name="group" type="xs:unsignedInt" />
+                        <xs:attribute name="sentenceId" type="xs:string" />
+                        <xs:attribute name="wordIndex" type="xs:unsignedInt" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="type" type="domainType" />
+            <xs:attribute name="sharedWithNormalDomain" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="domainType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Normal" />
+      <xs:enumeration value="Number" />
+      <xs:enumeration value="PersonName" />
+      <xs:enumeration value="Letter" />
+      <xs:enumeration value="Acronym" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

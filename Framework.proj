@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\common.proj.inc" />
+  <ItemGroup>
+    <ProjectFile Include=".\Microsoft.Tts.Offline\Microsoft.Tts.Offline.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.UI\Microsoft.Tts.UI.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.ServiceProvider.Extension\Microsoft.ServiceProvider.Extension.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.Font\Microsoft.Tts.Font.csproj" />
+    <ProjectFile Include=".\ComputingKit\ComputingKit.proj" />
+    <ProjectFile Include=".\Microsoft.Tts.Test\Microsoft.Tts.Test.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.EspHelper\Microsoft.Tts.EspHelper.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.Research\Microsoft.Tts.Research.csproj" />
+    <ProjectFile Include=".\Microsoft.Tts.ScriptSynthesizer\Microsoft.Tts.ScriptSynthesizer.csproj" />
+  </ItemGroup>
+  <Import Project="$(ExtendedTargetsPath)\Traversal.targets" />
+</Project>

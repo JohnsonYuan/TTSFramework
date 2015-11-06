@@ -1,0 +1,13 @@
+﻿<UserControl x:Uid="_lineChart" x:Class="Microsoft.Tts.UI.Controls.Trajectory.IntervalLinerGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="_graphSystem" MouseLeftButtonDown="OnMouseLeftButtonDown" MouseLeftButtonUp="OnMouseLeftButtonUp" MouseMove="OnMouseMove" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave" Loaded="OnLoaded">
+  <Grid x:Uid="Grid_1">
+    <Canvas
+      x:Uid="_graph"
+      x:Name="_graph"
+      Width="{Binding Width,ElementName=_graphSystem}"
+      Height="{Binding Height,ElementName=_graphSystem}" />
+    <Rectangle x:Uid="_rect" x:Name="_rect" Fill="Transparent"/>
+  </Grid>
+</UserControl>

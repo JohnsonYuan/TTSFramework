@@ -1,0 +1,20 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE SvmScaleTool string = @"@@SVMSCALETOOL@@";
+#DECLARE SvmRange string = @"@@SVMRANGE@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0SSVM string = @"@@WAVEDATACORPUSWITHF0SSVM@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+RESOURCE @SvmScaleTool;
+RESOURCE @SvmRange;
+
+waveFeatureSSVM = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING ScaleFeatureJob();
+
+ssFeature = SELECT * FROM waveFeatureSSVM;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0SSVM;

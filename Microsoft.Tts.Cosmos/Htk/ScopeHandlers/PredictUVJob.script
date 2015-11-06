@@ -1,0 +1,20 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE SvmPredictTool string = @"@@SVMPREDICTTOOL@@";
+#DECLARE UVModelFile string = @"@@UVMODELFILE@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0UV string = @"@@WAVEDATACORPUSWITHF0UV@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+RESOURCE @SvmPredictTool;
+RESOURCE @UVModelFile;
+
+waveFeatureUV = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING PredictUVJob();
+
+ssFeature = SELECT * FROM waveFeatureUV;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0UV;

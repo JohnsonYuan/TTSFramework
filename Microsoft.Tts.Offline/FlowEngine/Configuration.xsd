@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.microsoft.com/tts/toolsuite" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <xs:element name="flow">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="include" type="include" />
+        <xs:element name="module" type="module" />
+      </xs:choice>
+      <xs:attribute name="handlerNamespace" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="input">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="module">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="input" type="input" />
+    </xs:choice>
+    <xs:attribute name="type" type="xs:string" use="required" />
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="skip" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="keepIntermediateData" type="xs:boolean" use="optional" default="false" />
+  </xs:complexType>
+  <xs:complexType name="include">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="input" type="input" />
+    </xs:choice>
+    <xs:attribute name="src" type="xs:string" use="required" />
+    <xs:attribute name="skip" type="xs:boolean" use="optional" default="false"/>
+  </xs:complexType>
+</xs:schema>

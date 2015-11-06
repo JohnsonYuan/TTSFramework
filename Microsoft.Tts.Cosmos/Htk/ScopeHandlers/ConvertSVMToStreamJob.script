@@ -1,0 +1,17 @@
+﻿#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithoutSS string = @"@@WAVEDATACORPUSWITHOUTSS@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+featureNoSS = 
+    PROCESS 
+    (
+        SSTREAM @WaveDataCorpus
+    )
+    USING ConvertSVMToStreamJob();
+
+OUTPUT featureNoSS 
+TO @WaveDataCorpusWithoutSS;

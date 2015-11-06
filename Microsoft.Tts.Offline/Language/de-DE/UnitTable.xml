@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<offline xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <unitTable lang="de-DE">
+    <unit name="nc_a" />
+    <unit name="nc_aa" />
+    <unit name="nc_eh" />
+    <unit name="nc_ey" />
+    <unit name="nc_ih" />
+    <unit name="nc_iy" />
+    <unit name="nc_oh" />
+    <unit name="nc_ow" />
+    <unit name="nc_uh" />
+    <unit name="nc_uw" />
+    <unit name="nc_uy" />
+    <unit name="nc_ue" />
+    <unit name="nc_eu" />
+    <unit name="nc_oe" />
+    <unit name="nc_ax" />
+    <unit name="nc_aw" />
+    <unit name="nc_oy" />
+    <unit name="nc_ay" />
+    <unit name="nc_ae" />
+  </unitTable>
+</offline>

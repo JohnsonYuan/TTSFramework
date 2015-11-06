@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="LanguageType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" />
+    <xs:attribute name="hexId" type="xs:hexBinary" />
+    <xs:attribute name="decId" type="xs:decimal" />
+  </xs:complexType>
+  <xs:complexType name="LanguagesType">
+    <xs:sequence>
+      <xs:element name="language" type="LanguageType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="NamedEntityValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="sp:default" />
+      <xs:enumeration value="sp:cardinal" />
+      <xs:enumeration value="sp:ordinal" />
+      <xs:enumeration value="sp:fraction" />
+      <xs:enumeration value="sp:datetime" />
+      <xs:enumeration value="sp:duration" />
+      <xs:enumeration value="sp:address" />
+      <xs:enumeration value="sp:phoneNumber" />
+      <xs:enumeration value="sp:degree" />
+      <xs:enumeration value="sp:measurement" />
+      <xs:enumeration value="sp:romanNumeral" />
+      <xs:enumeration value="sp:currency" />
+      <xs:enumeration value="sp:webUrl" />
+      <xs:enumeration value="sp:email" />
+      <xs:enumeration value="sp:filePath" />
+      <xs:enumeration value="sp:compoundWord" />
+      <xs:enumeration value="sp:hyphenJointWord" />
+      <xs:enumeration value="sp:acronym" />
+      <xs:enumeration value="sp:mixedAcronymWord" />
+      <xs:enumeration value="sp:phrase" />
+      <xs:enumeration value="sp:computer" />
+      <xs:enumeration value="ml:number_digit" />
+      <xs:enumeration value="ml:number:digit" />
+      <xs:enumeration value="ml:cardinal" />
+      <xs:enumeration value="ml:number:cardinal" />
+      <xs:enumeration value="ml:ordinal" />
+      <xs:enumeration value="ml:number:ordinal" />
+      <xs:enumeration value="ml:date_mdy" />
+      <xs:enumeration value="ml:date_md" />
+      <xs:enumeration value="ml:date:md" />
+      <xs:enumeration value="ml:date_year" />
+      <xs:enumeration value="ml:date:y" />
+      <xs:enumeration value="ml:time" />
+      <xs:enumeration value="ml:time:h" />
+      <xs:enumeration value="ml:time:hm" />
+      <xs:enumeration value="ml:time:hms" />
+      <xs:enumeration value="ml:address" />
+      <xs:enumeration value="ml:telephone" />
+      <xs:enumeration value="ml:phone_number" />
+      <xs:enumeration value="ml:currency" />
+      <xs:enumeration value="ml:net_email" />
+      <xs:enumeration value="ml:net:email" />
+      <xs:enumeration value="ml:name" />
+      <xs:enumeration value="tts:number_range" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="languages" type="LanguagesType">
+  </xs:element>
+</xs:schema>

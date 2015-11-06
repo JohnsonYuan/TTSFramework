@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\Common.Proj.inc" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" />
+  <PropertyGroup>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{28F52868-6F3C-49D4-BC75-C95F567025D6}</ProjectGuid>
+    <RootNamespace>Microsoft.Tts.Research</RootNamespace>
+    <AssemblyName>Microsoft.Tts.Research</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SPEECH_BUILD_TYPE>Server</SPEECH_BUILD_TYPE>
+    <PDBFolder Condition="'$(OutputType)'=='Library'">dll</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='Exe'">exe</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='WinExe'">exe</PDBFolder>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <AssemblyClsCompliant>false</AssemblyClsCompliant>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='amd64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='i386'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="$(TTS_ROOT)\external\speechfx\System.Speech.dll" />
+    <Reference Include="$(TTS_OBJ_ROOT)\src\serviceprovider\Engine\Build.Internal\$(O)\ServiceProvider.dll" />
+    <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CmpSetSerializer\CmpFeature.cs" />
+    <Compile Include="CmpSetSerializer\CmpSetSerializer.cs" />
+    <Compile Include="ExternalUnitSelector\IUnitSelector.cs" />
+    <Compile Include="Script\PhoneObjectMatch.cs" />
+    <Compile Include="Script\EngineMatchToScript.cs" />
+    <Compile Include="ExternalUnitSelector\ViterbiSearcher.cs" />
+    <Compile Include="Vocoder\IVocoder.cs" />
+    <Compile Include="Vocoder\SptkVocoder.cs" />
+    <Compile Include="Vocoder\EngineVocoder.cs" />
+    <Compile Include="NGram\NGramModel.cs" />
+    <Compile Include="Utility\CommandLineExecute.cs" />
+    <Compile Include="Utility\AcousticReplacement.cs" />
+    <Compile Include="Utility\Utility.cs" />
+    <Compile Include="Utility\NumericStatistics.cs" />
+    <Compile Include="Utility\F0Extractor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
+    </Binplace>
+  </ItemGroup>
+  <Import Project="$(ExtendedTargetsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))\include.targets" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))' != ''" />
+</Project>

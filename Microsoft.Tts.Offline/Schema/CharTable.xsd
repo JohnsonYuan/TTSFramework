@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:complexType name="CharTableType">
+    <xs:sequence>
+      <xs:element name="char" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="symbol" type="xs:string" use="required" />
+          <xs:attribute name="isolatedSymbolReadout" type="xs:string" use="optional" />
+          <xs:attribute name="contextualSymbolReadout" type="xs:string" use="optional" />
+          <xs:attribute name="pron" type="xs:string" use="optional" />
+          <xs:attribute name="feature" type="CharFeatureValueList" use="optional" />
+          <xs:attribute name="type" type="CharTypeValue" use="optional" default="Symbol"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="CharTypeValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LowerCase" />
+      <xs:enumeration value="UpperCase" />
+      <xs:enumeration value="Digit" />
+      <xs:enumeration value="Symbol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CharFeatureValueList">
+    <xs:list itemType="CharFeatureValue"/>
+  </xs:simpleType>
+  <xs:simpleType name="CharFeatureValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Vowel" />
+      <xs:enumeration value="Consonant" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="chartable" type="CharTableType"/>
+</xs:schema>

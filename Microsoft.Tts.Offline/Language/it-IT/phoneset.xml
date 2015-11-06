@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="it-IT">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="a" id="6">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ai" id="7">
+    <feature> vowel sonorant voiced occlusive bilabial</feature>
+  </phone>
+  <phone name="au" id="8">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="b" id="9">
+    <feature> consonant voiced occlusive bilabial</feature>
+  </phone>
+  <phone name="bb" id="10">
+    <feature> consonant voiced occlusive bilabial</feature>
+  </phone>
+  <phone name="c" id="11">
+    <feature> consonant voiceless double-articulation alveolar-postalveolar</feature>
+  </phone>
+  <phone name="cc" id="12">
+    <feature> consonant voiceless double-articulation alveolar-postalveolar</feature>
+  </phone>
+  <phone name="cch" id="13">
+    <feature> consonant voiceless occlusive alveolar</feature>
+  </phone>
+  <phone name="d" id="14">
+    <feature> consonant voiced occlusive dental</feature>
+  </phone>
+  <phone name="dd" id="15">
+    <feature> consonant voiced occlusive dental</feature>
+  </phone>
+  <phone name="ddz" id="16">
+    <feature> consonant voiced fricative alveolar</feature>
+  </phone>
+  <phone name="dz" id="17">
+    <feature> consonant voiced fricative alveolar</feature>
+  </phone>
+  <phone name="e" id="18">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="eh" id="19">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ehj" id="20">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ehu" id="21">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ej" id="22">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="eu" id="23">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="f" id="24">
+    <feature> consonant voiceless fricative labiodental</feature>
+  </phone>
+  <phone name="ff" id="25">
+    <feature> consonant voiceless fricative labiodental</feature>
+  </phone>
+  <phone name="g" id="26">
+    <feature> consonant voiced double-articulation alveolar</feature>
+  </phone>
+  <phone name="gg" id="27">
+    <feature> consonant voiced double-articulation alveolar</feature>
+  </phone>
+  <phone name="ggh" id="28">
+    <feature> consonant voiceless occlusive postalveolar</feature>
+  </phone>
+  <phone name="ggl" id="29">
+    <feature> consonant sonorant voiced lateral-approximant palatal</feature>
+  </phone>
+  <phone name="ggn" id="30">
+    <feature> consonant sonorant voiced nasal postalveolar</feature>
+  </phone>
+  <phone name="gh" id="31">
+    <feature> consonant voiceless occlusive postalveolar</feature>
+  </phone>
+  <phone name="gl" id="32">
+    <feature> consonant sonorant voiced lateral-approximant palatal</feature>
+  </phone>
+  <phone name="gn" id="33">
+    <feature> consonant sonorant voiced nasal postalveolar</feature>
+  </phone>
+  <phone name="i" id="35">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="j" id="36">
+    <feature> consonant sonorant voiced approximant palatal</feature>
+  </phone>
+  <phone name="k" id="37">
+    <feature> consonant voiceless occlusive alveolar</feature>
+  </phone>
+  <phone name="l" id="38">
+    <feature> consonant sonorant voiced lateral-approximant alveolar</feature>
+  </phone>
+  <phone name="ll" id="39">
+    <feature> consonant sonorant voiced lateral-approximant alveolar</feature>
+  </phone>
+  <phone name="m" id="40">
+    <feature> consonant sonorant voiced nasal bilabial</feature>
+  </phone>
+  <phone name="mm" id="41">
+    <feature> consonant sonorant voiced nasal bilabial</feature>
+  </phone>
+  <phone name="n" id="42">
+    <feature> consonant sonorant voiced nasal alveolar</feature>
+  </phone>
+  <phone name="nn" id="43">
+    <feature> consonant sonorant voiced nasal alveolar</feature>
+  </phone>
+  <phone name="o" id="44">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="oh" id="45">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ohj" id="46">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="oj" id="47">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="ou" id="48">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="p" id="49">
+    <feature> consonant voiceless occlusive bilabial</feature>
+  </phone>
+  <phone name="pp" id="50">
+    <feature> consonant voiceless occlusive bilabial</feature>
+  </phone>
+  <phone name="r" id="51">
+    <feature> consonant sonorant voiced trill alveolar</feature>
+  </phone>
+  <phone name="rr" id="52">
+    <feature> consonant sonorant voiced trill alveolar</feature>
+  </phone>
+  <phone name="s" id="53">
+    <feature> consonant voiceless fricative alveolar</feature>
+  </phone>
+  <phone name="sc" id="54">
+    <feature> consonant voiceless fricative postalveolar</feature>
+  </phone>
+  <phone name="ss" id="55">
+    <feature> consonant voiceless fricative alveolar</feature>
+  </phone>
+  <phone name="ssc" id="56">
+    <feature> consonant voiced fricative alveolar</feature>
+  </phone>
+  <phone name="t" id="57">
+    <feature> consonant voiceless occlusive dental</feature>
+  </phone>
+  <phone name="ts" id="58">
+    <feature> consonant voiceless double-articulation dental-alveolar</feature>
+  </phone>
+  <phone name="tt" id="59">
+    <feature> consonant voiceless occlusive dental</feature>
+  </phone>
+  <phone name="tts" id="60">
+    <feature> consonant voiceless double-articulation dental-alveolar</feature>
+  </phone>
+  <phone name="u" id="61">
+    <feature> vowel sonorant voiced</feature>
+  </phone>
+  <phone name="v" id="62">
+    <feature> consonant voiced fricative labiodental</feature>
+  </phone>
+  <phone name="vv" id="63">
+    <feature> consonant voiced fricative labiodental</feature>
+  </phone>
+  <phone name="w" id="64">
+    <feature> consonant sonorant voiced approximant labialvelar</feature>
+  </phone>
+  <phone name="z" id="65">
+    <feature> consonant voiced fricative alveolar</feature>
+  </phone>
+</phoneSet>

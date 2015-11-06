@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<fontMeta lang="sv-SE" xmlns="http://schemas.microsoft.com/tts">
+  <unitFeatures>
+    <feature name="PosInSentence" bitWidth="8" />
+    <feature name="PosInWord" bitWidth="8" />
+    <feature name="PosInSyllable" bitWidth="8" />
+    <feature name="LeftContextPhone" bitWidth="8" />
+    <feature name="RightContextPhone" bitWidth="8" />
+    <feature name="TtsStress" bitWidth="8" />
+    <feature name="TtsEmphasis" bitWidth="8" />
+    <feature name="TtsNeighborPrev" bitWidth="8" />
+    <feature name="TtsEnergy" bitWidth="32" />
+  </unitFeatures>
+</fontMeta>

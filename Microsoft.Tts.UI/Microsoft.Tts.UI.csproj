@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\Common.Proj.inc" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" />
+  <!--Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" /--> 
+  <PropertyGroup>
+    <GeneratedFromTemplate>BingMsBuild4</GeneratedFromTemplate>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OacrDisabled Condition="'$(USE_OACR)'=='1'">true</OacrDisabled>
+    <ProjectGuid>{1BB06E32-3712-434B-BCBF-FC861B717D9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Tts.UI</RootNamespace>
+    <AssemblyName>Microsoft.Tts.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SPEECH_BUILD_TYPE>Server</SPEECH_BUILD_TYPE>
+    <PDBFolder Condition="'$(OutputType)'=='Library'">dll</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='Exe'">exe</PDBFolder>
+    <PDBFolder Condition="'$(OutputType)'=='WinExe'">exe</PDBFolder>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <AssemblyClsCompliant>false</AssemblyClsCompliant>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='amd64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(BuildArchitecture)'=='i386'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="$(TTS_ROOT)\external\speechfx\System.Speech.dll" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Acoustic\AcousticEditor.xaml.cs">
+      <DependentUpon>AcousticEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Acoustic\Data\AcousticViewData.cs" />
+    <Compile Include="Controls\Acoustic\F0Editor.xaml.cs">
+      <DependentUpon>F0Editor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Acoustic\GainEditor.xaml.cs">
+      <DependentUpon>GainEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Acoustic\SpectrumViewer.xaml.cs">
+      <DependentUpon>SpectrumViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Acoustic\WaveFormViewer.xaml.cs">
+      <DependentUpon>WaveFormViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CollectionMathExtension.cs" />
+    <Compile Include="Controls\EventBroadcast.cs" />
+    <Compile Include="Controls\IMultiFrameControler.cs" />
+    <Compile Include="Controls\Trajectory\AxisRuler.xaml.cs">
+      <DependentUpon>AxisRuler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\Data\TrajectoryDataHelper.cs" />
+    <Compile Include="Controls\Trajectory\Data\VisualDimensionGraph.cs" />
+    <Compile Include="Controls\Trajectory\Data\VisualGraphElements.cs" />
+    <Compile Include="Controls\Trajectory\Data\VisualLspErrorData.cs" />
+    <Compile Include="Controls\Trajectory\Data\VisualTrajectory.cs" />
+    <Compile Include="Controls\Trajectory\Data\VisualTrajectoryInfo.cs" />
+    <Compile Include="Controls\Trajectory\DimensionRuler.xaml.cs">
+      <DependentUpon>DimensionRuler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\DurationGraph.xaml.cs">
+      <DependentUpon>DurationGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\HighlightPosCrossLine.xaml.cs">
+      <DependentUpon>HighlightPosCrossLine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\IntervalConstantGraph.xaml.cs">
+      <DependentUpon>IntervalConstantGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\IntervalLinerGraph.xaml.cs">
+      <DependentUpon>IntervalLinerGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\LspErrorDetectionPanel.xaml.cs">
+      <DependentUpon>LspErrorDetectionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\MultiDimensionGraph.xaml.cs">
+      <DependentUpon>MultiDimensionGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\MultiTrajectoryGraph.xaml.cs">
+      <DependentUpon>MultiTrajectoryGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\SegmentGraph.xaml.cs">
+      <DependentUpon>SegmentGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\SingleDimensionGraph.xaml.cs">
+      <DependentUpon>SingleDimensionGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\SingleTrajectoryGraph.xaml.cs">
+      <DependentUpon>SingleTrajectoryGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\SpectrumGraph.xaml.cs">
+      <DependentUpon>SpectrumGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\TimeAxisScrollbar.xaml.cs">
+      <DependentUpon>TimeAxisScrollbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\TrajectoryControlPanel.xaml.cs">
+      <DependentUpon>TrajectoryControlPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\TrajectoryFrameline.xaml.cs">
+      <DependentUpon>TrajectoryFrameline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\TrajectoryHighlightFrame.xaml.cs">
+      <DependentUpon>TrajectoryHighlightFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\TrajectoryInfoUserControl.xaml.cs">
+      <DependentUpon>TrajectoryInfoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\ViewControlling.cs" />
+    <Compile Include="Controls\Trajectory\WaveFormGraph.xaml.cs">
+      <DependentUpon>WaveFormGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Trajectory\ZoomControl.xaml.cs">
+      <DependentUpon>ZoomControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewHelper.cs" />
+    <Compile Include="Controls\ViewModelBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\Acoustic\AcousticEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Acoustic\F0Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Acoustic\GainEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Acoustic\SpectrumViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Acoustic\WaveFormViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\combobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\listbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\listboxitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\scrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\StatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\tabcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\tabitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Styles\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\AxisRuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\DimensionRuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\DurationGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\HighlightPosCrossLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\IntervalConstantGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\IntervalLinerGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\LspErrorDetectionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\MultiDimensionGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\MultiTrajectoryGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\SegmentGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\SingleDimensionGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\SingleTrajectoryGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\SpectrumGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\TimeAxisScrollbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\TrajectoryControlPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\TrajectoryFrameline.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\TrajectoryHighlightFrame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\TrajectoryInfoUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\WaveFormGraph.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Trajectory\ZoomControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <!--TODO: Update the binplace settings for your project or remove this section if not needed.
+  <ItemGroup>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\app\SampleBinplaceTarget\</DestinationFolder>
+    </Binplace>
+  </ItemGroup> -->
+  <ItemGroup>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\frontend</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release</DestinationFolder>
+    </Binplace>
+    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+      <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release\symbols.pri\$(PDBFolder)</DestinationFolder>
+    </Binplace>
+  </ItemGroup>
+  <Import Project="$(ExtendedTargetsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))\include.targets" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))' != ''" />
+  <!--Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))\include.targets" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.targets))' != ''" /-->
+</Project>

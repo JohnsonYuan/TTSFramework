@@ -1,0 +1,16 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0SVM string = @"@@WAVEDATACORPUSWITHF0SVM@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+
+waveFeatureSVM = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING FormatFeatureJob();
+
+ssFeature = SELECT * FROM waveFeatureSVM;
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0SVM;

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="ko-KR">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="a" id="6">
+    <feature>vowel  sonorant  long  front</feature>
+  </phone>
+  <phone name="ai" id="7">
+    <feature>vowel  sonorant  long  front</feature>
+  </phone>
+  <phone name="b" id="8">
+    <feature>consonant  plosive  bilabial</feature>
+  </phone>
+  <phone name="bb" id="9">
+    <feature>consonant  plosive  bilabial</feature>
+  </phone>
+  <phone name="bh" id="10">
+    <feature>consonant  voiced  plosive  bilabial</feature>
+  </phone>
+  <phone name="ch" id="11">
+    <feature>consonant  aspirated  plosive  palatal</feature>
+  </phone>
+  <phone name="d" id="12">
+    <feature>consonant  plosive  alveolar</feature>
+  </phone>
+  <phone name="dd" id="13">
+    <feature>consonant  plosive  dental alveolar</feature>
+  </phone>
+  <phone name="dh" id="14">
+    <feature>consonant  voiced  plosive  alveolar</feature>
+  </phone>
+  <phone name="ei" id="15">
+    <feature>vowel  sonorant  front</feature>
+  </phone>
+  <phone name="eu" id="16">
+    <feature>vowel  sonorant  short  back</feature>
+  </phone>
+  <phone name="g" id="17">
+    <feature>consonant  plosive  velar</feature>
+  </phone>
+  <phone name="gg" id="18">
+    <feature>consonant  plosive  velar</feature>
+  </phone>
+  <phone name="gh" id="19">
+    <feature>consonant  voiced  plosive  velar</feature>
+  </phone>
+  <phone name="h" id="20">
+    <feature>consonant  glottal</feature>
+  </phone>
+  <phone name="hh" id="21">
+    <feature>consonant  voiced  fricative  glottal</feature>
+  </phone>
+  <phone name="i" id="22">
+    <feature>vowel  sonorant  short  front</feature>
+  </phone>
+  <phone name="j" id="23">
+    <feature>consonant  sonorant  glide  palatal sonorant</feature>
+  </phone>
+  <phone name="jh" id="24">
+    <feature>consonant  voiced  plosive  palatal</feature>
+  </phone>
+  <phone name="ji" id="25">
+    <feature>consonant  plosive  palatal</feature>
+  </phone>
+  <phone name="jj" id="26">
+    <feature>consonant  plosive  palatal</feature>
+  </phone>
+  <phone name="k" id="27">
+    <feature>consonant  aspirated  plosive  velar</feature>
+  </phone>
+  <phone name="l" id="28">
+    <feature>consonant  alveolar sonorant</feature>
+  </phone>
+  <phone name="m" id="29">
+    <feature>consonant  nasal  bilabial sonorant</feature>
+  </phone>
+  <phone name="n" id="30">
+    <feature>consonant  nasal  alveolar sonorant</feature>
+  </phone>
+  <phone name="ng" id="31">
+    <feature>consonant  nasal  velar sonorant</feature>
+  </phone>
+  <phone name="o" id="32">
+    <feature>vowel  sonorant  back</feature>
+  </phone>
+  <phone name="ou" id="33">
+    <feature>vowel  sonorant  back</feature>
+  </phone>
+  <phone name="p" id="34">
+    <feature>consonant  aspirated  plosive  bilabial</feature>
+  </phone>
+  <phone name="r" id="35">
+    <feature>consonant  alveolar sonorant</feature>
+  </phone>
+  <phone name="s" id="36">
+    <feature>consonant  fricative  alveolar</feature>
+  </phone>
+  <phone name="ss" id="37">
+    <feature>consonant  fricative  alveolar</feature>
+  </phone>
+  <phone name="t" id="38">
+    <feature>consonant  aspirated  plosive  alveolar</feature>
+  </phone>
+  <phone name="u" id="39">
+    <feature>vowel  sonorant  short  back</feature>
+  </phone>
+  <phone name="ui" id="40">
+    <feature>vowel  sonorant  diphthong  front</feature>
+  </phone>
+  <phone name="uo" id="41">
+    <feature>vowel  sonorant  diphthong  front</feature>
+  </phone>
+  <phone name="w" id="42">
+    <feature>consonant  sonorant  glide  bilabial</feature>
+  </phone>
+  <phone name="wa" id="43">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="wai" id="44">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="we" id="45">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="wi" id="46">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="wo" id="47">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="ya" id="48">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="yai" id="49">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="ye" id="50">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="yeo" id="51">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="yo" id="52">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+  <phone name="yu" id="53">
+    <feature>vowel  sonorant  diphthong</feature>
+  </phone>
+</phoneSet>

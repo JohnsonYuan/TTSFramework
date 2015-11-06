@@ -1,0 +1,22 @@
+﻿<UserControl x:Uid="_ruler" x:Class="Microsoft.Tts.UI.Controls.Trajectory.AxisRuler"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="_ruler">
+    <Grid x:Uid="Grid_1">
+    <Rectangle
+      Cursor="Hand"
+      x:Uid="_rulerArea"
+      x:Name="_rulerArea" 
+      Stroke="Transparent"
+      Fill="Transparent"
+      MouseLeave="OnRulerAreaMouseLeave"
+      MouseMove="OnRulerAreaMouseMove"
+      MouseWheel="OnMouseWheel"
+      MouseLeftButtonDown="OnMouseLeftButtonDown"
+      MouseRightButtonDown="OnMouseRightButtonDown"
+      MouseRightButtonUp="OnMouseRightButtonUp"></Rectangle>
+    <Canvas
+      x:Uid="_currentSelectionCanvas"
+      x:Name="_currentSelectionCanvas"></Canvas>
+  </Grid>
+</UserControl>

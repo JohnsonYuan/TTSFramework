@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="ja-JP">
+  <syllableStructure>
+    <vowelCount min="0" max="2" />
+    <sonorantAndVowelCount min="1" />
+  </syllableStructure>
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="a" id="6">
+    <feature>vowel sonorant low front voiced</feature>
+  </phone>
+  <phone name="aa" id="7">
+    <feature>vowel sonorant low front voiced long</feature>
+  </phone>
+  <phone name="b" id="8">
+    <feature>consonant bilabial plosive voiced</feature>
+  </phone>
+  <!--when vowel a/i/u/e/o are not at the end of a syllable, we use the following one instead.
+The folowing ones are vowels actually. We set their feature as consonant to satisfy our engine.
+Our engine don't support multi vowel in one syllable, and multi syllable in one unit, but we do
+need multi vowel in one unit. So we use this workaround.-->
+  <phone name="ce" id="10">
+    <feature>consonant glide approximant voiced sonorant</feature>
+  </phone>
+  <phone name="ch" id="11">
+    <feature>consonant alveolar affricate</feature>
+  </phone>
+  <phone name="co" id="12">
+    <feature>consonant glide approximant voiced sonorant</feature>
+  </phone>
+  <phone name="d" id="13">
+    <feature>consonant alveolar plosive voiced</feature>
+  </phone>
+  <phone name="e" id="14">
+    <feature>vowel sonorant front voiced</feature>
+  </phone>
+  <phone name="ee" id="15">
+    <feature>vowel sonorant front voiced long</feature>
+  </phone>
+  <phone name="g" id="16">
+    <feature>consonant velar plosive voiced</feature>
+  </phone>
+  <phone name="h" id="17">
+    <feature>consonant glottal fricative</feature>
+  </phone>
+  <phone name="i" id="18">
+    <feature>vowel sonorant high front voiced</feature>
+  </phone>
+  <phone name="ii" id="19">
+    <feature>vowel sonorant high front voiced long</feature>
+  </phone>
+  <phone name="j" id="20">
+    <feature>consonant palatal approximant voiced sonorant</feature>
+  </phone>
+  <phone name="k" id="21">
+    <feature>consonant velar plosive</feature>
+  </phone>
+  <phone name="m" id="22">
+    <feature>consonant bilabial nasal voiced sonorant</feature>
+  </phone>
+  <phone name="n" id="23">
+    <feature>consonant alveolar nasal voiced sonorant</feature>
+  </phone>
+  <phone name="nn" id="24">
+    <feature>vowel sonorant velar nasal voiced</feature>
+  </phone>
+  <!--Remove nnnn because this phone seldom appears, and will make engine break when met.-->
+  <!--
+  <phone name="nnnn" id="25">
+    <feature>vowel sonorant voiced long</feature>
+  </phone>
+  -->
+  <phone name="o" id="26">
+    <feature>vowel sonorant back round voiced </feature>
+  </phone>
+  <phone name="oo" id="27">
+    <feature>vowel sonorant back round voiced long</feature>
+  </phone>
+  <phone name="p" id="28">
+    <feature>consonant bilabial plosive</feature>
+  </phone>
+  <phone name="psa" id="29">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="pse" id="30">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="pso" id="31">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="r" id="32">
+    <feature>consonant alveolar voiced</feature>
+  </phone>
+  <phone name="s" id="33">
+    <feature>consonant alveolar fricative</feature>
+  </phone>
+  <phone name="sh" id="34">
+    <feature>consonant alveolar fricative</feature>
+  </phone>
+  <phone name="stop" id="35">
+    <feature>vowel sonorant</feature>
+  </phone>
+  <phone name="t" id="36">
+    <feature>consonant alveolar plosive</feature>
+  </phone>
+  <phone name="u" id="37">
+    <feature>vowel sonorant high back voiced</feature>
+  </phone>
+  <phone name="uu" id="38">
+    <feature>vowel sonorant high back round voiced long</feature>
+  </phone>
+  <phone name="w" id="39">
+    <feature>consonant glide approximant voiced velar sonorant</feature>
+  </phone>
+  <phone name="y" id="40">
+    <feature>consonant glide approximant voiced palatal sonorant</feature>
+  </phone>
+  <phone name="z" id="41">
+    <feature>consonant alveolar fricative voiced</feature>
+  </phone>
+</phoneSet>

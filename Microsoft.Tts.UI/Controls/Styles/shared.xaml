@@ -1,0 +1,213 @@
+﻿<ResourceDictionary 
+  x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+<!--<SnippetVerticalHIC>-->
+  <Style x:Uid="Style_1" x:Key="VerticalHIC" TargetType="{x:Type HeaderedItemsControl}">
+    <Setter x:Uid="Setter_1" Property="Template">
+      <Setter.Value>
+        <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type HeaderedItemsControl}">
+          <StackPanel x:Uid="StackPanel_1" Margin="20">
+            <ContentPresenter 
+              x:Uid="ContentPresenter_1" Grid.Row="0" 
+              Margin="8,20,0,0" 
+              TextBlock.Foreground="#AAA" 
+              TextBlock.FontFamily="Trebuchet MS" 
+              TextBlock.FontSize="14px" 
+              TextBlock.FontWeight="Bold" 
+              ContentSource="Header" />
+            <StackPanel
+              x:Uid="StackPanel_2" IsItemsHost="True"
+              Orientation="Vertical" 
+              Grid.Row="1" 
+              VerticalAlignment="Center" 
+              HorizontalAlignment="Center" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+<!--</SnippetVerticalHIC>-->
+
+<!--<SnippetHorizontalHIC>-->
+  <Style x:Uid="Style_2" x:Key="HorizontalHIC" TargetType="{x:Type HeaderedItemsControl}">
+    <Setter x:Uid="Setter_2" Property="Template">
+      <Setter.Value>
+        <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type HeaderedItemsControl}">
+          <StackPanel x:Uid="StackPanel_3" Margin="20">
+            <ContentPresenter 
+              x:Uid="ContentPresenter_2" Grid.Row="0" 
+              Margin="8,20,0,0" 
+              TextBlock.Foreground="#AAA" 
+              TextBlock.FontFamily="Trebuchet MS" 
+              TextBlock.FontSize="14px" 
+              TextBlock.FontWeight="Bold" 
+              ContentSource="Header" />
+            <StackPanel
+              x:Uid="StackPanel_4" IsItemsHost="True"
+              Orientation="Horizontal" 
+              Grid.Row="1" 
+              VerticalAlignment="Center" 
+              HorizontalAlignment="Center" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+<!--</SnippetHorizontalHIC>-->
+
+<!--<SnippetBrushes>-->
+
+<!--<SnippetNormalBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_1" x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_1">
+        <GradientStop x:Uid="GradientStop_1" Color="#FFF" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_2" Color="#CCC" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetNormalBrush>-->
+
+<!--<SnippetHorizontalNormalBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_2" x:Key="HorizontalNormalBrush" StartPoint="0,0" EndPoint="1,0">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_2">
+        <GradientStop x:Uid="GradientStop_3" Color="#FFF" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_4" Color="#CCC" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetHorizontalNormalBrush>-->
+
+<!--<SnippetLightBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_3" x:Key="LightBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_3">
+        <GradientStop x:Uid="GradientStop_5" Color="#FFF" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_6" Color="#EEE" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetLightBrush>-->
+
+<!--<SnippetHorizontalLightBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_4" x:Key="HorizontalLightBrush" StartPoint="0,0" EndPoint="1,0">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_4">
+        <GradientStop x:Uid="GradientStop_7" Color="#FFF" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_8" Color="#EEE" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetHorizontalLightBrush>-->
+
+<!--<SnippetDarkBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_5" x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_5">
+        <GradientStop x:Uid="GradientStop_9" Color="#FFF" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_10" Color="#AAA" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetDarkBrush>-->
+
+<!--<SnippetPressedBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_6" x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_6">
+        <GradientStop x:Uid="GradientStop_11" Color="#BBB" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_12" Color="#EEE" Offset="0.1"/>
+        <GradientStop x:Uid="GradientStop_13" Color="#EEE" Offset="0.9"/>
+        <GradientStop x:Uid="GradientStop_14" Color="#FFF" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetPressedBrush>-->
+
+<!--<SnippetDisabledForegroundBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_1" x:Key="DisabledForegroundBrush" Color="#888" />
+<!--</SnippetDisabledForegroundBrush>-->
+
+<!--<SnippetDisabledBackgroundBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_2" x:Key="DisabledBackgroundBrush" Color="#EEE" />
+<!--</SnippetDisabledBackgroundBrush>-->
+
+<!--<SnippetWindowBackgroundBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_3" x:Key="WindowBackgroundBrush" Color="#FFF" />
+<!--</SnippetWindowBackgroundBrush>-->
+
+<!--<SnippetSelectedBackgroundBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_4" x:Key="SelectedBackgroundBrush" Color="#DDD" />
+<!--</SnippetSelectedBackgroundBrush>-->
+
+  <!-- Border Brushes -->
+
+<!--<SnippetNormalBorderBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_7" x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_7">
+        <GradientStop x:Uid="GradientStop_15" Color="#CCC" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_16" Color="#444" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetNormalBorderBrush>-->
+
+<!--<SnippetHorizontalNormalBorderBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_8" x:Key="HorizontalNormalBorderBrush" StartPoint="0,0" EndPoint="1,0">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_8">
+        <GradientStop x:Uid="GradientStop_17" Color="#CCC" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_18" Color="#444" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetHorizontalNormalBorderBrush>-->
+
+<!--<SnippetDefaultedBorderBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_9" x:Key="DefaultedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_9">
+        <GradientStop x:Uid="GradientStop_19" Color="#777" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_20" Color="#000" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetDefaultedBorderBrush>-->
+
+<!--<SnippetPressedBorderBrush>-->
+  <LinearGradientBrush x:Uid="LinearGradientBrush_10" x:Key="PressedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+    <GradientBrush.GradientStops>
+      <GradientStopCollection x:Uid="GradientStopCollection_10">
+        <GradientStop x:Uid="GradientStop_21" Color="#444" Offset="0.0"/>
+        <GradientStop x:Uid="GradientStop_22" Color="#888" Offset="1.0"/>
+      </GradientStopCollection>
+    </GradientBrush.GradientStops>
+  </LinearGradientBrush>
+<!--</SnippetPressedBorderBrush>-->
+
+<!--<SnippetDisabledBorderBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_5" x:Key="DisabledBorderBrush" Color="#AAA" />
+<!--</SnippetDisabledBorderBrush>-->
+
+<!--<SnippetSolidBorderBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_6" x:Key="SolidBorderBrush" Color="#888" />
+<!--</SnippetSolidBorderBrush>-->
+
+<!--<SnippetLightBorderBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_7" x:Key="LightBorderBrush" Color="#AAA" />
+<!--</SnippetLightBorderBrush>-->
+
+  <!-- Miscellaneous Brushes -->
+<!--<SnippetGlyphBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_8" x:Key="GlyphBrush" Color="#444" />
+<!--</SnippetGlyphBrush>-->
+
+<!--<SnippetLightColorBrush>-->
+  <SolidColorBrush x:Uid="SolidColorBrush_9" x:Key="LightColorBrush" Color="#DDD" />
+<!--</SnippetLightColorBrush>-->
+
+<!--</SnippetBrushes>-->
+</ResourceDictionary>

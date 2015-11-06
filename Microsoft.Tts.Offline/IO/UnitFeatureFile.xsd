@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="unitFeatures" type="featuresType">
+  </xs:element>
+  <xs:complexType name="featuresType">
+    <xs:sequence>
+      <xs:element name="unit" type="featureType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="featureType">
+    <xs:sequence>
+      <!-- lingF is abbreviation of linguistic feature -->
+      <xs:element name="lingF" type="linguisticFeatureType" />
+      <!-- acousF is abbreviation of acoustic feature -->
+      <xs:element name="acousF" type="acousticFeatureType" />
+    </xs:sequence>
+    <!-- sid is abbreviation of sentence identifier -->
+    <xs:attribute name="sId" type="sentenceIdValueType" />
+    <!-- the index in the unit list of the sentence -->
+    <xs:attribute name="index" type="xs:unsignedInt" />
+    <!-- unit full name -->
+    <xs:attribute name="name" type="xs:string" />
+    <!-- unit domain information -->
+    <xs:attribute name="domain" type="xs:unsignedInt" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="linguisticFeatureType">
+    <xs:sequence>
+    </xs:sequence>
+    <!-- pInS is abbreviation of position in sentence -->
+    <xs:attribute name="pInS" type="xs:unsignedInt" />
+    <!-- pInW is abbreviation of position in word -->
+    <xs:attribute name="pInW" type="xs:unsignedInt" />
+    <!-- pInSyl is abbreviation of position in syllable -->
+    <xs:attribute name="pInSyl" type="xs:unsignedInt" />
+    <!-- lPh is abbreviation of left context phone -->
+    <xs:attribute name="lPh" type="xs:unsignedInt" />
+    <!-- rPh is abbreviation of right of phone -->
+    <xs:attribute name="rPh" type="xs:unsignedInt" />
+    <!-- lTone is abbreviation of left context tone -->
+    <xs:attribute name="lTone" type="xs:unsignedInt" />
+    <!-- rTone is abbreviation of right context tone -->
+    <xs:attribute name="rTone" type="xs:unsignedInt" />
+    <!-- emph is abbreviation of emphasis -->
+    <xs:attribute name="emph" type="xs:unsignedInt" />
+    <!-- wTone is abbreviation of word tone -->
+    <xs:attribute name="stress" type="xs:unsignedInt" />
+    <xs:attribute name="wTone" type="xs:unsignedInt" />
+    <xs:attribute name="break" type="xs:unsignedInt" />
+    <!-- wType is abbreviation of word type -->
+    <xs:attribute name="wType" type="xs:unsignedInt" />
+  </xs:complexType>
+  <xs:complexType name="acousticFeatureType">
+    <xs:sequence>
+    </xs:sequence>
+    <!-- tOffset is abbreviation of start time -->
+    <xs:attribute name="tOffset" type="xs:float" />
+    <!-- tLen is abbreviation of duration -->
+    <xs:attribute name="tLen" type="xs:float" />
+    <!-- sOffset is abbreviation of wave sample offset -->
+    <xs:attribute name="sOffset" type="xs:unsignedInt" />
+    <!-- sLen is abbreviation of wave sample length -->
+    <xs:attribute name="sLen" type="xs:unsignedInt" />
+    <!-- eOffset is abbreviation of epoch offset -->
+    <xs:attribute name="eOffset" type="xs:unsignedInt" />
+    <!-- eLen is abbreviation of epoch length -->
+    <xs:attribute name="eLen" type="xs:unsignedInt" />
+    <!-- rmsCart is abbreviation of root mean square for cart tree -->
+    <xs:attribute name="rmsCart" type="xs:float" />
+    <!-- rmsE is abbreviation of root mean square for energy feature -->
+    <xs:attribute name="rmsE" type="xs:float" />
+    <!-- energy feature -->
+    <xs:attribute name="energy" type="xs:float" />
+    <!-- pAvg is abbreviation of average pitch -->
+    <xs:attribute name="pAvg" type="xs:float" />
+    <!-- pRange is abbreviation of pitch range -->
+    <xs:attribute name="pRange" type="xs:float" />
+    <!-- ecLen16k is abbreviation of 16k compressed epoch length -->
+    <xs:attribute name="ecLen16k" type="xs:unsignedInt" />
+    <!-- ecLen8k is abbreviation of 8k compressed epoch length -->
+    <xs:attribute name="ecLen8k" type="xs:unsignedInt" />
+    <!-- sLen8k is abbreviation of sample length for sampling rate = 8k -->
+    <xs:attribute name="sLen8k" type="xs:unsignedInt" />
+    <!-- eAvg is abbreviation of average epoch of unit -->
+    <xs:attribute name="eAvg" type="xs:float" />
+    <!-- eNormAvg is abbreviation of normalized average epoch of unit -->
+    <xs:attribute name="eNormAvg" type="xs:float" />
+  </xs:complexType>
+  <xs:simpleType name="sentenceIdValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9]+" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

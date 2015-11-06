@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/tts/toolsuite" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <xs:element name="offline">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="unitTable" type="unitTableType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="truncateRules" type="truncateRulesType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="truncateRulesType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="truncateRule">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="phone">
+              <xs:complexType>
+                <xs:attribute name="value" type="xs:string" use="required" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="side" type="truncateSideValueType" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="truncateSideValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Left" />
+      <xs:enumeration value="Right" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="unitTableType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="unit" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="singleTokenUnit" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:string" use="required" />
+          <xs:attribute name="pron" type="xs:string" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+    <xs:attribute name="lang" type="xs:string" use="required" />
+  </xs:complexType>
+</xs:schema>

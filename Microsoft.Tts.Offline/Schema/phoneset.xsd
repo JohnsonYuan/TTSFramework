@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:complexType name="PhoneSetType">
+    <xs:sequence>
+      <xs:element name="syllableStructure" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="vowelCount" type="CountType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="sonorantAndVowelCount" type="CountType" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="phone" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="feature" type="xs:string" />
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+          </xs:sequence>
+          <xs:attribute name="id" type="PhoneIdType" use="required" />
+          <xs:attribute name="name" type="PhoneNameType" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CountType">
+    <xs:attribute name="max" type="xs:unsignedShort" use="optional" />
+    <xs:attribute name="min" type="xs:unsignedShort" use="optional" />
+  </xs:complexType>
+
+  <xs:simpleType name="PhoneNameType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="t[0-9]|[a-z_]+|&amp;|-|-sil-|-sp-|1|2|3|\?|[a-z_]+t[0-9]|[\u3105-\u4e00]|^[\u3041-\u30fc]+$|｜|ˊ|ˇ|ˋ|·|[\\/]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PhoneIdType">
+    <xs:restriction base="xs:unsignedShort">
+      <xs:minInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="phoneSet" type="PhoneSetType">
+  </xs:element>
+</xs:schema>

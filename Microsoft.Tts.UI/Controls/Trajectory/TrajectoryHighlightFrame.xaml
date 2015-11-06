@@ -1,0 +1,13 @@
+﻿<UserControl x:Uid="_graphSystem" x:Class="Microsoft.Tts.UI.Controls.Trajectory.TrajectoryHighlightFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="_graphSystem" Focusable="True" KeyDown="OnKeyDown">
+  <Grid x:Uid="Grid_1">
+    <Rectangle
+       x:Uid="Rectangle_1"
+       Fill="Transparent"
+       MouseMove="OnMouseMove" MouseLeftButtonDown="OnMouseLeftButtonDown"
+       Width="{Binding Path=ActualWidth,ElementName=_graphSystem}"
+       Height="{Binding Path=ActualHeight,ElementName=_graphSystem}" />
+    </Grid>
+</UserControl>

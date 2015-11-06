@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<offline xmlns="http://schemas.microsoft.com/tts/toolsuite">
+  <unitTable lang="en-US">
+    <unit name="os_s+f" />
+    <unit name="os_s+k" />
+    <unit name="os_s+p" />
+    <unit name="os_s+t" />
+    <unit name="nc_aa" />
+    <unit name="nc_ae" />
+    <unit name="nc_ah" />
+    <unit name="nc_ao" />
+    <unit name="nc_aw" />
+    <unit name="nc_ax" />
+    <unit name="nc_ay" />
+    <unit name="nc_eh" />
+    <unit name="nc_er" />
+    <unit name="nc_ey" />
+    <unit name="nc_ih" />
+    <unit name="nc_iy" />
+    <unit name="nc_ow" />
+    <unit name="nc_oy" />
+    <unit name="nc_uh" />
+    <unit name="nc_uw" />
+    <unit name="nc_l+aa" />
+    <unit name="nc_l+ae" />
+    <unit name="nc_l+ah" />
+    <unit name="nc_l+ao" />
+    <unit name="nc_l+aw" />
+    <unit name="nc_l+ax" />
+    <unit name="nc_l+ay" />
+    <unit name="nc_l+eh" />
+    <unit name="nc_l+ey" />
+    <unit name="nc_l+ih" />
+    <unit name="nc_l+iy" />
+    <unit name="nc_l+ow" />
+    <unit name="nc_l+oy" />
+    <unit name="nc_l+uh" />
+    <unit name="nc_l+uw" />
+    <unit name="nc_m+aa" />
+    <unit name="nc_m+ae" />
+    <unit name="nc_m+ah" />
+    <unit name="nc_m+ax" />
+    <unit name="nc_m+ay" />
+    <unit name="nc_m+eh" />
+    <unit name="nc_m+ey" />
+    <unit name="nc_m+ih" />
+    <unit name="nc_m+iy" />
+    <unit name="nc_m+ow" />
+    <unit name="nc_m+uw" />
+    <unit name="nc_n+aa" />
+    <unit name="nc_n+ae" />
+    <unit name="nc_n+ax" />
+    <unit name="nc_n+ay" />
+    <unit name="nc_n+eh" />
+    <unit name="nc_n+ey" />
+    <unit name="nc_n+ih" />
+    <unit name="nc_n+iy" />
+    <unit name="nc_n+ow" />
+    <unit name="nc_n+uw" />
+    <unit name="nc_r+aa" />
+    <unit name="nc_r+ae" />
+    <unit name="nc_r+ah" />
+    <unit name="nc_r+ao" />
+    <unit name="nc_r+aw" />
+    <unit name="nc_r+ax" />
+    <unit name="nc_r+ay" />
+    <unit name="nc_r+eh" />
+    <unit name="nc_r+ey" />
+    <unit name="nc_r+ih" />
+    <unit name="nc_r+iy" />
+    <unit name="nc_r+ow" />
+    <unit name="nc_r+oy" />
+    <unit name="nc_r+uw" />
+    <unit name="nc_w+aa" />
+    <unit name="nc_w+ao" />
+    <unit name="nc_w+ay" />
+    <unit name="nc_w+eh" />
+    <unit name="nc_w+ey" />
+    <unit name="nc_w+ih" />
+    <unit name="nc_w+iy" />
+    <unit name="nc_w+ow" />
+    <unit name="nc_w+uh" />
+    <unit name="nc_aa+l" />
+    <unit name="nc_ae+l" />
+    <unit name="nc_ah+l" />
+    <unit name="nc_ao+l" />
+    <unit name="nc_ax+l" />
+    <unit name="nc_ay+l" />
+    <unit name="nc_eh+l" />
+    <unit name="nc_ey+l" />
+    <unit name="nc_ih+l" />
+    <unit name="nc_iy+l" />
+    <unit name="nc_ow+l" />
+    <unit name="nc_oy+l" />
+    <unit name="nc_uh+l" />
+    <unit name="nc_uw+l" />
+    <unit name="nc_aa+m" />
+    <unit name="nc_ae+m" />
+    <unit name="nc_ah+m" />
+    <unit name="nc_ax+m" />
+    <unit name="nc_ay+m" />
+    <unit name="nc_eh+m" />
+    <unit name="nc_ey+m" />
+    <unit name="nc_ih+m" />
+    <unit name="nc_iy+m" />
+    <unit name="nc_uw+m" />
+    <unit name="nc_aa+n" />
+    <unit name="nc_ae+n" />
+    <unit name="nc_ah+n" />
+    <unit name="nc_aw+n" />
+    <unit name="nc_ax+n" />
+    <unit name="nc_ay+n" />
+    <unit name="nc_eh+n" />
+    <unit name="nc_ey+n" />
+    <unit name="nc_ih+n" />
+    <unit name="nc_iy+n" />
+    <unit name="nc_ow+n" />
+    <unit name="nc_oy+n" />
+    <unit name="nc_uw+n" />
+    <unit name="nc_ae+ng" />
+    <unit name="nc_ah+ng" />
+    <unit name="nc_ih+ng" />
+    <unit name="nc_l+ae+n" />
+    <unit name="nc_l+ax+n" />
+    <unit name="nc_l+ay+n" />
+    <unit name="nc_l+eh+n" />
+    <unit name="nc_l+ih+n" />
+    <unit name="nc_l+ih+ng" />
+    <unit name="nc_m+ax+l" />
+    <unit name="nc_m+ae+n" />
+    <unit name="nc_m+ax+n" />
+    <unit name="nc_m+eh+n" />
+    <unit name="nc_m+ih+ng" />
+    <unit name="nc_n+ax+l" />
+    <unit name="nc_n+ax+n" />
+    <unit name="nc_n+ih+ng" />
+    <unit name="nc_r+ax+l" />
+    <unit name="nc_r+ow+l" />
+    <unit name="nc_r+iy+m" />
+    <unit name="nc_r+uw+m" />
+    <unit name="nc_r+ae+n" />
+    <unit name="nc_r+ah+n" />
+    <unit name="nc_r+aw+n" />
+    <unit name="nc_r+ax+n" />
+    <unit name="nc_r+eh+n" />
+    <unit name="nc_r+ey+n" />
+    <unit name="nc_r+ih+n" />
+    <unit name="nc_r+iy+n" />
+    <unit name="nc_r+ih+ng" />
+    <unit name="nc_w+eh+l" />
+    <unit name="nc_w+aa+n" />
+    <unit name="nc_w+ah+n" />
+    <unit name="nc_w+eh+n" />
+    <unit name="nc_w+ih+n" />
+    <unit name="nc_aa+r" />
+    <unit name="nc_ao+r" />
+    <unit name="nc_ax+r" />
+    <unit name="nc_eh+r" />
+    <unit name="nc_er+r" />
+    <unit name="nc_iy+r" />
+    <unit name="nc_uh+r" />
+    <unit name="nc_l+ax+r" />
+    <unit name="nc_m+aa+r" />
+    <unit name="nc_m+ax+r" />
+    <unit name="nc_m+er+r" />
+    <unit name="nc_n+ao+r" />
+    <unit name="nc_n+ax+r" />
+    <unit name="nc_r+ax+r" />
+    <unit name="nc_w+ao+r" />
+    <unit name="nc_w+ax+r" />
+    <unit name="nc_w+eh+r" />
+    <unit name="nc_w+er+r" />
+    <unit name="nc_aa+r+m" />
+    <unit name="nc_ao+r+m" />
+    <unit name="nc_ax+r+n" />
+    <unit name="nc_er+r+n" />
+    <unit name="nc_y+ax" />
+    <unit name="nc_y+uh" />
+    <unit name="nc_y+uw" />
+    <unit name="nc_l+y+ax" />
+    <unit name="nc_m+y+uw" />
+    <unit name="nc_n+y+uh" />
+    <unit name="nc_y+ax+r" />
+    <unit name="cd_t+s" />
+    <unit name="cd_d+z" />
+    <unit name="cd_s+k" />
+    <unit name="cd_s+p" />
+    <unit name="cd_s+t" />
+    <unit name="cd_f+t" />
+    <unit name="cd_k+t" />
+    <unit name="cd_p+t" />
+    <singleTokenUnit name="nc__a_" pron="ey 1" />
+    <singleTokenUnit name="nc__b_" pron="b iy 1" />
+    <singleTokenUnit name="nc__c_" pron="s iy 1" />
+    <singleTokenUnit name="nc__d_" pron="d iy 1" />
+    <singleTokenUnit name="nc__e_" pron="iy 1" />
+    <singleTokenUnit name="nc__f_" pron="eh 1 f" />
+    <singleTokenUnit name="nc__g_" pron="jh iy 1" />
+    <singleTokenUnit name="nc__h_" pron="ey 1 ch" />
+    <singleTokenUnit name="nc__i_" pron="ay 1" />
+    <singleTokenUnit name="nc__j_" pron="jh ey 1" />
+    <singleTokenUnit name="nc__k_" pron="k ey 1" />
+    <singleTokenUnit name="nc__l_" pron="eh 1 l" />
+    <singleTokenUnit name="nc__m_" pron="eh 1 m" />
+    <singleTokenUnit name="nc__n_" pron="eh 1 n" />
+    <singleTokenUnit name="nc__o_" pron="ow 1" />
+    <singleTokenUnit name="nc__p_" pron="p iy 1" />
+    <singleTokenUnit name="nc__q_" pron="k y uw 1" />
+    <singleTokenUnit name="nc__r_" pron="aa r 1" />
+    <singleTokenUnit name="nc__s_" pron="eh 1 s" />
+    <singleTokenUnit name="nc__t_" pron="t iy 1" />
+    <singleTokenUnit name="nc__u_" pron="y uw 1" />
+    <singleTokenUnit name="nc__v_" pron="v iy 1" />
+    <singleTokenUnit name="nc__w_" pron="d ah 1 - b ax - l y uw 2" />
+    <singleTokenUnit name="nc__x_" pron="eh 1 k s" />
+    <singleTokenUnit name="nc__y_" pron="w ay 1" />
+    <singleTokenUnit name="nc__z_" pron="z iy 1" />
+  </unitTable>
+</offline>

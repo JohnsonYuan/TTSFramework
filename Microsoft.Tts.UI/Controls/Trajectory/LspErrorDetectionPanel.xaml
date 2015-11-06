@@ -1,0 +1,199 @@
+﻿<UserControl 
+    x:Uid="UserControl_1"
+    x:Class="Microsoft.Tts.UI.Controls.Trajectory.LspErrorDetectionPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinWidth="150"
+    MaxWidth="180"
+    AutomationProperties.Name="LspErrorDetectionPanel">
+  <UserControl.Resources>
+    <Style x:Uid="Style_1" TargetType="{x:Type TextBlock}">
+      <Setter x:Uid="Setter_2" Property="OverridesDefaultStyle" Value="True"/>
+      <Setter x:Uid="Setter_1" Property="FontSize" Value="12"/>
+      <Setter x:Uid="Setter_3" Property="Foreground" Value="Black"/>
+    </Style>
+    <Style x:Uid="Style_2" TargetType="{x:Type Hyperlink}">
+      <Setter x:Uid="Setter_4" Property="OverridesDefaultStyle" Value="True"/>
+      <Setter x:Uid="Setter_5" Property="FontSize" Value="11"/>
+      <Setter x:Uid="Setter_6" Property="Foreground" Value="Blue"/>
+    </Style>
+  </UserControl.Resources>
+  <Grid
+    x:Uid="Grid_1"
+    Margin="5">
+    <Grid.RowDefinitions>
+      <RowDefinition x:Uid="RowDefinition_1" Height="auto"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_2" Height="auto"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_3" Height="*"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_4" Height="auto"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_5" Height="auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid
+      x:Uid="Grid_2"
+      Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition x:Uid="ColumnDefinition_1" Width="80"></ColumnDefinition>
+        <ColumnDefinition x:Uid="ColumnDefinition_2"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition x:Uid="RowDefinition_6"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_7"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_8"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_9"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_10"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_11"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_12"></RowDefinition>
+        <RowDefinition x:Uid="RowDefinition_13"></RowDefinition>
+      </Grid.RowDefinitions>
+      <TextBlock 
+        x:Uid="TextBlock_1"
+        HorizontalAlignment="Center"
+        Grid.Row="0" 
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        Margin="5">Error Detection</TextBlock>
+      <TextBlock 
+        x:Uid="TextBlock_2"
+        Grid.Row="1"
+        Grid.Column="0">LSP interval:</TextBlock>
+      <TextBlock 
+        x:Uid="TextBlock_3"
+        Grid.Row="2"
+        Grid.Column="0">Threshold min:</TextBlock>
+      <TextBlock 
+        x:Uid="TextBlock_4"
+        Grid.Row="3"
+        Grid.Column="0">Threshold max:</TextBlock>
+      <TextBox
+        x:Uid="_dimensionIntervalTextBox"
+        x:Name="_dimensionIntervalTextBox"
+        ToolTip="The interval of two dimension indexes."
+        AutomationProperties.Name="DimensionIntervalTextBox"
+        Grid.Row="1"
+        Grid.Column="1"
+        HorizontalContentAlignment="Center"
+        Width="60"></TextBox>
+      <TextBox
+        x:Uid="_minThresholdTextBox"
+        x:Name="_minThresholdTextBox"
+        ToolTip="Errors with value less than this will be listed."
+        AutomationProperties.Name="MinThresholdTextBox"
+        Grid.Row="2"
+        Grid.Column="1"
+        HorizontalContentAlignment="Center"
+        Width="60"></TextBox>
+      <TextBox
+        x:Uid="_maxThresholdTextBox"
+        x:Name="_maxThresholdTextBox"
+        AutomationProperties.Name="MaxThresholdTextBox"
+        ToolTip="Errors with value larger than this will be listed."
+        Grid.Row="3"
+        Grid.Column="1"
+        HorizontalContentAlignment="Center"
+        Width="60"></TextBox>
+      <CheckBox
+        x:Uid="CheckBox_1"
+        Grid.Row="5"
+        Grid.ColumnSpan="2"
+        IsChecked="{Binding SortByFrame}"
+        Margin="5, 0, 0, 0">Sort by frame index</CheckBox>
+      <TextBlock
+        x:Uid="_errorTextBlock"
+        x:Name="_errorTextBlock"
+        Grid.Row="6"
+        Grid.ColumnSpan="2"
+        TextWrapping="Wrap"
+        Foreground="Red" />
+      <Button
+        x:Uid="_resetButton"
+        x:Name="_resetButton"
+        Grid.Row="7"
+        Grid.Column="0"
+        Width="50"
+        HorizontalAlignment="Right"
+        Margin="5"
+        Content="Reset"
+        Click="OnResetButtonClick">
+      </Button>
+      <Button
+        x:Uid="_findButton"
+        x:Name="_findButton"
+        Grid.Row="7"
+        Grid.Column="1"
+        Width="50"
+        HorizontalAlignment="Right"
+        Margin="5"
+        Content="Find"
+        Click="OnFindButtonClick">
+        <Button.Style>
+          <Style x:Uid="Style_3">
+            <Style.Triggers>
+              <DataTrigger x:Uid="DataTrigger_1" Binding="{Binding Path=LoadingData}" Value="True">
+                <Setter x:Uid="Setter_7" Property="Button.IsEnabled" Value="False" ></Setter>
+              </DataTrigger>
+              <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=LoadingData}" Value="False">
+                <Setter x:Uid="Setter_8" Property="Button.IsEnabled" Value="True" ></Setter>
+              </DataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Button.Style>
+      </Button>
+    </Grid>
+    <StackPanel 
+      x:Uid="StackPanel_1"
+      Orientation="Horizontal"
+      HorizontalAlignment="Center"
+      Grid.Row="1">
+      <TextBlock
+        x:Uid="_errorCountTextBox" x:Name="_errorCountTextBox"
+        Margin="5"
+        Text="{Binding ErrorCount, Mode=OneWay}" />
+      <TextBlock
+        x:Uid="TextBlock_5" Margin="5">error(s) found</TextBlock>
+    </StackPanel>
+    <ListBox
+      x:Uid="ListBox_1"
+      Grid.Row="2"
+      ItemsSource="{Binding ErrorData}"
+      AutomationProperties.Name="ErrorEntryListBox"
+      SelectionChanged="OnErrorDataSelectionChanged">
+      <ListBox.ItemTemplate>
+        <DataTemplate x:Uid="DataTemplate_2">
+          <TextBlock 
+            x:Uid="TextBlock_6" Text="{Binding ErrorEntry}"
+            Tag="{Binding ErrorIndex}"
+            FontSize="12"></TextBlock>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <ListView 
+      x:Uid="ListView_1"
+      Grid.Row="3"
+      ItemsSource="{Binding Pages}"
+      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+      <ListView.ItemsPanel>
+        <ItemsPanelTemplate x:Uid="ItemsPanelTemplate_1">
+          <StackPanel 
+            x:Uid="StackPanel_2"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal"></StackPanel>
+        </ItemsPanelTemplate>
+      </ListView.ItemsPanel>
+      <ListView.ItemTemplate>
+        <DataTemplate
+          x:Uid="DataTemplate_3">
+          <TextBlock
+            x:Uid="TextBlock_7" Margin="2">
+            <Hyperlink
+              x:Uid="Hyperlink_1"
+              TargetName="{Binding}"
+              Click="OnPageNavigate">
+              <TextBlock
+                x:Uid="TextBlock_8" Text="{Binding}" />
+            </Hyperlink>
+          </TextBlock>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
+</UserControl>

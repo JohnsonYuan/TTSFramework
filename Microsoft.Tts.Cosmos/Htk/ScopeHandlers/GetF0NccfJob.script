@@ -1,0 +1,27 @@
+﻿#DECLARE CosmosDll string = @"@@COSMOSDLL@@";
+#DECLARE OfflineDll string = @"@@OFFLINEDLL@@";
+#DECLARE GetF0Tool string = @"@@GETF0TOOl@@";
+#DECLARE WaveDataCorpus string = @"@@WAVEDATACORPUS@@";
+#DECLARE WaveDataCorpusWithF0NCCF string = @"@@WAVEDATACORPUSWITHF0NCCF@@";
+#DECLARE GetF0Config string = @"@@GETF0CONFIG@@";
+#DECLARE FrameBias string =@"@@FRAMEBIAS@@";
+#DECLARE SecondsPerFrame string =@"@@SECONDSPERFRAME@@";
+#DECLARE MinF0Value string = @"@@MINF0VALUE@@";
+#DECLARE MaxF0Value string = @"@@MAXF0VALUE@@";
+
+REFERENCE @CosmosDll;
+REFERENCE @OfflineDll;
+RESOURCE @GetF0Tool;
+RESOURCE @GetF0Config;
+
+waveFeatureF0Nccf = 
+    PROCESS (
+            SSTREAM @WaveDataCorpus
+            )
+    USING GetF0NccfJob(@GetF0Config, @FrameBias, @SecondsPerFrame, @MinF0Value, @MaxF0Value);
+
+ssFeature = 
+    SELECT * 
+    FROM waveFeatureF0Nccf;
+
+OUTPUT ssFeature TO SSTREAM @WaveDataCorpusWithF0NCCF;

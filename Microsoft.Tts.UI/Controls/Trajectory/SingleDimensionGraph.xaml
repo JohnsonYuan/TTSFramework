@@ -1,0 +1,237 @@
+﻿<UserControl x:Uid="_graphSystem" x:Class="Microsoft.Tts.UI.Controls.Trajectory.SingleDimensionGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:custom="clr-namespace:Microsoft.Tts.UI.Controls.Trajectory"
+    xmlns:customControls="clr-namespace:Microsoft.Tts.UI.Controls"
+    x:Name="_graphSystem" 
+    SizeChanged="OnGraphSizeChanged"
+    AutomationProperties.Name="SingleDimensionGraph">
+    <UserControl.Resources>
+        <customControls:VisibilityConvertor x:Uid="custom:VisibilityConvertor_1" x:Key="VisibilityConvertor" />
+    </UserControl.Resources>
+    <Grid x:Uid="Grid_1">
+    <Grid.RowDefinitions>
+      <RowDefinition x:Uid="_segmentGraphRow" x:Name="_segmentGraphRow" Height="auto"></RowDefinition>
+      <RowDefinition x:Uid="_staticGraphRow" x:Name="_staticGraphRow" Height="*"></RowDefinition>
+      <RowDefinition x:Uid="_deltaGraphRowPadding" x:Name="_deltaGraphRowPadding" Height="5"></RowDefinition>
+      <RowDefinition x:Uid="_deltaGraphRow" x:Name="_deltaGraphRow" Height="*"></RowDefinition>
+      <RowDefinition x:Uid="_accelerationGraphRowPadding" x:Name="_accelerationGraphRowPadding" Height="5"></RowDefinition>
+      <RowDefinition x:Uid="_accelerationGraphRow" x:Name="_accelerationGraphRow" Height="*"></RowDefinition>
+      <RowDefinition x:Uid="_waveformGraphRowPadding" x:Name="_waveformGraphRowPadding" Height="5"></RowDefinition>
+      <RowDefinition x:Uid="_waveformGraphRow" x:Name="_waveformGraphRow" Height="*"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_1" Height="5"></RowDefinition>
+      <RowDefinition x:Uid="RowDefinition_2" Height="auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition x:Uid="_titleColumn" Width="30"></ColumnDefinition>
+      <ColumnDefinition x:Uid="_graphColumn" Width="*" x:Name="_graphColumn"></ColumnDefinition>
+      <ColumnDefinition x:Uid="_rulerColumn" Width="35" x:Name="_rulerColumn"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid
+      x:Uid="Grid_3" 
+      Grid.Column="0"
+      Grid.Row="1">
+      <TextBlock 
+        x:Uid="TextBlock_1" 
+        Grid.Column="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        RenderTransformOrigin="0.5,0.5"
+        FontSize="12"
+        Text="Static">
+      <TextBlock.RenderTransform>
+        <RotateTransform x:Uid="RotateTransform_1" Angle="-90"/>
+      </TextBlock.RenderTransform>
+      </TextBlock>
+    </Grid>
+    <Grid
+      x:Uid="Grid_4" 
+      Grid.Column="0"
+      Grid.Row="3">
+      <TextBlock 
+        x:Uid="TextBlock_2" Grid.Column="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        RenderTransformOrigin="0.5,0.5"
+        FontSize="12"
+        Text="Delta">
+      <TextBlock.RenderTransform>
+        <RotateTransform x:Uid="RotateTransform_2" Angle="-90"/>
+      </TextBlock.RenderTransform>
+      </TextBlock>
+    </Grid>
+    <Grid
+      x:Uid="Grid_5"
+      Grid.Column="0"
+      Grid.Row="5">
+      <TextBlock 
+        x:Uid="TextBlock_3" 
+        Grid.Column="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        RenderTransformOrigin="0.5,0.5"
+        FontSize="12"
+        Text="Acc.">
+      <TextBlock.RenderTransform>
+        <RotateTransform x:Uid="RotateTransform_3" Angle="-90"/>
+      </TextBlock.RenderTransform>
+      </TextBlock>
+    </Grid>
+    <Grid
+      x:Uid="Grid_6"
+      Grid.Column="0"
+      Grid.Row="7">
+      <TextBlock 
+        x:Uid="TextBlock_4" 
+        Grid.Column="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        RenderTransformOrigin="0.5,0.5"
+        FontSize="12"
+        Text="Wave">
+      <TextBlock.RenderTransform>
+        <RotateTransform x:Uid="RotateTransform_4" Angle="-90"/>
+      </TextBlock.RenderTransform>
+      </TextBlock>
+    </Grid>
+    <Grid
+      x:Uid="Grid_2"
+      Grid.Column="1"
+      Grid.Row="0"
+      x:Name="_segmentGraphRowGrid">
+      <StackPanel 
+        x:Uid="StackPanel_1" Orientation="Vertical">
+        <custom:SegmentGraph
+          x:Uid="_wordSegmentGraph" 
+          x:Name="_wordSegmentGraph"
+          HorizontalAlignment="Right"
+          Width="{Binding Path=ActualWidth,ElementName=_segmentGraphRowGrid}"
+          Height="20" />
+        <custom:SegmentGraph
+          x:Uid="_phoneSegmentGraph" 
+          x:Name="_phoneSegmentGraph"
+          HorizontalAlignment="Right"
+          Width="{Binding Path=ActualWidth,ElementName=_segmentGraphRowGrid}"
+          Height="20" />
+      </StackPanel>
+    </Grid>
+    <Grid
+      x:Uid="_staticGraphRowGrid"
+      Grid.Row="1"
+      Grid.Column="1"
+      x:Name="_staticGraphRowGrid">
+      <custom:SingleTrajectoryGraph
+        x:Uid="_staticGraph" x:Name="_staticGraph"
+        Width="{Binding Path=ActualWidth,ElementName=_staticGraphRowGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_staticGraphRowGrid}" />
+    </Grid>
+    <Grid
+      x:Uid="_staticYAxisGrid"
+      Grid.Row="1"
+      Grid.Column="2"
+      x:Name="_staticYAxisGrid">
+      <custom:AxisRuler
+        x:Uid="_staticYAxis" x:Name="_staticYAxis" IsRulerLeft="False"
+        Width="{Binding Path=ActualWidth,ElementName=_staticYAxisGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_staticYAxisGrid}"/>
+    </Grid>
+    <Grid
+      x:Uid="_deltaGraphRowGrid"
+      Grid.Column="1"
+      Grid.Row="3" 
+      x:Name="_deltaGraphRowGrid">
+      <custom:SingleTrajectoryGraph 
+        x:Uid="_deltaGraph" x:Name="_deltaGraph"
+        Width="{Binding Path=ActualWidth,ElementName=_deltaGraphRowGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_deltaGraphRowGrid}" />
+    </Grid>
+    <Grid
+      x:Uid="_deltaYAxisGrid"
+      Grid.Row="3"
+      Grid.Column="2"
+      x:Name="_deltaYAxisGrid">
+      <custom:AxisRuler
+        x:Uid="_deltaYAxis" x:Name="_deltaYAxis" IsRulerLeft="False"
+        Width="{Binding Path=ActualWidth,ElementName=_deltaYAxisGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_deltaYAxisGrid}"/>
+    </Grid>
+    <Grid
+      x:Uid="_accelerationGraphRowGrid" 
+      Grid.Column="1"
+      Grid.Row="5"
+      x:Name="_accelerationGraphRowGrid">
+      <custom:SingleTrajectoryGraph 
+        x:Uid="_accelerationGraph" x:Name="_accelerationGraph"
+        Width="{Binding Path=ActualWidth,ElementName=_accelerationGraphRowGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_accelerationGraphRowGrid}" />
+    </Grid>
+    <Grid
+      x:Uid="_accelerationYAxisGrid"
+      Grid.Row="5"
+      Grid.Column="2"
+      x:Name="_accelerationYAxisGrid">
+      <custom:AxisRuler
+        x:Uid="_accelerationYAxis" x:Name="_accelerationYAxis" IsRulerLeft="False"
+        Width="{Binding Path=ActualWidth,ElementName=_accelerationYAxisGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_accelerationYAxisGrid}"/>
+    </Grid>
+    <Grid
+      x:Uid="_waveformGraphRowGrid" 
+      Grid.Column="1"
+      Grid.Row="7"
+      x:Name="_waveformGraphRowGrid">
+      <custom:IntervalLinerGraph 
+        x:Uid="_waveformGraph" x:Name="_waveformGraph"
+        IsEditable="False"
+        IsHitTestVisible="False"
+        CurveStrokeThickness="1"
+        Upperbound="1e9"
+        Lowerbound="-1e9"
+        Width="{Binding Path=ActualWidth,ElementName=_waveformGraphRowGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_waveformGraphRowGrid}" />
+      <Rectangle
+        x:Uid="Rectangle_1" Stroke="Black"
+        Width="{Binding Path=ActualWidth,ElementName=_waveformGraphRowGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=_waveformGraphRowGrid}"
+        IsHitTestVisible="False" />
+    </Grid>
+    <Grid
+      x:Uid="_waveformYAxisGrid"
+      Grid.Row="7"
+      Grid.Column="2"
+      x:Name="_waveformYAxisGrid">
+      <custom:AxisRuler
+        x:Uid="_waveformYAxis" x:Name="_waveformYAxis" IsRulerLeft="False"
+        Width="{Binding Path=ActualWidth,ElementName=__waveformYAxisGrid}"
+        Height="{Binding Path=ActualHeight,ElementName=__waveformYAxisGrid}"/>
+    </Grid>
+    <Grid
+      x:Uid="_durationGrid" 
+      x:Name="_durationGrid"
+      Grid.Row="0"
+      Grid.Column="1"
+      Grid.RowSpan="8">
+        <custom:DurationGraph
+          x:Uid="_durationGraph"
+          x:Name="_durationGraph"
+          IsHitTestVisible="False"
+          TopMargin="{Binding Path=ActualHeight, ElementName=_wordSegmentGraph}"
+          Width="{Binding Path=ActualWidth, ElementName=_durationGrid}"
+          Height="{Binding Path=ActualHeight, ElementName=_durationGrid}"/> 
+    </Grid>
+    <custom:TrajectoryControlPanel
+      x:Uid="_controlPanel"
+      Grid.Column="1"
+      Grid.Row="9"
+      x:Name="_controlPanel"/>
+      <Popup
+          x:Uid="_dataPopup" x:Name="_dataPopup"
+          PopupAnimation="Fade"
+          IsHitTestVisible="False"
+          Focusable="False"
+          Placement="Mouse">
+          <custom:TrajectoryInfoUserControl 
+        x:Uid="_trajectoryInfoTable" x:Name="_trajectoryInfoTable" />
+      </Popup>
+    </Grid>
+</UserControl>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.microsoft.com/tts"
+           xmlns:mstns="http://schemas.microsoft.com/tts"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:include schemaLocation="phoneset.xsd" />
+  <xs:include schemaLocation="PosTable.xsd" />
+  <xs:include schemaLocation="lexicon.xsd" />
+  <xs:include schemaLocation="ttsxmlcomments.xsd" />
+  <xs:element name="script" type="scriptType">
+  </xs:element>
+  <xs:complexType name="scriptType">
+    <xs:sequence>
+      <xs:element name="comments" type="CommentsType" minOccurs="0" maxOccurs="1" />
+      <!-- si stands for ScriptItem -->
+      <xs:element name="si" type="scriptItemType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="language" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="optional" />
+    <xs:attribute name="say-as" type="xs:string" use="optional" />
+    <xs:attribute name="category" type="xs:string" use="optional" />
+    <xs:attribute name="isssml" type="xs:boolean" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptItemType">
+    <xs:sequence>
+      <xs:element name="comments" type="CommentsType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="text" type="xs:string" maxOccurs="1" minOccurs="1" />
+      <xs:element name="sent" type="sentenceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="id" type="scriptItemIdValueType" use="required" />
+    <xs:attribute name="domain" type="domainValueType" use="optional" />
+    <xs:attribute name="difficulty" type="xs:decimal" use="optional" />
+    <xs:attribute name="frequency" type="xs:int" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="sentenceType">
+    <xs:sequence>
+      <xs:element name="comments" type="CommentsType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="text" type="xs:string" maxOccurs="1" minOccurs="1" />
+      <xs:element name="words" type="scriptWordsType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="accept" type="scriptWordsType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="nes" type="namedEntitiesType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="type" type="sentenceTypeValueType" use="optional" />
+    <xs:attribute name="emotion" type="emotionType" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptWordsType">
+    <xs:sequence>
+      <xs:element name="w" type="scriptWordType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="namedEntitiesType">
+    <xs:sequence>
+      <xs:element name="ne" type="namedEntityType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="namedEntityType">
+    <xs:attribute name="type" type="NamedEntityValueType" use="required" />
+    <xs:attribute name="v" type="xs:string" use="required" />
+    <!-- the start index of the first word of this named entity in the grapheme-contained word list -->
+    <xs:attribute name="s" type="xs:nonNegativeInteger" use="required" />
+    <!-- the end index of the last word of this named entity in the grapheme-contained word list -->
+    <xs:attribute name="e" type="xs:nonNegativeInteger" use="required" />
+    <xs:attribute name="pos" type="posValueType" use="optional" />
+    <xs:attribute name="domain" type="domainValueType" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptWordType">
+    <xs:sequence>
+      <xs:element name="comments" type="CommentsType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="syls" type="scriptSyllablesType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="acoustics" type="acousticsType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="language" type="xs:string" use="optional" />
+    <xs:attribute name="v" type="xs:string" use="required" />
+    <xs:attribute name="av" type="xs:string" use="optional" />
+    <xs:attribute name="p" type="xs:string" use="optional" />
+    <xs:attribute name="ap" type="xs:string" use="optional" />
+    <xs:attribute name="type" type="wordTypeValueType" use="required" />
+    <xs:attribute name="pos" type="posValueType" use="optional" />
+    <xs:attribute name="exp" type="xs:string" use="optional" />
+    <xs:attribute name="em" type="emphasisValueType" use="optional" />
+    <xs:attribute name="br" type="breakValueType" use="optional" />
+    <xs:attribute name="bra" type="breakValueType" use="optional" />
+    <xs:attribute name="brp" type="xs:float" use="optional" />
+    <xs:attribute name="tobiibt" type="xs:string" use="optional" />
+    <xs:attribute name="tobifbt" type="xs:string" use="optional" />
+    <xs:attribute name="sp" type="xs:string" use="optional" />
+    <xs:attribute name="wt" type="wordToneValueType" use="optional" />
+    <xs:attribute name="tcgppScore" type="TCGPPScoreType" use="optional" />
+    <xs:attribute name="pronSource" type="pronSourceType" use="optional" />
+    <xs:attribute name="offset" type="xs:int" use="optional" />
+    <xs:attribute name="length" type="xs:int" use="optional" />
+    <xs:attribute name="domain" type="xs:string" use="optional" />
+    <xs:attribute name="processType" type="xs:string" use="optional" />
+    <xs:attribute name="nus" type="xs:string" use="optional" />
+    <xs:attribute name="regularText" type="xs:string" use="optional" />
+    <xs:attribute name="netype" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptSyllablesType">
+    <xs:sequence>
+      <xs:element name="syl" type="scriptSyllableType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scriptSyllableType">
+    <xs:sequence>
+      <xs:element name="phs" type="scriptPhonemesType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="acoustics" type="acousticsType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="stress" type="stressValueType" use="optional" />
+    <xs:attribute name="tobipa" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptPhonemesType">
+    <xs:sequence>
+      <xs:element name="ph" type="scriptPhonemeType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scriptPhonemeType">
+    <xs:sequence>
+      <xs:element name="states" type="scriptStatesType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="acoustics" type="acousticsType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="v" type="PhoneNameType" use="required" />
+    <xs:attribute name="tone" type="toneValueType" use="optional" />
+    <xs:attribute name="valid" type="xs:boolean" use="optional" />
+    <xs:attribute name="stress" type="stressValueType" use="optional" />
+    <xs:attribute name="sentenceID" type="scriptItemIdValueType" use="optional" />
+    <xs:attribute name="unitIndex" type="xs:nonNegativeInteger" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="scriptStatesType">
+    <xs:sequence>
+      <xs:element name="state" type="scriptStateType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="scriptStateType">
+    <xs:sequence>
+      <xs:element name="acoustics" type="acousticsType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acousticsType">
+    <xs:annotation>
+      <xs:documentation>
+        Note:
+        1. U/V segments are not allowed to overllap with each other.
+        2. U/V segments are ordered by their intervals.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="segment" type="absoluteIntervalType" minOccurs="0" maxOccurs="2" />
+      <xs:element name="uvseg" type="uvSegType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="pow" type="f0ContourType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="qpow" type="f0ContourType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="dura" type="timeValueType" use="optional" />
+    <xs:attribute name="qdura" type="timeValueType" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="uvSegType">
+    <xs:sequence>
+      <xs:element name="interval" type="relativeIntervalType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="f0" type="f0ContourType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="qf0" type="f0ContourType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="type" type="uvTypeValueType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="f0ContourType">
+    <xs:annotation>
+      <xs:documentation>
+        F0 value is given in Hertz.
+        F0 contour is composed of a sequence of f0 values which are sampled evenly in a certain sampling interval.
+        A example in "text" type can be: 150 172 200 ...
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="type" type="acousticChunkTypeValueType" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="sentenceTypeValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ynq" />
+      <xs:enumeration value="whq" />
+      <xs:enumeration value="declarative" />
+      <xs:enumeration value="imperative" />
+      <xs:enumeration value="exclam" />
+      <xs:enumeration value="hail" />
+      <xs:enumeration value="choiceques" />
+      <xs:enumeration value="swq" />
+      <xs:enumeration value="cuteness" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stressValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0123]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="toneValueType">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="emphasisValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1234]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="breakValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[01234]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="wordTypeValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="punc" />
+      <xs:enumeration value="normal" />
+      <xs:enumeration value="silence" />
+      <xs:enumeration value="spell" />
+      <xs:enumeration value="prosodyBoundary" />
+      <xs:enumeration value="bookmark" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="domainValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="normal" />
+      <xs:enumeration value="digit" />
+      <xs:enumeration value="name" />
+      <xs:enumeration value="acronym" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="wordToneValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="r" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="f" />
+      <xs:enumeration value="c" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="scriptItemIdValueType">
+    <xs:restriction base="xs:string">
+      <!-- xs:pattern value="[0-9]{10}" / -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="uvTypeValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="u" />
+      <xs:enumeration value="v" />
+      <xs:enumeration value="sil" />
+      <xs:enumeration value="mixed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="absoluteIntervalType">
+    <xs:annotation>
+      <xs:documentation>
+        The values of the interval are absolute value in the sentence.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="begin" type="timeValueType" use="required" />
+    <xs:attribute name="end" type="timeValueType" use="required" />
+  </xs:complexType>
+  <xs:complexType name="relativeIntervalType">
+    <xs:annotation>
+      <xs:documentation>
+        The values of the interval are relative to the beginning of the parent element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="rbegin" type="timeValueType" use="required" />
+    <xs:attribute name="rend" type="timeValueType" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="timeValueType">
+    <xs:annotation>
+      <xs:documentation>
+        Time (position or duration) is given in millisecond.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="acousticChunkTypeValueType">
+    <xs:annotation>
+      <xs:documentation>
+        Intrinsic of the each acoustic value is supposed to be float, no matter what type is used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="text" />
+      <xs:enumeration value="base64Binary" />
+      <xs:enumeration value="hexBinary" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TCGPPScoreType">
+    <xs:annotation>
+      <xs:documentation>
+        TCGPP score element for each word, each phone has one unsigned integer TCGPP score, and the score is splitted by blank space.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:list itemType="xs:unsignedInt"/>
+  </xs:simpleType>
+  <xs:simpleType name="pronSourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="mainLexicon" />
+      <xs:enumeration value="mophology" />
+      <xs:enumeration value="domainLexicon" />
+      <xs:enumeration value="voiceLexicon" />
+      <xs:enumeration value="customLexicon" />
+      <xs:enumeration value="lTS" />
+      <xs:enumeration value="spelling" />
+      <xs:enumeration value="compound" />
+      <xs:enumeration value="extraLanguage" />
+      <xs:enumeration value="mainPolyphony" />
+      <xs:enumeration value="domainPolyphony" />
+      <xs:enumeration value="pronunciationChange" />
+      <xs:enumeration value="oovLochandler" />
+      <xs:enumeration value="postPronLochandler" />
+      <xs:enumeration value="xmlTag" />
+      <xs:enumeration value="foreignLTS" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="emotionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="neutral" />
+      <xs:enumeration value="sensitive" />
+      <xs:enumeration value="abashed" />
+      <xs:enumeration value="satisfied" />
+      <xs:enumeration value="bouncy" />
+      <xs:enumeration value="considerate" />
+      <xs:enumeration value="sorry" />
+      <xs:enumeration value="optimistic" />
+      <xs:enumeration value="elated" />
+      <xs:enumeration value="calm" />
+      <xs:enumeration value="worry" />
+      <xs:enumeration value="happy" />
+      <xs:enumeration value="angry" />
+      <xs:enumeration value="confident" />
+      <xs:enumeration value="disappointe" />
+      <xs:enumeration value="disgust" />
+      <xs:enumeration value="sad" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

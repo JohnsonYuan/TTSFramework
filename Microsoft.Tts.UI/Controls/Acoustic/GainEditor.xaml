@@ -1,0 +1,42 @@
+﻿<UserControl x:Uid="UserControl_1" x:Class="Microsoft.Tts.UI.Controls.Acoustic.GainEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:customTrajectory="clr-namespace:Microsoft.Tts.UI.Controls.Trajectory"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ContextMenu x:Uid="ContextMenu_1" x:Key="GainEditorContextMenu">
+            <MenuItem x:Uid="SelectFrames" Header="SelectFrames" Click="OnSelectFramesMenuItemClick" />
+            <Separator x:Uid="Separator_1" />
+            <MenuItem x:Uid="ResetTune" Header="ResetTune" Click="OnResetTuneMenuItemClick" />
+            <MenuItem x:Uid="DragFrames" Header="DragFrames" Click="OnDragSelectedMenuItemClick" />
+        </ContextMenu>
+    </UserControl.Resources>
+    <Grid x:Uid="_grid" x:Name="_grid" ContextMenu="{StaticResource GainEditorContextMenu}">
+        <customTrajectory:TrajectoryHighlightFrame
+            x:Uid="_highlightFrames" x:Name="_highlightFrames">
+        </customTrajectory:TrajectoryHighlightFrame>
+        <customTrajectory:IntervalLinerGraph
+            x:Uid="_guidelineGraph" x:Name="_guidelineGraph"
+            IsEditable="False"
+            IsHitTestVisible="False"
+            CurveStrokeThickness="2"
+            CurveStroke="LightGreen"
+            Upperbound="1e9"
+            Lowerbound="-1e9" >
+        </customTrajectory:IntervalLinerGraph>
+        <Rectangle
+            x:Uid="_gridRect" x:Name="_gridRect" Fill="Transparent" IsHitTestVisible="True" 
+            MouseMove="OnMouseMove" MouseLeftButtonDown="OnMouseLeftButtonDown" MouseLeftButtonUp="OnMouseLeftButtonUp" />
+        <customTrajectory:IntervalLinerGraph
+            x:Uid="_linerGraph" x:Name="_linerGraph"
+            IsEditable="True"
+            CurveStrokeThickness="2.5"
+            Upperbound="1e9"
+            Lowerbound="-1e9" >
+        </customTrajectory:IntervalLinerGraph>
+        <Rectangle x:Uid="Rectangle_1" Stroke="Black" IsHitTestVisible="False"/>
+    </Grid>
+</UserControl>

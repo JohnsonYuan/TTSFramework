@@ -1,0 +1,54 @@
+﻿<UserControl x:Uid="_graphSystem" x:Class="Microsoft.Tts.UI.Controls.Trajectory.MultiTrajectoryGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:custom="clr-namespace:Microsoft.Tts.UI.Controls.Trajectory"
+    xmlns:customControls="clr-namespace:Microsoft.Tts.UI.Controls"
+    x:Name="_graphSystem">
+  <UserControl.Resources>
+    <customControls:VisibilityConvertor 
+      x:Uid="custom:VisibilityConvertor_1"
+      x:Key="VisibilityConvertor" />
+  </UserControl.Resources>
+  <Grid x:Uid="Grid_1">
+    <custom:TrajectoryFrameline
+      x:Uid="_frameline"
+      x:Name="_frameline"
+      Visibility="{Binding Path=TimeAxis.FramelineShowed,Converter={StaticResource VisibilityConvertor}}"
+      Width="{Binding Path=ActualWidth,ElementName=_graphSystem}"
+      Height="{Binding Path=ActualHeight,ElementName=_graphSystem}" />
+    <Grid
+      x:Uid="_trajectoryGrid" x:Name="_trajectoryGrid">
+    </Grid>
+    <custom:TrajectoryHighlightFrame
+        x:Uid="_hightlighFrames" 
+        x:Name="_hightlighFrames"
+        HighlightFill="OrangeRed" />
+    <custom:TrajectoryHighlightFrame
+        x:Uid="_selectedMultiFrames"
+        x:Name="_selectedMultiFrames" />
+    <custom:TrajectoryHighlightFrame
+        x:Uid="_selectedFrames" 
+        x:Name="_selectedFrames"
+        HighlightFill="OrangeRed" />
+    <Rectangle
+      x:Uid="Rectangle_1"
+      Stroke="Black"
+      Fill="Transparent"
+      MouseMove="OnMouseMoveInGraph"
+      MouseLeave="OnMouseLeaveGraph"
+      MouseUp="OnMouseUpInGraph"
+      Width="{Binding Path=ActualWidth,ElementName=_graphSystem}"
+      Height="{Binding Path=ActualHeight,ElementName=_graphSystem}" />
+    <Popup
+      x:Uid="_dataPopup" 
+      x:Name="_dataPopup"
+      PopupAnimation="Fade"
+      IsHitTestVisible="False"
+      Focusable="False"
+      Placement="Mouse">
+      <custom:TrajectoryInfoUserControl 
+        x:Uid="_trajectoryInfoTable"
+        x:Name="_trajectoryInfoTable" />
+    </Popup>
+  </Grid>
+</UserControl>

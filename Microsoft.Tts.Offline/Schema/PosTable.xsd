@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="posTableType">
+    <xs:sequence>
+      <xs:element name="pos" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="id" type="posIdType" />
+          <xs:attribute name="name" type="posValueType" />
+          <xs:attribute name="desc" type="xs:string" use="optional"/>
+          <xs:attribute name="feature" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" />
+    <xs:attribute name="version" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="posValueType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z_0-9]+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="posIdType">
+    <xs:restriction base="xs:hexBinary">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="posTable" type="posTableType">
+  </xs:element>
+</xs:schema>

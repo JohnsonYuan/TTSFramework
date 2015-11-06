@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="TmocVCConfig">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="VC">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="VcName" type="xs:string"/>
+                            <xs:element name="VcProxy" type="xs:string"/>
+                            <xs:element name="Priority" type="xs:int" />
+                            <xs:element name="LocalRun" type="xs:boolean"/>
+                            <xs:element name="Parameter">
+                                <xs:complexType>
+                                    <xs:attribute name="VcJobTimeoutInHours" type="xs:int" use="optional" />
+                                    <xs:attribute name="MaxTokenNum" type="xs:int" use="optional" />
+                                    <xs:attribute name="MaxVertexTime" type="xs:int" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="TmocPath" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

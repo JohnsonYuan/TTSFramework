@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<keyboard lang="es-MX" version="1.0" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+    <font name="Arial Unicode MS" />
+    <key ttsPhone="1" ipaPhone="ˈ" displayedPhone="ˈ">
+        <word description="Primary stress" />
+    </key>
+    <key ttsPhone="2" ipaPhone="ˌ" displayedPhone="ˌ">
+        <word description="Secondary stress" />
+    </key>
+    <key ttsPhone="a" ipaPhone="ɑ" vowel="True" displayedPhone="ɑ">
+        <word grapheme="maravilla" ipaPronunciation="mɑɾɑβiˈʝɑ" />
+    </key>
+    <key ttsPhone="aj" ipaPhone="ɑ͡i" vowel="True" displayedPhone="ɑi">
+        <word grapheme="may" ipaPronunciation="mɑ͡iˈ" />
+    </key>
+    <key ttsPhone="b" ipaPhone="b" vowel="False" displayedPhone="b">
+        <word grapheme="bueno" ipaPronunciation="bweˈno" />
+    </key>
+    <key ttsPhone="bh" ipaPhone="β" vowel="False" displayedPhone="β">
+        <word grapheme="nabo" ipaPronunciation="nɑˈβo" />
+    </key>
+    <key ttsPhone="ch" ipaPhone="t͡ʃ" vowel="False" displayedPhone="tʃ">
+        <word grapheme="macho" ipaPronunciation="mɑˈˈt͡ʃo" />
+    </key>
+    <key ttsPhone="d" ipaPhone="d" vowel="False" displayedPhone="d">
+        <word grapheme="duro" ipaPronunciation="duˈɾo" />
+    </key>
+    <key ttsPhone="dh" ipaPhone="ð" vowel="False" displayedPhone="ð">
+        <word grapheme="adora" ipaPronunciation="ɑðoˈɾɑ" />
+    </key>
+    <key ttsPhone="e" ipaPhone="e" vowel="True" displayedPhone="e">
+        <word grapheme="e" ipaPronunciation="eˈ" />
+    </key>
+    <key ttsPhone="ej" ipaPhone="e͡i" vowel="True" displayedPhone="ei">
+        <word grapheme="maguei" ipaPronunciation="mɑɣe͡i" />
+    </key>
+    <key ttsPhone="f" ipaPhone="f" vowel="False" displayedPhone="f">
+        <word grapheme="fácil" ipaPronunciation="fɑˈsil" />
+    </key>
+    <key ttsPhone="g" ipaPhone="g" vowel="False" displayedPhone="g">
+        <word grapheme="gato" ipaPronunciation="gɑˈto" />
+    </key>
+    <key ttsPhone="gh" ipaPhone="ɣ" vowel="False" displayedPhone="ɣ">
+        <word grapheme="luego" ipaPronunciation="lweˈɣo" />
+    </key>
+    <key ttsPhone="i" ipaPhone="i" vowel="True" displayedPhone="i">
+        <word grapheme="i" ipaPronunciation="iˈ" />
+    </key>
+    <key ttsPhone="j" ipaPhone="j" vowel="False" displayedPhone="j">
+        <word grapheme="fiasco" ipaPronunciation="fjɑˈsko" />
+    </key>
+    <key ttsPhone="jj" ipaPhone="ʝ" vowel="False" displayedPhone="ʝ">
+        <word grapheme="caballo" ipaPronunciation="kɑβɑˈʝo" />
+    </key>
+    <key ttsPhone="k" ipaPhone="k" vowel="False" displayedPhone="k">
+        <word grapheme="casa" ipaPronunciation="kɑˈsɑ" />
+    </key>
+    <key ttsPhone="l" ipaPhone="l" vowel="False" displayedPhone="l">
+        <word grapheme="lejos" ipaPronunciation="leˈxos" />
+    </key>
+    <key ttsPhone="ll" ipaPhone="ʎ" vowel="False" displayedPhone="ʎ">
+        <word grapheme="yerno" ipaPronunciation="ʎeˈɾno" />
+    </key>
+    <key ttsPhone="m" ipaPhone="m" vowel="False" displayedPhone="m">
+        <word grapheme="mismo" ipaPronunciation="miˈsmo" />
+    </key>
+    <key ttsPhone="n" ipaPhone="n" vowel="False" displayedPhone="n">
+        <word grapheme="nariz" ipaPronunciation="nɑɾiˈs" />
+    </key>
+    <key ttsPhone="nj" ipaPhone="ɲ" vowel="False" displayedPhone="ɲ">
+        <word grapheme="año" ipaPronunciation="ɑˈɲo" />
+    </key>
+    <key ttsPhone="o" ipaPhone="o" vowel="True" displayedPhone="o">
+        <word grapheme="hola" ipaPronunciation="oˈlɑ" />
+    </key>
+    <key ttsPhone="p" ipaPhone="p" vowel="False" displayedPhone="p">
+        <word grapheme="papá" ipaPronunciation="pɑpɑˈ" />
+    </key>
+    <key ttsPhone="r" ipaPhone="ɾ" vowel="False" displayedPhone="ɾ">
+        <word grapheme="puro" ipaPronunciation="puˈɾo" />
+    </key>
+    <key ttsPhone="rr" ipaPhone="r" vowel="False" displayedPhone="r">
+        <word grapheme="torre" ipaPronunciation="toˈre" />
+    </key>
+    <key ttsPhone="s" ipaPhone="s" vowel="False" displayedPhone="s">
+        <word grapheme="sala" ipaPronunciation="sɑlɑ" />
+    </key>
+    <key ttsPhone="t" ipaPhone="t" vowel="False" displayedPhone="t">
+        <word grapheme="todo" ipaPronunciation="toˈðo" />
+    </key>
+    <key ttsPhone="u" ipaPhone="u" vowel="True" displayedPhone="u">
+        <word grapheme="duro" ipaPronunciation="duˈɾo" />
+    </key>
+    <key ttsPhone="w" ipaPhone="w" vowel="False" displayedPhone="w">
+        <word grapheme="muy" ipaPronunciation="mwiˈ" />
+    </key>
+    <key ttsPhone="x" ipaPhone="x" vowel="False" displayedPhone="x">
+        <word grapheme="mujer" ipaPronunciation="muxeˈɾ" />
+    </key>
+</keyboard>

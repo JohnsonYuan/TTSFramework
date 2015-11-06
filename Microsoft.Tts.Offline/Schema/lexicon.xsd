@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="lexiconType">
+    <xs:sequence>
+      <xs:element name="include" type="includeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="w" type="lexiconEntryType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+    <xs:attribute name="domain" type="xs:string" use="optional" />
+    <xs:attribute name="logLexicon" type="xs:boolean" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="includeType">
+    <xs:attribute name="href" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="lexiconEntryType">
+    <xs:sequence>
+      <xs:element name="p" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pr" type="pronunciationProperType" minOccurs="1" maxOccurs="unbounded" />
+          </xs:sequence>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="f" type="xs:integer" use="optional" />
+          <xs:attribute name="s" type="xs:string" use="optional" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+          <xs:attribute name="o" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="v" type="xs:string" use="required" />
+    <xs:attribute name="f" type="xs:integer" use="optional" />
+    <xs:attribute name="c" type="xs:string" use="optional" />
+    <xs:attribute name="s" type="xs:string" use="optional" />
+    <xs:attribute name="r" type="xs:boolean" use="optional" />
+    <xs:attribute name="vo" type="xs:string" use="optional" />
+    <xs:attribute name="alias" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="pronunciationProperType">
+    <xs:sequence>
+      <xs:element name="pos" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="gender" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="case" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="number" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="attr" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="category" type="xs:string" use="required" />
+          <xs:attribute name="value" type="xs:string" use="required" />
+          <xs:attribute name="s" type="xs:string" use="optional" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="domain" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="v" type="xs:string" use="required" />
+          <xs:attribute name="s" type="xs:string" use="optional" />
+          <xs:attribute name="p" type="xs:boolean" use="optional" />
+          <xs:attribute name="vo" type="xs:string" use="optional" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="s" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:element name="lexiconWords" type="lexiconType" />
+</xs:schema>

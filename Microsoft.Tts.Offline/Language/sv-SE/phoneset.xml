@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="sv-SE">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable </feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress </feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress </feature>
+  </phone>
+  <phone name="3" id="6">
+    <feature>substress </feature>
+  </phone>
+  <phone name="a" id="7">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="ae" id="8">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="aeh" id="9">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="ah" id="10">
+    <feature>vowel sonorant voiced back </feature>
+  </phone>
+  <phone name="ao" id="11">
+    <feature>vowel sonorant voiced back </feature>
+  </phone>
+  <phone name="au" id="12">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="ax" id="13">
+    <feature>vowel sonorant voiced central </feature>
+  </phone>
+  <phone name="b" id="14">
+    <feature>consonant voiced bilabial </feature>
+  </phone>
+  <phone name="d" id="15">
+    <feature>consonant voiced alveolar </feature>
+  </phone>
+  <phone name="e" id="16">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="ea" id="17">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="eah" id="18">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="eh" id="19">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="er" id="20">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="erh" id="21">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="eu" id="22">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="euh" id="23">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="f" id="24">
+    <feature>consonant fricative </feature>
+  </phone>
+  <phone name="g" id="25">
+    <feature>consonant voiced velar </feature>
+  </phone>
+  <phone name="h" id="26">
+    <feature>consonant glottal fricative </feature>
+  </phone>
+  <phone name="i" id="27">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="ih" id="28">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="j" id="29">
+    <feature>consonant sonorant voiced palatal </feature>
+  </phone>
+  <phone name="k" id="30">
+    <feature>consonant velar </feature>
+  </phone>
+  <phone name="l" id="31">
+    <feature>consonant sonorant voiced alveolar </feature>
+  </phone>
+  <phone name="m" id="32">
+    <feature>consonant sonorant voiced bilabial nasal </feature>
+  </phone>
+  <phone name="n" id="33">
+    <feature>consonant sonorant voiced alveolar nasal </feature>
+  </phone>
+  <phone name="ng" id="34">
+    <feature>consonant sonorant voiced velar nasal </feature>
+  </phone>
+  <phone name="o" id="35">
+    <feature>vowel sonorant voiced back </feature>
+  </phone>
+  <phone name="oh" id="36">
+    <feature>vowel sonorant voiced back </feature>
+  </phone>
+  <phone name="ox" id="37">
+    <feature>vowel sonorant voiced back </feature>
+  </phone>
+  <phone name="p" id="38">
+    <feature>consonant bilabial </feature>
+  </phone>
+  <phone name="r" id="39">
+    <feature>consonant sonorant voiced alveolar </feature>
+  </phone>
+  <phone name="rd" id="40">
+    <feature>consonant voiced </feature>
+  </phone>
+  <phone name="rl" id="41">
+    <feature>consonant voiced </feature>
+  </phone>
+  <phone name="rn" id="42">
+    <feature>consonant sonorant voiced nasal </feature>
+  </phone>
+  <phone name="rs" id="43">
+    <feature>consonant fricative </feature>
+  </phone>
+  <phone name="rt" id="44">
+    <feature>consonant </feature>
+  </phone>
+  <phone name="s" id="45">
+    <feature>consonant alveolar fricative </feature>
+  </phone>
+  <phone name="sj" id="46">
+    <feature>consonant fricative </feature>
+  </phone>
+  <phone name="t" id="47">
+    <feature>consonant alveolar </feature>
+  </phone>
+  <phone name="tj" id="48">
+    <feature>consonant fricative </feature>
+  </phone>
+  <phone name="u" id="49">
+    <feature>vowel sonorant voiced central </feature>
+  </phone>
+  <phone name="uh" id="50">
+    <feature>vowel sonorant voiced central </feature>
+  </phone>
+  <phone name="v" id="51">
+    <feature>consonant voiced fricative </feature>
+  </phone>
+  <phone name="y" id="52">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+  <phone name="yh" id="53">
+    <feature>vowel sonorant voiced front </feature>
+  </phone>
+</phoneSet>

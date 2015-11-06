@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="fr-CA">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="?" id="6">
+    <feature>
+    </feature>
+  </phone>
+  <phone name="ae" id="7">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="af" id="8">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="an" id="9">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ax" id="11">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="b" id="12">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="d" id="13">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="eh" id="14">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="eu" id="15">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ey" id="16">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="f" id="17">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="g" id="18">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="gn" id="19">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="hw" id="20">
+    <feature>consonant  sonorant  glide</feature>
+  </phone>
+  <phone name="in" id="21">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="iy" id="22">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="k" id="23">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="l" id="24">
+    <feature>consonant   sonorant</feature>
+  </phone>
+  <phone name="l_n" id="25">
+    <feature>consonant   sonorant</feature>
+  </phone>
+  <phone name="l_t" id="26">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="l_z" id="27">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="m" id="28">
+    <feature>consonant  sonorant</feature>
+  </phone>
+  <phone name="n" id="29">
+    <feature>consonant  sonorant</feature>
+  </phone>
+  <phone name="ng" id="30">
+    <feature>consonant  sonorant</feature>
+  </phone>
+  <phone name="oe" id="31">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="oh" id="32">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="on" id="33">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="ow" id="34">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="p" id="35">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="r" id="36">
+    <feature>consonant  sonorant</feature>
+  </phone>
+  <phone name="s" id="37">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="sh" id="38">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="t" id="39">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="un" id="40">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="uw" id="41">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="uy" id="42">
+    <feature>vowel  sonorant  voiced</feature>
+  </phone>
+  <phone name="v" id="43">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="w" id="44">
+    <feature>consonant  sonorant  glide</feature>
+  </phone>
+  <phone name="y" id="45">
+    <feature>consonant  sonorant  glide</feature>
+  </phone>
+  <phone name="z" id="46">
+    <feature>consonant</feature>
+  </phone>
+  <phone name="zh" id="47">
+    <feature>consonant</feature>
+  </phone>
+</phoneSet>

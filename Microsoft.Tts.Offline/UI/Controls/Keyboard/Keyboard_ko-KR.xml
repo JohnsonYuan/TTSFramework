@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<keyboard lang="ko-KR" version="1.0" xmlns="http://schemas.microsoft.com/tts/toolsuite">
+    <font name="Arial Unicode MS" />
+    <key ttsPhone="1" ipaPhone="ˈ" displayedPhone="ˈ">
+        <word description="Primary stress" />
+    </key>
+    <key ttsPhone="2" ipaPhone="ˌ" displayedPhone="ˌ">
+        <word description="Secondary stress" />
+    </key>
+    <key ttsPhone="a" ipaPhone="a" vowel="True" displayedPhone="a">
+        <word grapheme="아버지" ipaPronunciation="abʌd͡ʑi" />
+    </key>
+    <key ttsPhone="ai" ipaPhone="ɛ" vowel="True" displayedPhone="ɛ">
+        <word grapheme="어째서" ipaPronunciation="ʌt͡ɕʼɛsʌ" />
+    </key>
+    <key ttsPhone="a i" ipaPhone="ai" vowel="True" displayedPhone="ai">
+        <word grapheme="아이디어" ipaPronunciation="aidiʌ" />
+    </key>
+    <key ttsPhone="a u" ipaPhone="aʊ" vowel="True" displayedPhone="aʊ">
+        <word grapheme="아우성" ipaPronunciation="ausʌŋ" />
+    </key>
+    <key ttsPhone="b" ipaPhone="p" vowel="False" displayedPhone="p">
+        <word grapheme="버둥대다" ipaPronunciation="pʌduŋdɛda" />
+    </key>
+    <key ttsPhone="bb" ipaPhone="pʼ" vowel="False" displayedPhone="pʼ">
+        <word grapheme="뻐근하다" ipaPronunciation="pʼʌgɯnhada" />
+    </key>
+    <key ttsPhone="bh" ipaPhone="b" vowel="False" displayedPhone="b">
+        <word grapheme="배반" ipaPronunciation="pɛban" />
+    </key>
+    <key ttsPhone="ch" ipaPhone="t͡ɕʰ" vowel="False" displayedPhone="tɕʰ">
+        <word grapheme="친구" ipaPronunciation="t͡ɕʰingu" />
+    </key>
+    <key ttsPhone="d" ipaPhone="t" vowel="False" displayedPhone="t">
+        <word grapheme="도시" ipaPronunciation="tosi" />
+    </key>
+    <key ttsPhone="dd" ipaPhone="tʼ" vowel="False" displayedPhone="tʼ">
+        <word grapheme="따끔거리다" ipaPronunciation="tʼakʼɯmgʌɾida" />
+    </key>
+    <key ttsPhone="dh" ipaPhone="d" vowel="False" displayedPhone="d">
+        <word grapheme="우유부단" ipaPronunciation="ujubudan" />
+    </key>
+    <key ttsPhone="ei" ipaPhone="e" vowel="True" displayedPhone="e">
+        <word grapheme="에이즈" ipaPronunciation="eid͡ʑɯ" />
+    </key>
+    <key ttsPhone="eu" ipaPhone="ɯ" vowel="True" displayedPhone="ɯ">
+        <word grapheme="그림" ipaPronunciation="kɯɾim" />
+    </key>
+    <key ttsPhone="g" ipaPhone="k" vowel="False" displayedPhone="k">
+        <word grapheme="그래픽" ipaPronunciation="kɯɾɛpʰik" />
+    </key>
+    <key ttsPhone="gg" ipaPhone="kʼ" vowel="False" displayedPhone="kʼ">
+        <word grapheme="끝나다" ipaPronunciation="kʼɯnnada" />
+    </key>
+    <key ttsPhone="gh" ipaPhone="g" vowel="False" displayedPhone="g">
+        <word grapheme="구경" ipaPronunciation="kugjʌŋ" />
+    </key>
+    <key ttsPhone="h" ipaPhone="h" vowel="False" displayedPhone="h">
+        <word grapheme="희한하다" ipaPronunciation="ɦihanhada" />
+    </key>
+    <key ttsPhone="hh" ipaPhone="ɦ" vowel="False" displayedPhone="ɦ">
+        <word grapheme="하교" ipaPronunciation="ɦagjo" />
+    </key>
+    <key ttsPhone="i" ipaPhone="i" vowel="True" displayedPhone="i">
+        <word grapheme="기자" ipaPronunciation="kid͡ʑa" />
+    </key>
+    <key ttsPhone="i o" ipaPhone="iʌ" vowel="True" displayedPhone="iʌ">
+        <word grapheme="비어지다" ipaPronunciation="piʌd͡ʑida" />
+    </key>
+    <key ttsPhone="jh" ipaPhone="d͡ʑ" vowel="False" displayedPhone="dʑ">
+        <word grapheme="지진" ipaPronunciation="t͡ɕid͡ʑin" />
+    </key>
+    <key ttsPhone="ji" ipaPhone="t͡ɕ" vowel="False" displayedPhone="tɕ">
+        <word grapheme="지식" ipaPronunciation="t͡ɕisik" />
+    </key>
+    <key ttsPhone="jj" ipaPhone="t͡ɕʼ" vowel="False" displayedPhone="tɕʼ">
+        <word grapheme="찌푸리다" ipaPronunciation="t͡ɕʼipʰuɾida" />
+    </key>
+    <key ttsPhone="k" ipaPhone="kʰ" vowel="False" displayedPhone="kʰ">
+        <word grapheme="코드" ipaPronunciation="kʰodɯ" />
+    </key>
+    <key ttsPhone="l" ipaPhone="l" vowel="False" displayedPhone="l">
+        <word grapheme="정말" ipaPronunciation="t͡ɕʌŋmal" />
+    </key>
+    <key ttsPhone="m" ipaPhone="m" vowel="False" displayedPhone="m">
+        <word grapheme="마네킹" ipaPronunciation="manekʰiŋ" />
+    </key>
+    <key ttsPhone="n" ipaPhone="n" vowel="False" displayedPhone="n">
+        <word grapheme="너무하다" ipaPronunciation="nʌmuhada" />
+    </key>
+    <key ttsPhone="ng" ipaPhone="ŋ" vowel="False" displayedPhone="ŋ">
+        <word grapheme="멍때리다" ipaPronunciation="mʌŋtʼɛɾida" />
+    </key>
+    <key ttsPhone="o" ipaPhone="ʌ" vowel="True" displayedPhone="ʌ">
+        <word grapheme="어지럽다" ipaPronunciation="ʌd͡ʑiɾʌptʼa" />
+    </key>
+    <key ttsPhone="ou" ipaPhone="o" vowel="True" displayedPhone="o">
+        <word grapheme="오징어" ipaPronunciation="od͡ʑiŋʌ" />
+    </key>
+    <key ttsPhone="p" ipaPhone="pʰ" vowel="False" displayedPhone="pʰ">
+        <word grapheme="파도" ipaPronunciation="pʰado" />
+    </key>
+    <key ttsPhone="r" ipaPhone="ɾ" vowel="False" displayedPhone="ɾ">
+        <word grapheme="라디오" ipaPronunciation="ɾadio" />
+    </key>
+    <key ttsPhone="s" ipaPhone="s" vowel="False" displayedPhone="s">
+        <word grapheme="스낵" ipaPronunciation="sɯnɛk" />
+    </key>
+    <key ttsPhone="ss" ipaPhone="sʼ" vowel="False" displayedPhone="sʼ">
+        <word grapheme="쓰다듬다" ipaPronunciation="sʼɯdadɯmda" />
+    </key>
+    <key ttsPhone="t" ipaPhone="tʰ" vowel="False" displayedPhone="tʰ">
+        <word grapheme="타자" ipaPronunciation="tʰad͡ʑan" />
+    </key>
+    <key ttsPhone="u" ipaPhone="u" vowel="True" displayedPhone="u">
+        <word grapheme="물" ipaPronunciation="mul" />
+    </key>
+    <key ttsPhone="ui" ipaPhone="ɰi" vowel="True" displayedPhone="ɰi">
+        <word grapheme="의자" ipaPronunciation="ɰid͡ʑa" />
+    </key>
+    <key ttsPhone="uo" ipaPhone="ø" vowel="True" displayedPhone="ø">
+        <word grapheme="왼손" ipaPronunciation="ønson" />
+    </key>
+    <key ttsPhone="wa" ipaPhone="wa" vowel="True" displayedPhone="wa">
+        <word grapheme="돌봐주다" ipaPronunciation="tolbwad͡ʑuda" />
+    </key>
+    <key ttsPhone="wai" ipaPhone="wɛ" vowel="True" displayedPhone="wɛ">
+        <word grapheme="와이셔츠" ipaPronunciation="waisjʌt͡ɕʰɯ" />
+    </key>
+    <key ttsPhone="we" ipaPhone="we" vowel="True" displayedPhone="we">
+        <word grapheme="웨딩" ipaPronunciation="wediŋ" />
+    </key>
+    <key ttsPhone="wi" ipaPhone="wi" vowel="True" displayedPhone="wi">
+        <word grapheme="위기" ipaPronunciation="wigi" />
+    </key>
+    <key ttsPhone="wo" ipaPhone="wʌ" vowel="True" displayedPhone="wʌ">
+        <word grapheme="워밍업" ipaPronunciation="wʌmiŋʌp" />
+    </key>
+    <key ttsPhone="ya" ipaPhone="ja" vowel="True" displayedPhone="ja">
+        <word grapheme="야구" ipaPronunciation="jagu" />
+    </key>
+    <key ttsPhone="yai" ipaPhone="jɛ" vowel="True" displayedPhone="jɛ">
+        <word grapheme="야인" ipaPronunciation="jain" />
+    </key>
+    <key ttsPhone="ye" ipaPhone="je" vowel="True" displayedPhone="je">
+        <word grapheme="예를들면" ipaPronunciation="jeɾɯldɯlmjʌn" />
+    </key>
+    <key ttsPhone="yeo" ipaPhone="jʌ" vowel="True" displayedPhone="jʌ">
+        <word grapheme="여객선" ipaPronunciation="jʌgɛksʼʌn" />
+    </key>
+    <key ttsPhone="yo" ipaPhone="jo" vowel="True" displayedPhone="jo">
+        <word grapheme="요즘" ipaPronunciation="jod͡ʑɯm" />
+    </key>
+    <key ttsPhone="yu" ipaPhone="ju" vowel="True" displayedPhone="ju">
+        <word grapheme="유치원" ipaPronunciation="jut͡ɕʰiwʌn" />
+    </key>
+</keyboard>

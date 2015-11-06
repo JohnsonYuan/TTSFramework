@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="lexAttributeTableType">
+    <xs:sequence>
+      <xs:element name="Category" type="CategoryType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="CategoryType">
+    <xs:sequence>
+      <xs:element name="Value" type="ValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="ID" type="xs:unsignedInt" />
+  </xs:complexType>
+
+  <xs:complexType name="ValueType">
+    <xs:sequence>
+      <xs:element name="Category" type="CategoryType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="ID" type="xs:unsignedInt" use="optional"/>
+    <xs:attribute name="posTagging" type="xs:boolean" default="false" use="optional" />
+  </xs:complexType>
+
+  <xs:element name="lexAttributeTable" type="lexAttributeTableType"/>
+</xs:schema>

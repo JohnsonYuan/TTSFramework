@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="ttscommon.xsd" />
+  <xs:complexType name="QuotationMarkTableType">
+    <xs:sequence>
+      <xs:element name="mark" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="left" type="xs:string" use="required" />
+          <xs:attribute name="right" type="xs:string" use="required" />
+          <xs:attribute name="direct" type="DirectTypeValue" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="DirectTypeValue">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Neutral" />
+      <xs:enumeration value="Oriented" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="quotationMarkTable" type="QuotationMarkTableType"/>
+</xs:schema>

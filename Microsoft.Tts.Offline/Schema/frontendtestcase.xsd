@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.microsoft.com/tts" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/tts" xmlns:mstns="http://schemas.microsoft.com/tts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CasesType">
+    <xs:sequence>
+      <xs:element name="case" type="CaseType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="xs:language" />
+    <xs:attribute name="component" type="ComponentType" />
+    <xs:attribute name="category" type="CategoryType" />
+    <xs:attribute name="frequency" type="xs:string" />
+    <xs:attribute name="sayas" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="CaseType">
+    <xs:sequence>
+      <xs:element name="comment" type="xs:string" maxOccurs="1" minOccurs="0" />
+      <xs:element name="input" type="xs:string" maxOccurs="1" minOccurs="1" />
+      <xs:element name="output" type="OutputType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="accept" type="OutputType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="priority" type="PriorityType" />
+    <xs:attribute name="source" type="xs:string" />
+    <xs:attribute name="category" type="xs:string" />
+    <xs:attribute name="pron_polyword" type="xs:string" />
+    <xs:attribute name="tn_sayas" type="xs:string" />
+    <xs:attribute name="tn_format" type="xs:string" />
+    <xs:attribute name="pron_sayas" type="xs:string" />
+    <xs:attribute name="pron_format" type="xs:string" />
+    <xs:attribute name="index" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="PriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="P0" />
+      <xs:enumeration value="P1" />
+      <xs:enumeration value="P2" />
+      <xs:enumeration value="P3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OutputType">
+    <xs:sequence>
+      <xs:element name="part" type="PartType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cases" type="CasesType" />
+  <xs:simpleType name="ComponentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SentenceSeparator" />
+      <xs:enumeration value="WordBreaker" />
+      <xs:enumeration value="TextNormalization" />
+      <xs:enumeration value="Pronunciation" />
+      <xs:enumeration value="SentenceTypeDetector" />
+      <xs:enumeration value="ProsodicBreak" />
+      <xs:enumeration value="BoundaryTone" />
+      <xs:enumeration value="NonUniform" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PartType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="word" type="xs:string" use="optional" />
+        <xs:attribute name="breakOption" type="BreakOptionType" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="BreakOptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="must" />
+      <xs:enumeration value="no" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CategoryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Rule" />
+      <xs:enumeration value="POS" />
+      <xs:enumeration value="Nothing" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="pt-BR">
+
+
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+
+  <phone name="a" id="6">
+    <feature>vowel  sonorant  voiced  central  low</feature>
+  </phone>
+
+  <phone name="ao" id="7">
+    <feature>vowel  sonorant  voiced  back  midheight</feature>
+  </phone>
+
+  <phone name="ax" id="8">
+    <feature>vowel  sonorant  voiced  central  midheight</feature>
+  </phone>
+
+  <phone name="axn" id="9">
+    <feature>vowel  sonorant  voiced  nasal  central  midheight</feature>
+  </phone>
+
+  <phone name="b" id="10">
+    <feature>consonant  voiced  plosive  bilabial</feature>
+  </phone>
+
+  <phone name="ch" id="11">
+    <feature>consonant  affricate  palatal  </feature>
+  </phone>
+
+  <phone name="d" id="12">
+    <feature>consonant  voiced  plosive  alveolar</feature>
+  </phone>
+
+  <phone name="e" id="13">
+    <feature>vowel  sonorant  voiced  front  midheight</feature>
+  </phone>
+
+  <phone name="eh" id="14">
+    <feature>vowel  sonorant  voiced  front  midheight</feature>
+  </phone>
+
+  <phone name="en" id="15">
+    <feature>vowel  sonorant  voiced  nasal  front  midheight</feature>
+  </phone>
+
+  <phone name="f" id="16">
+    <feature>consonant  fricative  labiodental</feature>
+  </phone>
+
+  <phone name="g" id="17">
+    <feature>consonant  voiced  plosive  velar</feature>
+  </phone>
+
+  <phone name="i" id="18">
+    <feature>vowel  sonorant  voiced  front  high</feature>
+  </phone>
+
+  <phone name="in" id="19">
+    <feature>vowel  sonorant  voiced  nasal  front  high</feature>
+  </phone>
+
+  <phone name="j" id="20">
+    <feature>consonant  glide  sonorant  voiced  front  high</feature>
+  </phone>
+
+  <phone name="jh" id="21">
+    <feature>consonant  voiced  affricate  palatal</feature>
+  </phone>
+
+  <phone name="jn" id="22">
+    <feature>consonant  glide  sonorant  voiced  nasal  front  high</feature>
+  </phone>
+
+  <phone name="k" id="23">
+    <feature>consonant  plosive  velar</feature>
+  </phone>
+
+  <phone name="l" id="24">
+    <feature>consonant  voiced  sonorant  liquid  approximant  alveolar</feature>
+  </phone>
+
+  <phone name="lj" id="25">
+    <feature>consonant  voiced  sonorant  liquid  approximant  palatal</feature>
+  </phone>
+
+  <phone name="m" id="26">
+    <feature>consonant  voiced  sonorant  nasal  bilabial</feature>
+  </phone>
+
+  <phone name="n" id="27">
+    <feature>consonant  voiced  sonorant  nasal  alveolar</feature>
+  </phone>
+
+  <phone name="nj" id="28">
+    <feature>consonant  voiced  sonorant  nasal  palatal</feature>
+  </phone>
+
+  <phone name="o" id="29">
+    <feature>vowel  sonorant  voiced  back  midheight</feature>
+  </phone>
+
+  <phone name="on" id="30">
+    <feature>vowel  sonorant  voiced  nasal  back  midheight</feature>
+  </phone>
+
+  <phone name="p" id="31">
+    <feature>consonant  plosive  bilabial</feature>
+  </phone>
+
+  <phone name="r" id="32">
+    <feature>consonant  voiced  sonorant  liquid  alveolar</feature>
+  </phone>
+
+  <phone name="s" id="33">
+    <feature>consonant  fricative  alveolar</feature>
+  </phone>
+
+  <phone name="sh" id="34">
+    <feature>consonant  fricative  palatal</feature>
+  </phone>
+
+  <phone name="t" id="35">
+    <feature>consonant  plosive  alveolar</feature>
+  </phone>
+
+  <phone name="u" id="36">
+    <feature>vowel  sonorant  voiced  back  high</feature>
+  </phone>
+
+  <phone name="un" id="37">
+    <feature>vowel  sonorant  voiced  nasal  back  high</feature>
+  </phone>
+
+  <phone name="v" id="38">
+    <feature>consonant  voiced  fricative  labiodental</feature>
+  </phone>
+
+  <phone name="w" id="39">
+    <feature>consonant  glide  sonorant  voiced  back  high</feature>
+  </phone>
+
+  <phone name="wn" id="40">
+    <feature>consonant  glide  sonorant  voiced  nasal  back  high</feature>
+  </phone>
+
+  <phone name="x" id="41">
+    <feature>consonant  voiced  sonorant  fricative  velar</feature>
+  </phone>
+
+  <phone name="z" id="42">
+    <feature>consonant  voiced  fricative  alveolar</feature>
+  </phone>
+
+  <phone name="zh" id="43">
+    <feature>consonant  voiced  fricative  palatal</feature>
+  </phone>
+
+  
+</phoneSet>

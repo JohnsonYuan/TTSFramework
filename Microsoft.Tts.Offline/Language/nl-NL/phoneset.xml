@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<phoneSet version="1.0" xmlns="http://schemas.microsoft.com/tts" lang="nl-NL">
+  <phone name="&amp;" id="1">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-" id="2">
+    <feature>syllable</feature>
+  </phone>
+  <phone name="-sil-" id="3">
+    <feature>silence</feature>
+  </phone>
+  <phone name="1" id="4">
+    <feature>mainstress</feature>
+  </phone>
+  <phone name="2" id="5">
+    <feature>substress</feature>
+  </phone>
+  <phone name="a" id="6">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="aa" id="7">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="an" id="8">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="au" id="9">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="b" id="10">
+    <feature>consonant voiced plosive bilabial</feature>
+  </phone>
+  <phone name="ch" id="11">
+    <feature>consonant velar fricative</feature>
+  </phone>
+  <phone name="d" id="12">
+    <feature>consonant voiced plosive alveolar</feature>
+  </phone>
+  <phone name="e" id="13">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="ee" id="14">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="eh" id="15">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="ei" id="16">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="en" id="17">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="eu" id="18">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="f" id="19">
+    <feature>consonant fricative labiodental</feature>
+  </phone>
+  <phone name="g" id="20">
+    <feature>consonant voiced velar fricative</feature>
+  </phone>
+  <phone name="gs" id="21">
+    <feature>consonant glottal plosive</feature>
+  </phone>
+  <phone name="h" id="22">
+    <feature>consonant voiceless glottal fricative</feature>
+  </phone>
+  <phone name="hg" id="23">
+    <feature>consonant voiced velar plosive</feature>
+  </phone>
+  <phone name="i" id="24">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="ie" id="25">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="j" id="26">
+    <feature>consonant voiced palatal approximant</feature>
+  </phone>
+  <phone name="k" id="27">
+    <feature>consonant plosive velar</feature>
+  </phone>
+  <phone name="l" id="28">
+    <feature>consonant voiced sonorant alveolar lateral approximant</feature>
+  </phone>
+  <phone name="m" id="29">
+    <feature>consonant voiced sonorant bilabial nasal</feature>
+  </phone>
+  <phone name="n" id="30">
+    <feature>consonant voiced sonorant alveolar nasal</feature>
+  </phone>
+  <phone name="ng" id="31">
+    <feature>consonant voiced sonorant velar nasal</feature>
+  </phone>
+  <phone name="o" id="32">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="oe" id="33">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="oh" id="34">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="on" id="35">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="oo" id="36">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="p" id="37">
+    <feature>consonant plosive bilabial</feature>
+  </phone>
+  <phone name="r" id="38">
+    <feature>consonant voiced alveolar trill</feature>
+  </phone>
+  <phone name="s" id="39">
+    <feature>consonant fricative alveolar</feature>
+  </phone>
+  <phone name="sh" id="40">
+    <feature>consonant fricative postalveolar</feature>
+  </phone>
+  <phone name="t" id="41">
+    <feature>consonant plosive alveolar</feature>
+  </phone>
+  <phone name="u" id="42">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="uh" id="43">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="ui" id="44">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="un" id="46">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="uu" id="47">
+    <feature>vowel voiced sonorant</feature>
+  </phone>
+  <phone name="uw" id="48">
+    <feature>consonant voiced labio-velar approximant</feature>
+  </phone>
+  <phone name="v" id="49">
+    <feature>consonant voiced fricative labiodental</feature>
+  </phone>
+  <phone name="w" id="50">
+    <feature>consonant voiceless labiodental approximant</feature>
+  </phone>
+  <phone name="z" id="51">
+    <feature>consonant voiced fricative alveolar</feature>
+  </phone>
+  <phone name="zh" id="52">
+    <feature>consonant voiced fricative postalveolar</feature>
+  </phone>
+</phoneSet>
