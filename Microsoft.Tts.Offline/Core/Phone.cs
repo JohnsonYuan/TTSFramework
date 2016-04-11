@@ -128,6 +128,11 @@ namespace Microsoft.Tts.Offline.Core
         Low = (1 << 20),
 
         /// <summary>
+        /// MidLow.
+        /// </summary>
+        MidLow = Low,
+
+        /// <summary>
         /// Front.
         /// </summary>
         Front = (1 << 21),
@@ -166,6 +171,42 @@ namespace Microsoft.Tts.Offline.Core
         /// Approximant.
         /// </summary>
         Approximant = Liquid | Glide,
+
+        /// <summary>
+        /// Trill.
+        /// </summary>
+        Trill = ((long)1 << 33),
+
+        /// <summary>
+        /// Tap.
+        /// </summary>
+        Tap = ((long)1 << 34),
+
+        /// <summary>
+        /// Lateral.
+        /// </summary>
+        Lateral = ((long)1 << 35),
+
+        /// <summary>
+        /// Postalveolar.
+        /// </summary>
+        Postalveolar = ((long)1 << 36),
+
+        /// <summary>
+        /// Retroflex.
+        /// </summary>
+        Retroflex = ((long)1 << 37),
+
+        /// <summary>
+        /// Uvular.
+        /// </summary>
+        Uvular = ((long)1 << 38),
+
+        /// <summary>
+        /// Pharyngeal.
+        /// </summary>
+        Pharyngeal = ((long)1 << 39),
+
         #endregion
 
         #region TTS specific features
@@ -345,6 +386,14 @@ namespace Microsoft.Tts.Offline.Core
         public bool IsSonorant
         {
             get { return _features.Contains(PhoneFeature.Sonorant); }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether Nasal.
+        /// </summary>
+        public bool IsNasal
+        {
+            get { return _features.Contains(PhoneFeature.Nasal); }
         }
 
         /// <summary>

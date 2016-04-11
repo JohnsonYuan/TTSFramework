@@ -146,6 +146,8 @@ namespace Microsoft.Tts.ServiceProvider.Extension
                         FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_ACCENTED_SYLL_NUM_BEFORE_CURR_SYLL ||
                         FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_ACCENTED_SYLL_NUM_AFTER_CURR_SYLL ||
                         FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_ACCENT ||
+                        FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_TOBI_ACCENT ||
+                        FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_IS_ACCENTED ||
                         FeatureMetas[i].Property == TtsFeatureProperty.TTS_FEATURE_PROPERTY_TOBI_FINAL_BOUNDARY_TONE))
                 {
                     NeedToBI = true;
@@ -992,6 +994,9 @@ namespace Microsoft.Tts.ServiceProvider.Extension
                     Helper.NeutralFormat("Invalid phone found in sentence \"{0}\" for word \"{1}\"",
                         scriptWord.Sentence.ScriptItem.Id, scriptWord.Grapheme));
             }
+
+            word.TextOffset = (uint)scriptWord.OffsetInString;
+            word.TextLength = (uint)scriptWord.LengthInString;
 
             return count;
         }

@@ -19,6 +19,8 @@ namespace Microsoft.Tts.Offline.Compiler
     using System.Text.RegularExpressions;
     using Microsoft.Tts.Offline.Common;
     using Microsoft.Tts.Offline.Utility;
+    using Microsoft.Tts.ServiceProvider;
+    using Microsoft.Tts.ServiceProvider.BaseUtils;
 
     /// <summary>
     /// Word breaker error definition.
@@ -40,7 +42,7 @@ namespace Microsoft.Tts.Offline.Compiler
         /// {1}: line number
         /// {2}: line content.
         /// </summary>
-        [ErrorAttribute(Message = "Invalid line (line number: {1}) \"{2}\" in PostWordBreaker data file '{0}' : {4}",
+        [ErrorAttribute(Message = "Invalid line (line number: {1}) \"{2}\" in PostWordBreaker data file '{0}' : {3}",
             Severity = ErrorSeverity.MustFix)]
         InvalidLine,
     }
@@ -53,6 +55,7 @@ namespace Microsoft.Tts.Offline.Compiler
         private const int MaxGrams = 5;
         private const string PairSeparator = "=>";
         private const string WordListSeparator = ",";
+        private const int TrieAlign = 4;
 
         /// <summary>
         /// Prevents a default instance of the <see cref="PostWordBreakerCompiler"/> class from being created.
@@ -67,6 +70,7 @@ namespace Microsoft.Tts.Offline.Compiler
         /// <param name="postWordBreakerDataFile">Path of post word breaker data file.</param>
         /// <param name="outputStream">Output Stream.</param>
         /// <returns>ErrorSet.</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Ignore.")]
         public static ErrorSet Compile(string postWordBreakerDataFile, Stream outputStream)
         {
             if (string.IsNullOrEmpty(postWordBreakerDataFile))
@@ -88,7 +92,8 @@ namespace Microsoft.Tts.Offline.Compiler
             {
                 BinaryWriter outputBinaryWriter = new BinaryWriter(outputStream, Encoding.Unicode);
                 List<string> fileLines = new List<string>(Helper.FileLines(postWordBreakerDataFile, Encoding.Unicode));
-                List<string> wordList = new List<string>();
+                List<string> patternWordList = new List<string>();
+                Dictionary<string, string> pattern2Replace = new Dictionary<string, string>();
 
                 // Load words from raw data file to a word list
                 for (int i = 0; i < fileLines.Count; ++i)
@@ -113,8 +118,8 @@ namespace Microsoft.Tts.Offline.Compiler
                                 new string[] { PairSeparator }, StringSplitOptions.RemoveEmptyEntries);
                             if (segments.Length == 2)
                             {
-                                segments[0] = segments[0].Trim();
-                                segments[1] = segments[1].Trim();
+                                segments[0] = segments[0].Replace(" ", string.Empty);
+                                segments[1] = segments[1].Replace(" ", string.Empty);
 
                                 string[] patternWords = segments[0].Split(
                                     new string[] { WordListSeparator }, StringSplitOptions.RemoveEmptyEntries);
@@ -137,56 +142,11 @@ namespace Microsoft.Tts.Offline.Compiler
                                 }
                                 else
                                 {
-                                    bool spaceInsideWord = false;
-                                    for (int j = 0; j < patternWords.Length; ++j)
-                                    {
-                                        patternWords[j] = patternWords[j].Trim();
-                                        if (patternWords[j].Contains(" "))
-                                        {
-                                            spaceInsideWord = true;
-                                            break;
-                                        }
-                                    }
+                                    patternWordList.Add(segments[0]);
 
-                                    if (!spaceInsideWord)
-                                    {
-                                        for (int j = 0; j < replacementWords.Length; ++j)
-                                        {
-                                            replacementWords[j] = replacementWords[j].Trim();
-                                            if (replacementWords[j].Contains(" "))
-                                            {
-                                                spaceInsideWord = true;
-                                                break;
-                                            }
-                                        }
-                                    }
-
-                                    if (!spaceInsideWord)
-                                    {
-                                        // Pattern and replacement must have same count of characters
-                                        if (string.Join(string.Empty, patternWords) == string.Join(string.Empty, replacementWords))
-                                        {
-                                            wordList.AddRange(patternWords);
-                                            wordList.Add(string.Empty);
-
-                                            // Replace wild characters (*, ?) in replacement words to placeholders (/1, /2)
-                                            WildCharToPlaceholder(replacementWords);
-                                            wordList.AddRange(replacementWords);
-                                            wordList.Add(string.Empty);
-                                        }
-                                        else
-                                        {
-                                            errorSet.Add(PostWordBreakerCompilerError.InvalidLine,
-                                                postWordBreakerDataFile, i.ToString(), fileLines[i],
-                                                "Pattern and replacement must have same content.");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        errorSet.Add(PostWordBreakerCompilerError.InvalidLine,
-                                            postWordBreakerDataFile, i.ToString(), fileLines[i],
-                                            "White space is not allowed to be inside a word.");
-                                    }
+                                    // Replace wild characters (*, ?) in replacement words to placeholders (/1, /2)
+                                    WildCharToPlaceholder(ref segments[1]);
+                                    pattern2Replace.Add(segments[0], segments[1]);
                                 }
                             }
                             else
@@ -205,57 +165,111 @@ namespace Microsoft.Tts.Offline.Compiler
                     }
                 }
 
-                List<int> offsetList = new List<int>();
+                List<int> replaceWordOffsetList = new List<int>();
+                TrieTree trieTree = new TrieTree(patternWordList);
+
+                // sorted by trie id
+                List<string> sortedReplaceWordList = SortReplaceWordList(pattern2Replace, trieTree);
+
                 using (StringPool stringPool = new StringPool())
                 {
                     // Put the words from word list to string pool
-                    StringPool.WordsToStringPool(wordList, stringPool, offsetList);
+                    StringPool.WordsToStringPool(sortedReplaceWordList, stringPool, replaceWordOffsetList);
 
                     // Start writing binary to output stream
+                    uint trieOffset = 0;
+                    uint trieSize = 0;
 
-                    // Write table count
-                    outputBinaryWriter.Write((uint)1);
+                    // Write TrieTree offset and size 
+                    outputBinaryWriter.Write(trieOffset);
+                    outputBinaryWriter.Write(trieSize);
 
-                    // Write word count in each table
-                    outputBinaryWriter.Write((uint)wordList.Count);
+                    // Write replace word count 
+                    outputBinaryWriter.Write((uint)sortedReplaceWordList.Count);
 
                     // Write offset of each word
-                    offsetList.ForEach(x => outputBinaryWriter.Write((uint)x));
+                    replaceWordOffsetList.ForEach(x => outputBinaryWriter.Write((uint)x));
 
                     // Write the strings from string pool
                     byte[] stringBuffer = stringPool.ToArray();
                     outputBinaryWriter.Write(stringBuffer, 0, stringBuffer.Length);
+
+                    PadBytes(outputBinaryWriter, TrieAlign);
+
+                    trieOffset = (uint)outputBinaryWriter.BaseStream.Position;
+                    outputBinaryWriter.Write(trieTree.GetTrieData());
+                    trieSize = (uint)(outputBinaryWriter.BaseStream.Position - trieOffset);
+
+                    outputBinaryWriter.Seek(0, SeekOrigin.Begin);
+                    outputBinaryWriter.Write(trieOffset);
+                    outputBinaryWriter.Write(trieSize);
+
+                    outputBinaryWriter.Flush();
                 }
             }
 
             return errorSet;
         }
 
+        private static int PadBytes(BinaryWriter writer, int alignment)
+        {
+            int padCount = 0;
+            var position = writer.BaseStream.Position;
+
+            if (position % alignment != 0)
+            {
+                padCount = (int)(alignment - (position % alignment));
+                writer.Write(new byte[padCount]);
+            }
+
+            return padCount;
+        }
+
         /// <summary>
         /// Replace the wild characters (*, ?) in given string array to placeholders (/1, /2).
         /// </summary>
-        /// <param name="words">Input string array, also the output string array.</param>
-        private static void WildCharToPlaceholder(string[] words)
+        /// <param name="word">Input string array, also the output string array.</param>
+        private static void WildCharToPlaceholder(ref string word)
         {
             int wildCharOrder = 0;
-            for (int i = 0; i < words.Length; ++i)
-            {
-                string updatedWord = string.Empty;
-                foreach (char character in words[i])
-                {
-                    if (character == '*' || character == '?')
-                    {
-                        ++wildCharOrder;
-                        updatedWord += "/" + wildCharOrder;
-                    }
-                    else
-                    {
-                        updatedWord += character;
-                    }
-                }
 
-                words[i] = updatedWord;
+            string updatedWord = string.Empty;
+            foreach (char character in word)
+            {
+                if (character == '*' || character == '?')
+                {
+                    ++wildCharOrder;
+                    updatedWord += "/" + wildCharOrder;
+                }
+                else
+                {
+                    updatedWord += character;
+                }
             }
+
+            word = updatedWord;
+        }
+
+        /// <summary>
+        /// Sort the replace word list using Trie Tree id.
+        /// </summary>
+        /// <param name="pattern2Repalce">PatternWord:key, ReplaceWord:Value.</param>
+        /// <param name="trieTree">Trie tree build by pattern word.</param>
+        /// <returns>SortedReplaceWordList.</returns>
+        private static List<string> SortReplaceWordList(Dictionary<string, string> pattern2Repalce, TrieTree trieTree)
+        {
+            List<string> sortedRepalceWordList = new List<string>();
+
+            for (int i = 0; i < pattern2Repalce.Count; i++)
+            {
+               string word = trieTree.ID2Word(i);
+               if (pattern2Repalce.ContainsKey(word))
+               {
+                   sortedRepalceWordList.Add(pattern2Repalce[word]);
+               }
+            }
+
+            return sortedRepalceWordList;
         }
     }
 }

@@ -181,7 +181,7 @@ namespace Microsoft.Tts.Offline.Utility
             }
 
             LoadSchemaIncludes(schema);
-             
+
             return schema;
         }
 
@@ -195,8 +195,7 @@ namespace Microsoft.Tts.Offline.Utility
             bool result = true;
             foreach (char currentCharacter in text)
             {
-                if ((currentCharacter >= InvalidXmlCharStart && currentCharacter <= InvalidXmlCharEnd) &&
-                    (!ExcludeInvalidXmlChar.Contains(currentCharacter)))
+                if (!IsValidXMLChar(currentCharacter))
                 {
                     result = false;
                     break;
@@ -204,6 +203,63 @@ namespace Microsoft.Tts.Offline.Utility
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Whether a given character is allowed by XML 1.0.
+        /// Reference: https://www.w3.org/TR/2000/REC-xml-20001006#NT-Char.
+        /// </summary>
+        /// <param name="character">Input char.</param>
+        /// <returns>Whether input is valid xml character.</returns>
+        public static bool IsValidXMLChar(char character)
+        {
+            return
+                (character >= InvalidXmlCharStart && character <= InvalidXmlCharEnd) &&
+                (!ExcludeInvalidXmlChar.Contains(character)) ? false : true;
+        }
+
+        /// <summary>
+        /// Remove illegal XML characters from a string.
+        /// </summary>
+        /// <param name="xml">Input xml.</param>
+        /// <returns>Valid xml text.</returns>
+        public static string SanitizeXmlString(string xml)
+        {
+            if (string.IsNullOrEmpty(xml))
+            {
+                throw new ArgumentNullException("xml");
+            }
+
+            int fstInvalidCharIndex = -1;
+
+            for (int i = 0; i < xml.Length; i++)
+            {
+                if (!IsValidXMLChar(xml[i]))
+                {
+                    fstInvalidCharIndex = i;
+                    break;
+                }
+            }
+
+            if (fstInvalidCharIndex == -1)
+            {
+                return xml;
+            }
+            else
+            {
+                // first append the valid string, and then skip the first invalid char
+                StringBuilder buffer = new StringBuilder(xml.Substring(0, fstInvalidCharIndex), xml.Length);
+
+                for (int i = fstInvalidCharIndex + 1; i < xml.Length; i++)
+                {
+                    if (IsValidXMLChar(xml[i]))
+                    {
+                        buffer.Append(xml[i]);
+                    }
+                }
+
+                return buffer.ToString();
+            }
         }
 
         /// <summary>
@@ -711,5 +767,5 @@ namespace Microsoft.Tts.Offline.Utility
             _lineInfo = null;
         }
         #endregion
-    } 
+    }
 }

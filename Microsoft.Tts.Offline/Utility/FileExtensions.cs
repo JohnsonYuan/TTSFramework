@@ -299,6 +299,12 @@ namespace Microsoft.Tts.Offline.Utility
         /// The extension name of pitch marker file.
         /// </summary>
         public const string PitchMarkerFile = "pitchmarker";
+
+        /// <summary>
+        /// The extension name of NN model, which contains NN model data.
+        /// </summary>
+        public const string NNModel = "nnm";
+
         #endregion
 
         #region Methods

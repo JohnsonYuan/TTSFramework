@@ -64,7 +64,7 @@ namespace Microsoft.Tts.UI.Controls.Trajectory
             Debug.Assert(data.StaticTrajectory is VisualMultiTrajectory);
             _trajectoryData = data.StaticTrajectory as VisualMultiTrajectory;
         }
-
+        
         /// <summary>
         /// Dispose.
         /// </summary>

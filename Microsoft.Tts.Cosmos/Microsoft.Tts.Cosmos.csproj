@@ -38,6 +38,14 @@
     <QCustomInput Include="$(INETROOT)\private\dev\speech\tts\shenzhou\tools\Offline\Extern\ScopeSDK\i386\*.dll">
       <Visible>false</Visible>
     </QCustomInput>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.cosmos\$(O)\microsoft.tts.cosmos.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
   </ItemGroup>
   <ItemGroup>
     <!--Assembly References-->
@@ -52,6 +60,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\VcClient.dll" />
     <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\TmocVcConfig.cs" />
@@ -119,22 +130,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD_PRODUCT)'!='NT'">
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).xml">
+    <Binplace Include="$(OutputPath)$(AssemblyName).xml">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release\symbols.pri\$(PDBFolder)</DestinationFolder>
     </Binplace>
     <Robocopy Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.dll">

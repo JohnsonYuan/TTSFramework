@@ -233,6 +233,11 @@ namespace Microsoft.Tts.Offline.Core
             set { _attributeSchema = value; }
         }
 
+        /// <summary>
+        /// Gets or sets base lexicon relative file path.
+        /// </summary>
+        public string BaseLexiconRelativeFilePath { get; set; }
+
         #endregion
 
         #region Public static methods
@@ -1090,10 +1095,10 @@ namespace Microsoft.Tts.Offline.Core
                 xmlDoc.DocumentElement.FirstChild.LocalName == "include" &&
                 xmlDoc.DocumentElement.FirstChild.Attributes["href"] != null)
             {
-                string xmlInclude = xmlDoc.DocumentElement.FirstChild.Attributes["href"].InnerText;
-                if (!string.IsNullOrEmpty(xmlInclude))
+                BaseLexiconRelativeFilePath = xmlDoc.DocumentElement.FirstChild.Attributes["href"].InnerText;
+                if (!string.IsNullOrEmpty(BaseLexiconRelativeFilePath))
                 {
-                    baseLexiconFilePath = Helper.GetFullPath(Path.GetDirectoryName(this.FilePath), xmlInclude);
+                    baseLexiconFilePath = Helper.GetFullPath(Path.GetDirectoryName(this.FilePath), BaseLexiconRelativeFilePath);
                 }
             }
 
@@ -1132,6 +1137,12 @@ namespace Microsoft.Tts.Offline.Core
         /// <param name="contentController">Content controller.</param>
         protected override void PerformanceSave(XmlWriter writer, object contentController)
         {
+            ContentControler lexiconContentController = contentController as ContentControler;
+            if (lexiconContentController == null)
+            {
+                lexiconContentController = new ContentControler();
+            }
+
             writer.WriteStartElement("lexiconWords", "http://schemas.microsoft.com/tts");
             writer.WriteAttributeString("lang", Localor.LanguageToString(Language));
 
@@ -1140,8 +1151,22 @@ namespace Microsoft.Tts.Offline.Core
                 writer.WriteAttributeString("domain", DomainTag);
             }
 
+            if (!string.IsNullOrEmpty(BaseLexiconRelativeFilePath))
+            {
+                writer.WriteStartElement("include");
+                writer.WriteAttributeString("href", BaseLexiconRelativeFilePath);
+                writer.WriteEndElement();
+            }
+
+            IEnumerable<LexicalItem> lexiconItems = _items.Values;
+
+            if (lexiconContentController.DontSaveBaselineLexicon)
+            {
+                lexiconItems = _items.Values.Where(p => p.Origin == LexiconOrigin.Current);
+            }
+
             // Go through each lexicon item in the lexicon
-            foreach (LexicalItem lexiconItem in _items.Values)
+            foreach (LexicalItem lexiconItem in lexiconItems)
             {
                 if (!string.IsNullOrEmpty(DomainTag))
                 {
@@ -1603,6 +1628,13 @@ namespace Microsoft.Tts.Offline.Core
             /// Gets or sets a value indicating whether Speicfy that all lexicon change history need be kept.
             /// </summary>
             public bool IsHistoryCheckingMode { get; set; }
+
+            /// <summary>
+            /// Gets or sets a value indicating whether save baseline lexicon items as well.
+            /// True : don't save baseline origin lexicon items.
+            /// False: save baseline origin lexicon items.
+            /// </summary>
+            public bool DontSaveBaselineLexicon { get; set; }
         }
     }
 }

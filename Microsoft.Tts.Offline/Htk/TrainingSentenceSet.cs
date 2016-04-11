@@ -462,7 +462,7 @@ namespace Microsoft.Tts.Offline.Htk
                     labelLine.Segment = null;
                     break;
                 case LabelAlignOptions.PhonemeAlign:
-                    if (StateAlignments == null)
+                    if (_stateSegments == null)
                     {
                         throw new InvalidOperationException("Unsupported operation since there is no alignment data in Candidate");
                     }
@@ -874,7 +874,8 @@ namespace Microsoft.Tts.Offline.Htk
         /// </summary>
         /// <param name="mlfFileName">The name of target master label file.</param>
         /// <param name="alignmentDir">The directory of the alignment files.</param>
-        public static void ConvertMlfToLabelFiles(string mlfFileName, string alignmentDir)
+        /// <param name="alignOption">The given alignment data.</param>
+        public static void ConvertMlfToLabelFiles(string mlfFileName, string alignmentDir, LabelAlignOptions alignOption)
         {
             TrainingSentenceSet set = new TrainingSentenceSet();
             set.Load(mlfFileName);
@@ -884,7 +885,7 @@ namespace Microsoft.Tts.Offline.Htk
                 string labelFile = FileExtensions.AppendExtensionName(pair.Key, FileExtensions.LabelFile);
                 using (StreamWriter sw = new StreamWriter(Path.Combine(alignmentDir, labelFile)))
                 {
-                    pair.Value.Save(sw, LabelTypeOptions.FullContext, LabelAlignOptions.StateAlign, true);
+                    pair.Value.Save(sw, LabelTypeOptions.FullContext, alignOption, true);
                 }
             }
         }

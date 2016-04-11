@@ -118,6 +118,7 @@ namespace Microsoft.Tts.Offline.Core
         #region Fields
         private string _name;
         private int _id;
+        private float _mean, _invStdDev;
         private Collection<AttributeValue> _values = new Collection<AttributeValue>();
         #endregion
 
@@ -155,6 +156,24 @@ namespace Microsoft.Tts.Offline.Core
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets Category mean.
+        /// </summary>
+        public float Mean
+        {
+            get { return _mean; }
+            set { _mean = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets Category InvStdDev.
+        /// </summary>
+        public float InvStdDev
+        {
+            get { return _invStdDev; }
+            set { _invStdDev = value; }
         }
 
         /// <summary>
@@ -200,6 +219,7 @@ namespace Microsoft.Tts.Offline.Core
         #region Fields
         private string _name;
         private int _id;
+        private float _mean, _invStdDev;
         private bool _posTagging;
         private Collection<AttributeCategory> _categories;
         #endregion
@@ -237,6 +257,24 @@ namespace Microsoft.Tts.Offline.Core
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets Category mean.
+        /// </summary>
+        public float Mean
+        {
+            get { return _mean; }
+            set { _mean = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets Category InvStdDev.
+        /// </summary>
+        public float InvStdDev
+        {
+            get { return _invStdDev; }
+            set { _invStdDev = value; }
         }
 
         /// <summary>
@@ -602,8 +640,9 @@ namespace Microsoft.Tts.Offline.Core
             XmlNodeList categoryNodeList = xmlDoc.DocumentElement.SelectNodes(
                 @"//lexAttributeTable/Category", nsmgr);
             Debug.Assert(categoryNodeList.Count > 0);
+ 
             foreach (XmlNode categoryNode in categoryNodeList)
-            {
+            { 
                 AttributeCategory category = LoadXmlCategoryNode(categoryNode);
                 Debug.Assert(category != null);
                 _categories.Add(category);
@@ -987,39 +1026,64 @@ namespace Microsoft.Tts.Offline.Core
                 Debug.Assert(categoryNode.Attributes["ID"] != null);
                 category.Id = int.Parse(categoryNode.Attributes["ID"].InnerText.Trim(), 
                     NumberFormatInfo.InvariantInfo);
-                Debug.Assert(categoryNode.HasChildNodes);
-                foreach (XmlNode valueNode in categoryNode.ChildNodes)
+                
+                // Permit category load mean and invStdDev
+                if (categoryNode.Attributes["Mean"] != null)
                 {
-                    if (valueNode.NodeType == XmlNodeType.Comment)
-                    {
-                        continue;
-                    }
+                    category.Mean = float.Parse(categoryNode.Attributes["Mean"].InnerText.Trim(),
+                         NumberFormatInfo.InvariantInfo);
+                }
+                else
+                {
+                    category.Mean = 0.0f;
+                }
 
-                    Debug.Assert(valueNode.Name.Equals("Value"));
-                    if (valueNode.Name.Equals("Value"))
+                if (categoryNode.Attributes["InvStdDev"] != null)
+                {
+                    category.InvStdDev = float.Parse(categoryNode.Attributes["InvStdDev"].InnerText.Trim(),
+                       NumberFormatInfo.InvariantInfo);
+                }
+                else
+                {
+                    category.InvStdDev = 1.0f;
+                }
+
+                // Permit category dosen't have child
+                if (categoryNode.HasChildNodes)
+                {
+                    foreach (XmlNode valueNode in categoryNode.ChildNodes)
                     {
-                        AttributeValue value = new AttributeValue();
-                        Debug.Assert(valueNode.Attributes["name"] != null);
-                        value.Name = valueNode.Attributes["name"].InnerText.Trim();
-                        Debug.Assert(valueNode.Attributes["ID"] != null);
-                        value.Id = int.Parse(valueNode.Attributes["ID"].InnerText.Trim(),
-                            NumberFormatInfo.InvariantInfo);
-                        if (valueNode.Attributes["posTagging"] != null)
+                        if (valueNode.NodeType == XmlNodeType.Comment)
                         {
-                            value.PosTagging = bool.Parse(valueNode.Attributes["posTagging"].InnerText.Trim());
+                            continue;
                         }
 
-                        if (valueNode.HasChildNodes)
+                        Debug.Assert(valueNode.Name.Equals("Value"));
+                        if (valueNode.Name.Equals("Value"))
                         {
-                            value.UpdateCategories(new Collection<AttributeCategory>());
-                            foreach (XmlNode subCategoryNode in valueNode.ChildNodes)
+                            AttributeValue value = new AttributeValue();
+                            Debug.Assert(valueNode.Attributes["name"] != null);
+                            value.Name = valueNode.Attributes["name"].InnerText.Trim();
+                            Debug.Assert(valueNode.Attributes["ID"] != null);
+                            value.Id = int.Parse(valueNode.Attributes["ID"].InnerText.Trim(),
+                                NumberFormatInfo.InvariantInfo);
+                            if (valueNode.Attributes["posTagging"] != null)
                             {
-                                AttributeCategory subCategory = LoadXmlCategoryNode(subCategoryNode);
-                                value.Categories.Add(subCategory);
+                                value.PosTagging = bool.Parse(valueNode.Attributes["posTagging"].InnerText.Trim());
                             }
-                        }
 
-                        category.Values.Add(value);
+                            if (valueNode.HasChildNodes)
+                            {
+                                value.UpdateCategories(new Collection<AttributeCategory>());
+                                foreach (XmlNode subCategoryNode in valueNode.ChildNodes)
+                                {
+                                    AttributeCategory subCategory = LoadXmlCategoryNode(subCategoryNode);
+                                    value.Categories.Add(subCategory);
+                                }
+                            }
+
+                            category.Values.Add(value);
+                        }
                     }
                 }
             }
@@ -1040,13 +1104,15 @@ namespace Microsoft.Tts.Offline.Core
                 writer.WriteStartElement("Category");
                 writer.WriteAttributeString("name", category.Name);
                 writer.WriteAttributeString("ID", category.Id.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("Mean", category.Mean.ToString(CultureInfo.InvariantCulture));
+                writer.WriteAttributeString("InvStdDev", category.InvStdDev.ToString(CultureInfo.InvariantCulture));
                 if (category.Values != null)
                 {
                     foreach (AttributeValue value in category.Values)
                     {
                         writer.WriteStartElement("Value");
                         writer.WriteAttributeString("name", value.Name);
-                        writer.WriteAttributeString("ID", value.Id.ToString(CultureInfo.InvariantCulture));
+                        writer.WriteAttributeString("ID", value.Id.ToString(CultureInfo.InvariantCulture)); 
                         if (value.PosTagging)
                         {
                             writer.WriteAttributeString("posTagging", 

@@ -75,13 +75,6 @@ namespace Microsoft.Tts.ScriptSynthesizer
                 throw new ArgumentNullException("serviceProvider");
             }
 
-            if (!serviceProvider.Engine.IsHts)
-            {
-                string message = string.Format(CultureInfo.InvariantCulture, 
-                    "Only support Hts engine.");
-                throw new NotSupportedException(message);
-            }
-
             // commonConfig can be null.
             // scriptFeatureImportConfig can be null.
             // customizedFeaturePluginManager can be null.

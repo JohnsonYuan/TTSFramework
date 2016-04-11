@@ -24,6 +24,22 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\Framework\Microsoft.Tts.ScriptSynthesizer\$(O)\Microsoft.Tts.ScriptSynthesizer.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.research\$(O)\microsoft.tts.research.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.serviceprovider.extension\$(O)\microsoft.tts.serviceprovider.extension.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,6 +53,11 @@
     <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.serviceprovider.extension\Microsoft.ServiceProvider.Extension.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.research\Microsoft.Tts.Research.csproj" />
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.serviceprovider.extension\Microsoft.ServiceProvider.Extension.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="ScriptSynthesizer.cs" />
     <Compile Include="ScriptSynthesizerCommonConfig.cs" />
     <Compile Include="ScriptFeatureImportConfig.cs" />
@@ -46,13 +67,13 @@
     <Compile Include="MixedVoiceSynthesizerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
   </ItemGroup>

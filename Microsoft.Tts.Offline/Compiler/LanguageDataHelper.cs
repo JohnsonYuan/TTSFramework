@@ -463,6 +463,11 @@ namespace Microsoft.Tts.Offline.Compiler.LanguageData
         public const string RNNPolyphonyModel = RawDataName.RNNPolyphonyModel;
 
         /// <summary>
+        /// CRF Sentence type detector model.
+        /// </summary>
+        public const string CRFSentTypeDetectorModel = "CRFSentTypeDetectorModel";
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="ModuleDataName"/> class from being created..
         /// </summary>
         private ModuleDataName()
@@ -581,6 +586,7 @@ namespace Microsoft.Tts.Offline.Compiler.LanguageData
             new DataGuid(ModuleDataName.PhoneEventData,      "9ABDA282-9734-48C8-BA24-F6B55F7BE721"),
             new DataGuid(ModuleDataName.PolyphonyModel,      "D49F77B9-8982-4860-9D5D-55919CF4F54E"),
             new DataGuid(ModuleDataName.RNNPolyphonyModel,   "6DE01F86-0DA8-4A23-830B-3730F0325198"),
+            new DataGuid(ModuleDataName.CRFSentTypeDetectorModel, "3292D97F-C52C-4143-AA89-DF847F5C4406")
         };
 
         /// <summary>

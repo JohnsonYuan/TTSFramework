@@ -977,8 +977,7 @@ namespace Microsoft.Tts.Offline.Compiler
                 ModuleDataName.PhoneSet,
                 ModuleDataName.PosTaggerPos,
                 ModuleDataName.Lexicon,
-                ModuleDataName.CharTable,
-                ModuleDataName.UnitGenerator
+                ModuleDataName.CharTable
             };
 
             foreach (string moduleDataName in necessaryModuleDataNames)

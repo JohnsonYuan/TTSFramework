@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(SDROOT)\private\dev\speech\tts\shenzhou\common\Common.Proj.inc" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" />
-  <!--Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" /--> 
+  <!--Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))\include.props" Condition="'$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), include.props))' != ''" /-->
   <PropertyGroup>
     <GeneratedFromTemplate>BingMsBuild4</GeneratedFromTemplate>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -29,6 +29,16 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\framework\Microsoft.Tts.UI\$(O)\Microsoft.Tts.UI.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="$(TTS_ROOT)\external\speechfx\System.Speech.dll" />
@@ -44,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Acoustic\AcousticEditor.xaml.cs">
@@ -387,22 +400,22 @@
     </Binplace>
   </ItemGroup> -->
   <ItemGroup>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\frontend</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release\symbols.pri\$(PDBFolder)</DestinationFolder>
     </Binplace>
   </ItemGroup>

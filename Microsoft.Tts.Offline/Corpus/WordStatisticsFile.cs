@@ -165,14 +165,27 @@ namespace Microsoft.Tts.Offline
                 if (isContentStart && !Regex.Match(wordInfo.Key, InvalidWordPattern).Success &&
                     (controller == null || controller.WordTypeMatches(wordInfo.Value.WordType)))
                 {
+                    string key = wordInfo.Key;
+                    string sample = wordInfo.Value.Sample;
+
+                    if (!string.IsNullOrEmpty(key))
+                    {
+                        key = XmlHelper.SanitizeXmlString(key);
+                    }
+
+                    if (!string.IsNullOrEmpty(sample))
+                    {
+                        sample = XmlHelper.SanitizeXmlString(sample);
+                    }
+
                     writer.WriteStartElement(WordNodeName);
                     writer.WriteElementString(FrequencyCoverageScaleNodeName,
                         wordInfo.Value.FrequencyCoverageScale.ToString("N04", CultureInfo.InvariantCulture));
                     writer.WriteElementString(FrequencyNodeName,
                         wordInfo.Value.Frequency.ToString(CultureInfo.InvariantCulture));
-                    writer.WriteElementString(TextNodeName, wordInfo.Key);
+                    writer.WriteElementString(TextNodeName, key);
                     writer.WriteElementString(TypeNodeName, wordInfo.Value.WordType.ToString());
-                    writer.WriteElementString(SampleNodeName, wordInfo.Value.Sample);
+                    writer.WriteElementString(SampleNodeName, sample);
                     writer.WriteEndElement();
                 }
 

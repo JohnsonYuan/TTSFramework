@@ -27,6 +27,7 @@ namespace Microsoft.Tts.Offline.Frontend
     {
         private string _domain = DomainItem.GeneralDomain;
         private List<string> _ruleContent = new List<string>();
+        private List<string> _keyComment = new List<string>();
 
         /// <summary>
         /// Gets or sets Rule entry string such as CurW = ".".
@@ -61,6 +62,15 @@ namespace Microsoft.Tts.Offline.Frontend
         {
             get { return _ruleContent; }
         }
+
+        /// <summary>
+        /// Gets or sets key comment.
+        /// </summary>
+        public List<string> KeyComment
+        {
+            get { return _keyComment; }
+            set { _keyComment = value; }
+        }
     }
 
     /// <summary>
@@ -70,10 +80,12 @@ namespace Microsoft.Tts.Offline.Frontend
     {
         #region Fields
 
-        private const string DeclearKeyRegex = @"^([a-zA-Z]+)[ \t]*#[ \t]*(string|int|(enum.*))[ \t]*;[ \t]*(//.*)?$";
+        private const string DeclearKeyRegex = @"^[ \t]*([a-zA-Z]+)[ \t]*#[ \t]*(string|int|(enum.*))[ \t]*;[ \t]*(//.*)?$";
         private const string CommentLineRegex = @"^[ \t]*//.*";
-        private const string DomainLineRegex = @"^(\[domain=)([a-zA-Z]+)*(\])$";
+        private const string DomainLineRegex = @"^[ \t]*(\[domain=)([a-zA-Z]+)*(\])$";
+        private const string DefaultRuleRegex = @"^[ \t]*All[ \t]*>=[ \t]*0[ \t]*:(.+)[ \t]*$";
 
+        private const string DomainLineFormat = "[domain={0}]";
         private const string RuleEntryStartTag = "CurW";
 
         private List<string> _declearLines = new List<string>();
@@ -98,6 +110,31 @@ namespace Microsoft.Tts.Offline.Frontend
         /// Gets or sets domain tag.
         /// </summary>
         public string DomainTag { get; set; }
+
+        /// <summary>
+        /// Gets the rule items.
+        /// </summary>
+        public Collection<RuleItem> RuleItems
+        {
+            get
+            {
+                return _ruleItems;
+            }
+        }
+
+        #endregion
+
+        #region Public static methods
+
+        /// <summary>
+        /// Indicating whether the line is default rule.
+        /// </summary>
+        /// <param name="line">Line.</param>
+        /// <returns>Whether the line is default rule.</returns>
+        public static bool IsPolyRuleDefaultRule(string line)
+        {
+            return Regex.Match(line, DefaultRuleRegex).Success;
+        }
 
         #endregion
 
@@ -134,7 +171,8 @@ namespace Microsoft.Tts.Offline.Frontend
         /// Load.
         /// </summary>
         /// <param name="filePath">FilePath.</param>
-        public void Load(string filePath)
+        /// <param name="loadComment">Whether load comment line.</param>
+        public void Load(string filePath, bool loadComment = false)
         {
             ////#region Validate parameter
 
@@ -161,6 +199,8 @@ namespace Microsoft.Tts.Offline.Frontend
                 string line = null;
                 string domain = DomainItem.GeneralDomain;
                 RuleItem newItem = null;
+                List<string> keyComment = null;
+
                 while ((line = sr.ReadLine()) != null)
                 {
                     string trimedLine = line.Trim();
@@ -169,7 +209,7 @@ namespace Microsoft.Tts.Offline.Frontend
                         continue;
                     }
 
-                    if (IsComment(trimedLine))
+                    if (IsComment(trimedLine) && !loadComment)
                     {
                         continue;
                     }
@@ -190,10 +230,38 @@ namespace Microsoft.Tts.Offline.Frontend
                     {
                         if (newItem != null)
                         {
+                            if (loadComment &&
+                                newItem.RuleContent.Count > 1)
+                            {
+                                // remove the last comment line from the item, it belongs to next item
+                                int lastIndex = newItem.RuleContent.Count - 1;
+                                while (IsComment(newItem.RuleContent[lastIndex]))
+                                {
+                                    if (keyComment == null)
+                                    {
+                                        keyComment = new List<string>();
+                                    }
+
+                                    keyComment.Add(newItem.RuleContent[lastIndex]);
+
+                                    newItem.RuleContent.RemoveAt(lastIndex);
+
+                                    --lastIndex;
+                                }
+                            }
+
                             _ruleItems.Add(newItem);
                         }
 
                         newItem = new RuleItem();
+
+                        if (loadComment &&
+                            keyComment != null && keyComment.Count > 0)
+                        {
+                            newItem.KeyComment = keyComment;
+                            keyComment = null;
+                        }
+
                         newItem.EntryString = trimedLine;
                         newItem.DomainTag = domain;
                         domain = DomainItem.GeneralDomain;
@@ -217,7 +285,8 @@ namespace Microsoft.Tts.Offline.Frontend
         /// Save.
         /// </summary>
         /// <param name="filePath">FilePath.</param>
-        public void Save(string filePath)
+        /// <param name="writeDomainAndComment">Whethe write the domain and comment line, always use false when used for compile.</param>
+        public void Save(string filePath, bool writeDomainAndComment = false)
         {
             if (string.IsNullOrEmpty(filePath))
             {
@@ -232,9 +301,35 @@ namespace Microsoft.Tts.Offline.Frontend
                     sw.WriteLine(declear);
                 }
 
+                // append two blank line if writeDomainAndComment = true
+                if (writeDomainAndComment)
+                {
+                    sw.WriteLine();
+                    sw.WriteLine();
+                }
+
                 foreach (RuleItem ruleItem in _ruleItems)
                 {
                     sw.WriteLine();
+
+                    if (writeDomainAndComment)
+                    {
+                        if (ruleItem.KeyComment != null &&
+                            ruleItem.KeyComment.Count > 0)
+                        {
+                            foreach (var comment in ruleItem.KeyComment)
+                            {
+                                sw.WriteLine(comment);
+                            }
+                        }
+
+                        string doaminTag = ruleItem.DomainTag;
+                        if (doaminTag != DomainItem.GeneralDomain)
+                        {
+                            sw.WriteLine(Helper.NeutralFormat(DomainLineFormat, doaminTag));
+                        }
+                    }
+
                     sw.WriteLine(ruleItem.EntryString);
                     foreach (string content in ruleItem.RuleContent)
                     {

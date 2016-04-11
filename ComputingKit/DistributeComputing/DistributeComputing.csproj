@@ -23,16 +23,6 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <ProjectReference Include="..\..\Microsoft.Tts.Offline\Microsoft.Tts.Offline.csproj">
-      <Project>{EBCCB321-2FCD-4B3E-BA08-8BD7EA748090}</Project>
-      <Name>Microsoft.Tts.Offline %28common\Framework\Microsoft.Tts.Offline\Microsoft.Tts.Offline%29</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <QCustomInput Include="$(SDROOT)\private\dev\speech\common\tools\static analysis tools\fxcop\v10.0\*.dll">
       <Visible>false</Visible>
     </QCustomInput>
@@ -60,6 +50,24 @@
     <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\settings.stylecop">
       <Visible>false</Visible>
     </QCustomInput>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\framework\computingkit\distributecomputing\$(O)\distributecomputing.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <ProjectReference Include="..\..\Microsoft.Tts.Offline\Microsoft.Tts.Offline.csproj">
+      <Project>{EBCCB321-2FCD-4B3E-BA08-8BD7EA748090}</Project>
+      <Name>Microsoft.Tts.Offline %28common\Framework\Microsoft.Tts.Offline\Microsoft.Tts.Offline%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregatorServer.cs" />
@@ -82,7 +90,7 @@
     <Compile Include="SocketHelper.cs" />
     <Compile Include="UdpMessageEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs"> 
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Properties\Resources.resx</DependentUpon>
@@ -93,15 +101,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Properties\Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>  
+  </ItemGroup>
   <ItemGroup>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
   </ItemGroup>

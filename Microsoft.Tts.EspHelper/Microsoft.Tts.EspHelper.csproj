@@ -24,6 +24,16 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <QCustomInput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomInput>
+  </ItemGroup>
+  <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.esphelper\$(O)\microsoft.tts.esphelper.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -33,17 +43,20 @@
     <ProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <QCustomProjectReference Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\Microsoft.Tts.Offline.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="TtsEspHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
   </ItemGroup>

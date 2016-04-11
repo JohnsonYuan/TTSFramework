@@ -238,6 +238,15 @@ namespace Microsoft.Tts.Font.Hts
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether compile SPS Model for nn.
+        /// </summary>
+        public bool CompileSPSModelForNN
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether needs quantization.
         /// </summary>
         public bool IsNeedQuantize
@@ -1113,7 +1122,17 @@ namespace Microsoft.Tts.Font.Hts
             Helper.ThrowIfNull(font);
             Helper.ThrowIfNull(writer);
             Helper.ThrowIfNull(questionIndexes);
-            uint modelCount = (uint)font.Models.Count;
+
+            uint modelCount = 0;
+            foreach (HmmModelType modelType in font.Models.Keys)
+            {
+                HtsModel model = font.Models[modelType];
+                if (!CompileSPSModelForNN || model.Header.ModelType == HmmModelType.StateDuration || model.Header.ModelType == HmmModelType.PhoneDuration)
+                {
+                    modelCount++;
+                }
+            }
+
             long modelSetLocationsOffset = writer.BaseStream.Position;
             Location[] modelSetLocations = new Location[modelCount];
             uint size = Write(modelSetLocations, writer);
@@ -1123,19 +1142,22 @@ namespace Microsoft.Tts.Font.Hts
             foreach (HmmModelType modelType in font.Models.Keys)
             {
                 HtsModel model = font.Models[modelType];
-                Console.WriteLine("Saving the HMM info from " + HmmNameEncoding.GetModelLabel(modelType) + " model...\n");
-                modelSetLocations[modelIndex].Offset = size;
-                if (xformBandWidths != null && xformBandWidths.ContainsKey(modelType))
+                if (!CompileSPSModelForNN || model.Header.ModelType == HmmModelType.StateDuration || model.Header.ModelType == HmmModelType.PhoneDuration)
                 {
-                    xformBandWidth = (uint)xformBandWidths[modelType];
-                }
-                else
-                {
-                    xformBandWidth = 0;
-                }
+                    Console.WriteLine("Saving the HMM info from " + HmmNameEncoding.GetModelLabel(modelType) + " model...\n");
+                    modelSetLocations[modelIndex].Offset = size;
+                    if (xformBandWidths != null && xformBandWidths.ContainsKey(modelType))
+                    {
+                        xformBandWidth = (uint)xformBandWidths[modelType];
+                    }
+                    else
+                    {
+                        xformBandWidth = 0;
+                    }
 
-                modelSetLocations[modelIndex].Length = Write(model, writer, questionIndexes, font.Questions, xformBandWidth);
-                size += modelSetLocations[modelIndex++].Length;
+                    modelSetLocations[modelIndex].Length = Write(model, writer, questionIndexes, font.Questions, xformBandWidth);
+                    size += modelSetLocations[modelIndex++].Length;
+                }
             }
 
             using (PositionRecover recover = new PositionRecover(writer, modelSetLocationsOffset))
@@ -1167,6 +1189,7 @@ namespace Microsoft.Tts.Font.Hts
 
             model.Header.ModelType = model.Forest.ModelType();
             model.Header.WindowSet = model.WindowSet;
+
             if (model.MmfFile != null)
             {
                 model.Header.Distribution = model.MmfFile.Distribution;
@@ -1287,7 +1310,7 @@ namespace Microsoft.Tts.Font.Hts
                 model.Header.AlgorithmIdOffset = (uint)model.Font.StringPool.Length;
                 model.Font.StringPool.PutString(model.MmfFile.AlgorithmId);
             }
-            
+
             using (PositionRecover recover = new PositionRecover(writer, -modelSize, SeekOrigin.Current))
             {
                 model.Header.Save(writer);

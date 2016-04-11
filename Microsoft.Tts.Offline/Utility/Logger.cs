@@ -671,7 +671,15 @@ namespace Microsoft.Tts.Offline.Utility
         {
             if (!string.IsNullOrEmpty(_format))
             {
-                writer.Write(_format, _args);
+                if (_args == null || _args.Length == 0)
+                {
+                    writer.Write(_format);
+                }
+                else
+                {
+                    writer.Write(_format, _args);
+                }
+
                 if (IsTraced)
                 {
                     Trace.Write(Helper.NeutralFormat(_format, _args));

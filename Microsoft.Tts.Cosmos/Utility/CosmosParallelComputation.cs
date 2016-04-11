@@ -162,6 +162,15 @@ namespace Microsoft.Tts.Cosmos.Utility
         #endregion
 
         /// <summary>
+        /// The SubmitJob() methods to submit job directly.
+        /// </summary>
+        /// <returns>Bollean value.</returns>
+        public bool SubmitJob()
+        {
+            return BroadCast();
+        }
+
+        /// <summary>
         /// The Initialize() methods to initalize the necessary configuration.
         /// </summary>
         /// <returns>Bollean value.</returns>

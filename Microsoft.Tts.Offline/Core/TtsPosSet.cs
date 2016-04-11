@@ -218,6 +218,37 @@ namespace Microsoft.Tts.Offline
         }
 
         /// <summary>
+        /// Whether the two TtsPosSet are identical.
+        /// </summary>
+        /// <param name="left">TtsPosSet left.</param>
+        /// <param name="right">TtsPosSet right.</param>
+        /// <returns>True or false.</returns>
+        public static bool Equals(TtsPosSet left, TtsPosSet right)
+        {
+            if (!Helper.CompareDictionary<string, string>(left.PosCategory, right.PosCategory))
+            {
+                return false;
+            }
+
+            if (!Helper.CompareDictionary<uint, string>(left.IdItems, right.IdItems))
+            {
+                return false;
+            }
+
+            if (!Helper.CompareDictionary<string, uint>(left.Items, right.Items))
+            {
+                return false;
+            }
+
+            if (!left.Schema.Equals(right.Schema))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Add a new POS with name and hexId.
         /// </summary>
         /// <param name="name">Name.</param>

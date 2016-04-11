@@ -255,20 +255,27 @@ namespace Microsoft.Tts.Offline.LexiconProcessor
                 {
                     bool ltsValid = true;
 
+                    ErrorSet errors = new ErrorSet();
+
                     // Firstly, check LTS rule in compiler
                     if (!InCompiler.ExistModuleData(ModuleDataName.LtsRule))
                     {
-                        ErrorSet errors = InCompiler.Compile(ModuleDataName.LtsRule);
-                        if (errors.Contains(ErrorSeverity.MustFix))
-                        {
-                            ltsValid = false;
-                        }
+                        errors = InCompiler.Compile(ModuleDataName.LtsRule);
+                    }
+
+                    // check language specific additional data exist
+                    errors.AddRange(CopyAdditionalData(InLexicon.Language));
+
+                    if (errors.Contains(ErrorSeverity.MustFix))
+                    {
+                        ltsValid = false;
                     }
 
                     if (ltsValid)
                     {
                         // Firstly, Prune by LTS rule
                         _outEngineData = Path.Combine(this.IntermediateDataDirectory, "MSTTSLocXxXX.dat");
+
                         if (!CompileEngineData(_outEngineData, InLexicon))
                         {
                             Log("Compile Engine Data fail & Lexicon Pruning fail");
@@ -332,6 +339,13 @@ namespace Microsoft.Tts.Offline.LexiconProcessor
                         Log("Copy extra DAT file {0} failed!", InExtraDAT);
                         return;
                     }
+                }
+
+                ErrorSet errors = CopyAdditionalData(InLexicon.Language);
+                if (errors.Contains(ErrorSeverity.MustFix))
+                {
+                    Log("Copy {0} additional data failed!", InLexicon.Language);
+                    return;
                 }
 
                 do
@@ -1164,6 +1178,41 @@ namespace Microsoft.Tts.Offline.LexiconProcessor
             return backEntriesCount;
         }
         #endregion
+
+        /// <summary>
+        /// Copy the language specific additional data.
+        /// </summary>
+        /// <param name="lang">The language.</param>
+        /// <returns>Errorset.</returns>
+        private ErrorSet CopyAdditionalData(Language lang)
+        {
+            ErrorSet errors = new ErrorSet();
+
+            if (lang == Language.ArEG)
+            {
+                Helper.EnsureFolderExistForFile(IntermediateDataDirectory);
+
+                string binDir = Path.Combine(Environment.CurrentDirectory, "LocaleHandler");
+                string[] binFileName = { "TTSArEGAutoCorrectionList.bin", "DiacModel.bin" };
+
+                foreach (var fileName in binFileName)
+                {
+                    string srcPath = Path.Combine(binDir, fileName);
+                    string destPath = Path.Combine(this.IntermediateDataDirectory, fileName);
+
+                    if (File.Exists(srcPath))
+                    {
+                        Helper.ForceCopyFile(srcPath, destPath);
+                    }
+                    else
+                    {
+                        errors.Add(new Error(DataCompilerError.RawDataNotFound, srcPath));
+                    }
+                }
+            }
+
+            return errors;
+        }
 
         #region Struct
 

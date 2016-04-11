@@ -1,4 +1,4 @@
-//----------------------------------------------------------------------------
+﻿//----------------------------------------------------------------------------
 // <copyright file="TtsPhoneSet.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
@@ -290,6 +290,63 @@ namespace Microsoft.Tts.Offline
         }
 
         /// <summary>
+        /// Whether the two tts phone sets are equal by nature.
+        /// </summary>
+        /// <param name="left">Left TtsPhoneSet.</param>
+        /// <param name="right">Right TtsPhoneSet.</param>
+        /// <param name="strict">Whether the comparison is strict.</param>
+        /// <returns>True/false.</returns>
+        public static bool Equals(TtsPhoneSet left, TtsPhoneSet right, bool strict)
+        {
+            if (!left.Version.Equals(right.Version))
+            {
+                return false;
+            }
+
+            if (left.Phones.Count != right.Phones.Count)
+            {
+                return false;
+            }
+            else
+            {
+                foreach (var lphone in left.Phones)
+                {
+                    bool found = false;
+                    foreach (var rphone in right.Phones)
+                    {
+                        if (!found && lphone.CompareTo(rphone) == 0)
+                        {
+                            found = true;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (strict)
+            {
+                if (left.IsShortPauseSupported != right.IsShortPauseSupported)
+                {
+                    return false;
+                }
+
+                if (left.SyllableStructure.VowelCount.Max != right.SyllableStructure.VowelCount.Max ||
+                    left.SyllableStructure.VowelCount.Min != right.SyllableStructure.VowelCount.Min ||
+                    left.SyllableStructure.SonorantAndVowelCount.Max != right.SyllableStructure.SonorantAndVowelCount.Max ||
+                    left.SyllableStructure.SonorantAndVowelCount.Min != right.SyllableStructure.SonorantAndVowelCount.Min)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Disables the short pause phoneme. This operation cannot be reverted.
         /// </summary>
         public void DisableShortPause()
@@ -483,6 +540,17 @@ namespace Microsoft.Tts.Offline
         {
             Phone ttsPhone = GetPhone(phone);
             return ttsPhone != null && ttsPhone.IsSonorant;
+        }
+
+        /// <summary>
+        /// Is a nasal.
+        /// </summary>
+        /// <param name="phone">Phone name.</param>
+        /// <returns>True/false.</returns>
+        public bool IsNasal(string phone)
+        {
+            Phone ttsPhone = GetPhone(phone);
+            return ttsPhone != null && ttsPhone.IsNasal;
         }
 
         /// <summary>

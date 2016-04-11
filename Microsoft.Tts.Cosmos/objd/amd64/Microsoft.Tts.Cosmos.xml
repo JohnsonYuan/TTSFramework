@@ -1,0 +1,2589 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Tts.Cosmos</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Tts.Cosmos.Config.TmocVcConfig">
+            <summary>
+            Load Configures form xml.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.DefaulVCProxy">
+            <summary>
+            The default vc proxy is noproxy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.DefaulMaxTokenNum">
+            <summary>
+            The default number of machines dedicated to this job.
+            now only used in the first phrases auto-set mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.DefaulMinTokenNum">
+            <summary>
+            The min token number for a job.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.DefaultPriority">
+            <summary>
+            The default value of work priority.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.DefaultMaxVertexTime">
+            <summary>
+            The default value of maximum vertex computing time for each vertex.
+            3 hours default, unit is seconds.
+            will influence the data partition for cosmos run.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.MinStreamPartitioNum">
+            <summary>
+            The min number of GROUP INTO when generating sstream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.MaxStreamPartitioNum">
+            <summary>
+            The max number of GROUP INTO when generating sstream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.Config.TmocVcConfig.JobTimeoutVC">
+            <summary>
+            The longest job time allowed on VC in seconds.
+            Althrough the setting is 7 days in VC.
+            We would like a shorter time, say, 3 days.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Config.TmocVcConfig"/> class.
+            </summary>
+            <param name="filePath">The file path of the config file.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Config.TmocVcConfig"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.GetRecommendedTokenNum(System.String,System.Double)">
+            <summary>
+            Get the recommended core num for this processing, just a empirical value.
+            </summary>
+            <param name="nameVC">The name of VC.</param>
+            <param name="speechDuration">Speech duration in seconds.</param>
+            <returns>RecToken.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.CalExpectedVertexNum(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[],System.Double,System.Int32)">
+            <summary>
+            Calculate the expected vertex number to process this corpus according to their duration and make sure the vertex will not timeout the
+            expectedVertexProcessTime.
+            </summary>
+            <param name="corpusarr">The array of corpus.</param>
+            <param name="processRealTimeFactor">The real time factor of this processing.</param>
+            <param name="expectedVertexProcessTime">The expected time of each vertex run.</param>
+            <returns>The expected vertex number.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.CalExpectedVertexNum(System.Double,System.Double,System.Int32)">
+            <summary>
+            Calculate the expected vertex number to process this corpus according to their duration and make sure the vertex will not timeout the
+            expectedVertexProcessTime.
+            </summary>
+            <param name="speechDuration">The duration of speech corpus.</param>
+            <param name="processRealTimeFactor">The real time factor of this processing.</param>
+            <param name="expectedVertexProcessTime">The expected time of each vertex run.</param>
+            <returns>The expected vertex number.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.GetExractGroupSizeModelTraining(System.String,System.Double)">
+            <summary>
+            Get the nebular parameters for model training purpose.
+            </summary>
+            <param name="streamName">Stream name.</param>
+            <param name="speechDuration">Speech duration.</param>
+            <returns>Exract group size.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.GetExractGroupSize(System.String,System.Double,System.Double)">
+            <summary>
+            Get the nebular parameters according to the speech duration and speechProcessRTF.
+            </summary>
+            <param name="streamName">Stream name.</param>
+            <param name="speechDuration">Speech duration.</param>
+            <param name="speechProcessingRTF">Speech processing RTF.</param>
+            <returns>Nebular arguments.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.Load(System.String)">
+            <summary>
+            Load tmoc vc config from XML config file.
+            </summary>
+            <param name="filePath">Config filepath.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Config.TmocVcConfig.Check">
+            <summary>
+            Do the check, if not valid, then throw exception.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.ConfigSchema">
+            <summary>
+            Gets configuration schema.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.VcName">
+            <summary>
+            Gets or sets the name of VC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.VcPriority">
+            <summary>
+            Gets or sets the priority of VC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.VcProxy">
+            <summary>
+            Gets or sets the proxy name of VC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.TmocDataPath">
+            <summary>
+            Gets or sets the path of TMOC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.LocalRun">
+            <summary>
+            Gets or sets a value indicating whether the indicator if it's local run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.MaxTokenNum">
+            <summary>
+            Gets or sets the maximum token number the job can get.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.MaxVertexTime">
+            <summary>
+            Gets or sets the maximum vertex time the job can occupy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Config.TmocVcConfig.VcJobTimeoutInHours">
+            <summary>
+            Gets or sets the timeout in hours the job submit to VC.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos">
+            <summary>
+            This abstract class is used to organize the pipeline of the FlowHandler.
+            Every step in FlowHandler will be extended from this class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.paraComputePlatform_Cosmos">
+            <summary>
+            The parallel Cosmos computation platform. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos"/> class.
+            Set the default maximum thread number as the processor number.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos"/> class.
+            </summary>
+            <param name="name">The given name of this handler.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.GetParaPlatformType">
+            <summary>
+            Return the paltform type.
+            </summary>
+            <returns>Computation platform.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.DeleteIntermediateDataAsyn(System.String,Microsoft.Tts.Offline.Utility.ILogger)">
+            <summary>
+            Delete unnecessary file asynchronously.
+            </summary>
+            <param name="dataPath">The  full path of target file.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.GetCurrentComputationPlatform(System.Boolean)">
+            <summary>
+            Get current computation platform .
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+            <returns>ComputationPlatform variable .</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.ValidateArguments">
+            <summary>
+            The abstract method ValidateArguments() will be called to perform the validation
+            For the inputs of this handler.
+            This method won't be called if this handler is disabled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.Execute">
+            <summary>
+            The abstract method Execute() will be called to perform the action of this handler.
+            This method won't be called if this handler is disabled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.ValidateResults(System.Boolean)">
+            <summary>
+            The abstract method ValidateResults(bool enable) will be used to fill result generated by this handler
+            After Execute().
+            This method will be called whenever this handler is disabled or not.
+            </summary>
+            <param name="enable">Indicator to whether flow is enable.</param>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.FlowEngine.FlowHandler_Cosmos.ParaComputePlatform_Cosmos">
+            <summary>
+            Gets the public Cosmos computation platform.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob">
+            <summary>
+            Calculate feature range.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.JobProcessor">
+            <summary>
+            Job Processor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobProcessor.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Produces the output schema.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The argument.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobProcessor.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Processing function.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The argument.</param>
+            <returns>The output IEnumerable row.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.JobProcessor.Job">
+            <summary>
+            Gets the instance of the job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ConvertSVMToStreamJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob">
+            <summary>
+            Expand feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob"/> class.
+            </summary>
+            <param name="cosmosPath">The path of cosmos.</param>
+            <param name="dimension">Dimension.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ExpandFeatureJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob">
+            <summary>
+            Format feature job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.FormatFeatureJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob">
+            <summary>
+            Get F0 and Nccf feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob.#ctor(System.Int32,System.Single,System.Single,System.Single,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob"/> class.
+            </summary>
+            <param name="frameBias">Frame bias.</param>
+            <param name="secondsPerFrame">Seconds per frame.</param>
+            <param name="minF0Value">Min F0 value.</param>
+            <param name="maxF0Value">Max F0 value.</param>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="fileSS">File SS.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetF0NccfJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.GetLpcJob">
+            <summary>
+            Get Lpc.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcJob.#ctor(System.String,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetLpcJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="fftDIM">Fft dim.</param>
+            <param name="lpcOrder">Lpc order.</param>
+            <param name="secondsPerFrame">Seconds per frame.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetLpcJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob">
+            <summary>
+            Get Lpc Residual error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="frameShift">Frame shift.</param>
+            <param name="frameLength">Frame length.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetLpcResidualErrorJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob">
+            <summary>
+            Get Related feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="frameShift">Frame shift.</param>
+            <param name="frameLength">Frame length.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.GetRelatedFeatureJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob">
+            <summary>
+            Merge feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.MergeFeatureJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.PredictUVJob">
+            <summary>
+            Predict UV.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.PredictUVJob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.PredictUVJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.PredictUVJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.PredictUVJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.PredictUVJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.PredictUVJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.PredictUVJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob">
+            <summary>
+            Scale feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.ScaleFeatureJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob">
+            <summary>
+            Smooth F0.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob.#ctor(System.String,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob"/> class.
+            </summary>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="minF0Value">Min F0 value.</param>
+            <param name="maxF0Value">Max F0 value.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob.GenerateTemplate">
+            <summary>
+            Generate tempalte.
+            </summary>
+            <returns>The template.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob.Process(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Main processing script.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable output row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.SmoothF0WithUVJob.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The requested columns.</param>
+            <param name="args">The arguments.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS">
+            <summary>
+            The class to extract more accurate f0 by uv model.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32,Microsoft.Tts.Offline.Utility.ILogger,System.Boolean,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS"/> class.
+            </summary>
+            <param name="fileMap">File list map.</param>
+            <param name="waveDir">Input wave directory.</param>
+            <param name="workDir">Output data direcotry.</param>
+            <param name="getF0Tool">The path of get_f0.exe file.</param>
+            <param name="getF0Config">The path of get_f0.config file.</param>
+            <param name="straightTool">The path of straight_all.exe file.</param>
+            <param name="svmScaleTool">The path of svm-scale.exe file.</param>
+            <param name="svmPredictTool">The path of svm-predit.exe file.</param>
+            <param name="modelFilePath">Svm model file path.</param>
+            <param name="minF0">The min f0 value.</param>
+            <param name="maxF0">The max f0 value.</param>
+            <param name="secondsPerFrame">The length of one frame in seconds.</param>
+            <param name="samplesPerSecond">The sample number in one second.</param>
+            <param name="dimension">Uv feature dimension.</param>
+            <param name="frameBias">Frame bias of f0.</param>
+            <param name="logger">The logger.</param>
+            <param name="enableCosmos">Enable cosmos.</param>
+            <param name="cosmosPath">Cosmos path.</param>
+            <param name="fileSS">The structured stream file.</param>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Exception.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">Exception.</exception>
+            <exception cref="T:System.ArgumentNullException">Exception.</exception>
+            <exception cref="T:System.ArgumentException">Exception</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractLpcResidualErrorOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Extract lpc residual error.
+            </summary>
+            <param name="args">Arguments: wave file, lpc file, lpc error file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.MergeFeaturesOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Merge 6 basic features.
+            </summary>
+            <param name="args">Arguments: related fea file, residual fea file, nccf fea file, merged fea file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExpandFeaturesOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Expand features: add previous frame, next frame and calculate delta.
+            </summary>
+            <param name="args">Arguments: basic six fea file, expanded fea file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FormatFeaturesOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Format features into svm style: lable 1:fea1 2:fea2.
+            </summary>
+            <param name="args">Arguments: f0 file, raw fea file, svm fea file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractRelatedFeaturesOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Extract related features from wave: zero crossing, energy, autocorrelation.
+            </summary>
+            <param name="args">Arguments: wave file, fea file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.GenerateExtractLpcArgument(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Single)">
+            <summary>
+            Generate argument for Lpc extractor.
+            </summary>
+            <param name="waveFile">Wave file.</param>
+            <param name="f0File">F0 file.</param>
+            <param name="lpcFile">Lpc file.</param>
+            <param name="of0File">OF0 file.</param>
+            <param name="fftDim">FFT Dim.</param>
+            <param name="lpcOrder">Lpc ordier.</param>
+            <param name="secondsPerFrame">Seconds per frame.</param>
+            <returns>Neutral format.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.GenerateExtractF0NccfArgument(System.String,System.String,System.String,System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            Generate argument for F0 extractor.
+            </summary>
+            <param name="getF0Config">F0 config.</param>
+            <param name="waveFile">Wave file.</param>
+            <param name="f0NccfFile">Nccf file.</param>
+            <param name="frameBias">Frame bias.</param>
+            <param name="secondsPerFrame">Seconds per frame.</param>
+            <param name="minF0Value">Min F0 value.</param>
+            <param name="maxF0Value">Max F0 vlaue.</param>
+            <returns>The arguements.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractF0NccfOneFile(System.String[],System.IO.TextWriter)">
+            <summary>
+            Process one f0 nccf file.
+            </summary>
+            <param name="args">Arguments: f0_nccf file, nccf file, f0 file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SmoothOneF0File(System.String[],System.IO.TextWriter)">
+            <summary>
+            Smooth f0 for one wave.
+            </summary>
+            <param name="args">Arguments: f0 file, raw fea file, svm fea file.</param>
+            <param name="logWriter">LogWriter to implement parallel computing interface.</param>
+            <exception cref="T:System.ArgumentException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SmoothF0(System.String,System.String,System.Boolean)">
+            <summary>
+            Smooth f0.
+            </summary>
+            <param name="if0Dir">Directory of input f0.</param>
+            <param name="uvDir">Directory of uv data.</param>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+            <exception cref="T:System.ArgumentNullException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractEnhancedF0(System.Boolean)">
+            <summary>
+            Extract enhanced F0.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractFeatures(System.Boolean)">
+            <summary>
+            Extract features for uv prediction.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.PredictUV(System.String,System.Boolean)">
+            <summary>
+            Predict uv results.
+            </summary>
+            <param name="feaDir">Direcotry of feature files.</param>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+            <exception cref="T:System.ArgumentNullException">Exception.</exception>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractBasicFeatures(System.Boolean)">
+            <summary>
+            Extract 6 basic features.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractF0Nccf(System.Boolean)">
+            <summary>
+            Extract NCCF.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractRelatedFeatures(System.Boolean)">
+            <summary>
+            Extarct related features: zero crossing, energy, autocorrelation.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractLpc(System.Boolean)">
+            <summary>
+            Extract wave.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExtractLpcResidualError(System.Boolean)">
+            <summary>
+            Extract lpc residual error.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.MergeFeatures(System.Boolean)">
+            <summary>
+            Merge 6 features.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExpandFeatures(System.Boolean)">
+            <summary>
+            Calculate expand and delta features.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FormatFeatures(System.Boolean)">
+            <summary>
+            Format features.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ScaleFeatures(System.Boolean)">
+            <summary>
+            Scale features.
+            </summary>
+            <param name="ifCosmos">Represents if this is a Cosmos operation.</param>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.WaveDir">
+            <summary>
+            Gets or sets wave directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.WorkDir">
+            <summary>
+            Gets or sets work directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ModelFilePath">
+            <summary>
+            Gets or sets svm model file path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.MinF0Value">
+            <summary>
+            Gets or sets the minimal F0 value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.MaxF0Value">
+            <summary>
+            Gets or sets the maximum f0 value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SecondsPerFrame">
+            <summary>
+            Gets or sets the length of one frame in seconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FrameShift">
+            <summary>
+            Gets or sets the sample count of one frame shift.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FrameLength">
+            <summary>
+            Gets or sets the sample count of one frame.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.Dimension">
+            <summary>
+            Gets or sets uv feature dimension.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FrameBias">
+            <summary>
+            Gets or sets frame bias.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.Logger">
+            <summary>
+            Gets or sets logger.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.FileMap">
+            <summary>
+            Gets or sets file map list.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.IntermediateDir">
+            <summary>
+            Gets or sets intermediate directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.GetF0Tool">
+            <summary>
+            Gets or sets the get_f0.exe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.GetF0Config">
+            <summary>
+            Gets or sets the tool configuration file for get_f0.exe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.StraightTool">
+            <summary>
+            Gets or sets the get_f0.exe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SvmScaleTool">
+            <summary>
+            Gets or sets the svm-scale.exe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SvmPredictTool">
+            <summary>
+            Gets or sets the svm-predict.exe.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.F0NccfDir">
+            <summary>
+            Gets or sets directory for f0_nccf data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.RealtedFeaDir">
+            <summary>
+            Gets or sets directory for related features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.NccfDir">
+            <summary>
+            Gets or sets directory for nccf features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.LPCDir">
+            <summary>
+            Gets or sets directory for lpc features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ResidualDir">
+            <summary>
+            Gets or sets directory for lpc residual error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.F0Dir">
+            <summary>
+            Gets or sets directory for f0 features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.MergedFeaDir">
+            <summary>
+            Gets or sets directory for merged six basic features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ExpandFeaDir">
+            <summary>
+            Gets or sets directory for expanded features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SvmFeaDir">
+            <summary>
+            Gets or sets directory for svm features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.ScaledSvmFeaDir">
+            <summary>
+            Gets or sets directory for scaled svm features.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.UVDir">
+            <summary>
+            Gets or sets directory for uv result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Htk.F0ExtractorCOSMOS.SmoothedF0Dir">
+            <summary>
+            Gets or sets directory for smoothed f0 files.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.CosmosJobStat">
+            <summary>
+            The status of cosmos job.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.CosmosJobStat.WaitTime">
+            <summary>
+            Wait time.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.CosmosJobStat.RunTime">
+            <summary>
+            Run time.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocConstants">
+            <summary>
+            Definition of all the hard coded variables.
+            Note they are case-sensitive.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.Version">
+            <summary>
+            Version.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.Encode_UTF8">
+            <summary>
+            UTF8.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.Encode_ASCII">
+            <summary>
+            ASCII.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.Scope">
+            <summary>
+            Scope tool.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.ScopeConfig">
+            <summary>
+            The config file of the scope.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.ScopeVersion">
+            <summary>
+            The version of scope tool.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.TrainCorpusSetStream">
+            <summary>
+            Tsv format of training corpus.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.TrainCorpusSetSStream">
+            <summary>
+            The name of the strutured stream all the training set.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.TrainHypFileSStream">
+            <summary>
+            The name of the strutured stream of all the hypfiles uion together.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.RunningLog">
+            <summary>
+            Running log and summary files.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.Tmoclibdll">
+            <summary>
+            The Tmoc libaray dll.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.DoneFileName">
+            <summary>
+            When training is done, done file is created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.AlignmentRTF">
+            <summary>
+            The real time factor of alignment generation, in this context, lattice stream is available.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.ModelTrainRTF">
+            <summary>
+            The real time factor of modeltrain.
+            Actually, for fmpe/bmmi/mpe, it is about 0.15, for ml, it is about 0.08.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.VcOperationRetryTime">
+            <summary>
+            Retry operation for vc operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.VcJobRetryTime">
+            <summary>
+            Retry time for cosmos job failure due to cosmos system error.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.MaxUnavailability">
+            <summary>
+            MaxUnavailability is the percentage of the job that can bypassed if unavailable without problem.
+            The default for this parameter is 100, but we recommend specifying 0 unless you specifically want.
+            The job to produce some results even if it could not access all inputs and you are prepared for.
+            Potentially incomplete, biased and irreproducable outputs.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.VcOperationRetryDelay">
+            <summary>
+            Delay between retries (millisecond).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.VcFirstJobInfoCheckDelayAfterSubmit">
+            <summary>
+            Delay between submit and first JobInfoCheck (millisecond).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.OverAllJob">
+            <summary>
+            Overall Job for information about vertices for the jobs.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocConstants.ExpriationTime">
+            <summary>
+            Expriation time for large files stored in cosmos.
+            90 days.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.RetryClass">
+            <summary>
+            Retry class to invoke the job many times.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.RetryClass.Retry(System.Delegate,System.Object[],System.Int32,System.Int32,System.String[],System.Object)">
+            <summary>
+            Retry method.
+            </summary>
+            <param name="function">Function.</param>
+            <param name="inputs">Inputs.</param>
+            <param name="maxNumTries">Max num tries.</param>
+            <param name="sleepTime">Sleep time.</param>
+            <param name="specialCases">Special cases.</param>
+            <param name="specialCaseReturn">Special case return.</param>
+            <returns>Object.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.CosmosException">
+            <summary>
+            Exception class for cosmos errors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. Default constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. The constuctor.
+            </summary>
+            <param name="message">Mesage.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor(System.String,System.Object[])">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. The constructor.
+            </summary>
+            <param name="format">Format.</param>
+            <param name="args">Arguements.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor(System.String,System.Exception)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. The constructor.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="inner">Inner.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor(System.String,System.Exception,System.Object[])">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. The constuctor.
+            </summary>
+            <param name="format">Format.</param>
+            <param name="inner">Inner.</param>
+            <param name="args">Arguements.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CosmosException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CosmosException"/> class. The constructor.
+            </summary>
+            <param name="info">Information.</param>
+            <param name="context">Context.</param>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper">
+            <summary>
+            COSMOS helper function which is to interact with COSMOS.
+            </summary>   
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.OperationRetryTimeVC">
+            <summary>
+            Retry operation for vc operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper"/> class. Default cosmos constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.#ctor(Microsoft.Tts.Cosmos.Config.TmocVcConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper"/> class. COSMOS constructor which has input parameter.
+            </summary>
+            <param name="config">The COSMOS config file.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.GetJobStatistics(System.String)">
+            <summary>
+            Get basic job statistics specified by jobId.
+            </summary>
+            <param name="jobId">Job id.</param>
+            <returns>Cosmos job status.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.GetJobInfo(System.Guid,System.Int32)">
+            <summary>
+            Get job information.
+            </summary>
+            <param name="jobGuid">The jGuid.</param>
+            <param name="delay">The delay.</param>
+            <returns>Cosmos job information.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.GetJobStats(System.String,System.Int32)">
+            <summary>
+            Get job statistics.
+            </summary>
+            <param name="jobGuid">The jGuid.</param>
+            <param name="delay">The delay.</param>
+            <returns>Cosmos job information.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.UploadFile(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Upload a file into cosmos, if the destinationStream exists, you should decide whether to overwrite.
+            </summary>
+            <param name="sourceFile">The path of local file.</param>
+            <param name="destinationStream">Full VC path of cosmos stream.</param>
+            <param name="proxyVC">The proxy of VC.</param>
+            <param name="overwrite">Overwrite.</param>
+            <param name="isBinary">Is binary.</param>
+            <param name="maxRetry">The maximum retry time.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.DownloadFile(System.String,System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Download a File from cosmos to local.
+            </summary>
+            <param name="sourceStream">Full VC path of cosmos stream.</param>
+            <param name="destinationFile">The local file path.</param>
+            <param name="proxyVC">The VC proxy.</param>
+            <param name="overwrite">Whether should overwrite.</param>
+            <param name="maxRetry">Max retry.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.DeleteStream(System.String)">
+            <summary>
+            Delete the stream on COSMOS.
+            </summary>
+            <param name="stream">The stream.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.DeleteJob(System.String)">
+            <summary>
+            Delete a live cosmos job.
+            </summary>
+            <param name="jobid">Job ID.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.Submit(System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Submit job.
+            </summary>
+            <param name="cosmosSDKDir">COSMOS SDK directory.</param>
+            <param name="localworkdir">Local working directory.</param>
+            <param name="friendlyName">The friendly name.</param>
+            <param name="tokens">The tokens.</param>
+            <param name="scopeScriptFileName">Scope script filename.</param>
+            <param name="nebulaArguments">The nebula arguments.</param>
+            <param name="maxUnavailability">Max unavailability.</param>
+            <returns>Guid id of the job.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.WaitForJobCompletion(System.Guid,System.TimeSpan,VcClient.JobInfo@)">
+            <summary>
+            Wait until job is done.
+            </summary>
+            <param name="jobGuid">The jGuid.</param>
+            <param name="sleepTimeSpan">Sleep time span.</param>
+            <param name="jobinfo">Job information.</param>
+            <returns>The flag to indicate if job is done.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.COSMOSHelper.SubmitNoRetry(System.String,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Submit the job without retry.
+            </summary>
+            <param name="cosmosSDKDir">COSMOS SDK directory.</param>
+            <param name="localworkdir">Local working directory.</param>
+            <param name="friendlyName">The friendly name.</param>
+            <param name="tokens">The tokens.</param>
+            <param name="scopeScriptFileName">Scope script filename.</param>
+            <param name="nebulaArguments">The nebula arguments.</param>
+            <param name="maxUnavailability">Max unavailability.</param>
+            <returns>Guid id of the job.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.JobBase">
+            <summary>
+            Job base.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.GenerateLocalFile(System.String,System.Byte[],System.String,System.String)">
+            <summary>
+            Generate local file.
+            </summary>
+            <param name="fName">The name of file.</param>
+            <param name="binary">The binary array to be written in file.</param>
+            <param name="fileExtension">The extension of file.</param>
+            <param name="filePath">The path of file.</param>
+            <returns>The file path of generated file.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.GenerateLocalFile(System.String,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Generate Local File.
+            </summary>
+            <param name="fName">The name of file.</param>
+            <param name="text">The text to be written in file.</param>
+            <param name="fileExtension">The extension name of file.</param>
+            <param name="fNeedReplaceSpace">The flag indicating whether need to replace space.</param>
+            <param name="filePath">The path file.</param>
+            <returns>The file generated path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.GetTextFile(System.String)">
+            <summary>
+            Generate text file.
+            </summary>
+            <param name="fName">The name of file.</param>
+            <returns>The content of file.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.StringToByte(System.String)">
+            <summary>
+            String to byte.
+            </summary>
+            <param name="hexString">The hex string.</param>
+            <returns>The binary content of file.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.TextFileToBinaryFile(System.String,System.String)">
+            <summary>
+            TextFileToBinaryFile.
+            </summary>
+            <param name="textFilePath">The file path for string to byte convertion.</param>
+            <param name="binaryFilePath">The file result output zip format convertion.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.BinaryFileToTextFile(System.String,System.String)">
+            <summary>
+            BinaryFileToTextFile.
+            </summary>
+            <param name="binaryFilePath">The file path for byte to string convertion.</param>
+            <param name="textFilePath">The file result string format convertion.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.ByteToString(System.Byte[])">
+            <summary>
+            Convert bytes to string.
+            </summary>
+            <param name="bytesArray">The array of bytes.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.GetBinaryFile(System.String)">
+            <summary>
+            Read the binary of file.
+            </summary>
+            <param name="fName">The name of file.</param>
+            <returns>The array of binary.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobBase.GenerateTemplate">
+            <summary>
+            Generate template.
+            </summary>
+            <returns>The returned template.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.JobBase.ReplaceVariable">
+            <summary>
+            Gets or sets replace variable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.JobBase.ReplacedLoopVariable">
+            <summary>
+            Gets or sets loop variable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.JobBase.ResourceScript">
+            <summary>
+            Gets or sets the resource script.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.JobReducer">
+            <summary>
+            Job Reducer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobReducer.Reduce(ScopeRuntime.RowSet,ScopeRuntime.Row,System.String[])">
+            <summary>
+            Reduce.
+            </summary>
+            <param name="input">The input row.</param>
+            <param name="outputRow">The output row.</param>
+            <param name="args">The arguments.</param>
+            <returns>The IEnumerable row.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobReducer.Produces(System.String[],System.String[],ScopeRuntime.Schema)">
+            <summary>
+            Schema of output.
+            </summary>
+            <param name="requestedColumns">The request columns.</param>
+            <param name="args">The argument.</param>
+            <param name="inputSchema">The input schema.</param>
+            <returns>The output schema.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.JobReducer.Job">
+            <summary>
+            Gets the instance of the job.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic">
+            <summary>
+            The statistic of corpus.
+            The defintion of a typical tts corpus is the data setused for training.
+            This class is used to decide the number of token used in VMOC and it inlcudes the data size, number of utterance and speech duration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic"/> class. The default constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic"/> class. The constructor.
+            </summary>
+            <param name="line">The line.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.#ctor(ScopeRuntime.Row)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic"/> class. The constructor.
+            </summary>
+            <param name="row">The row.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.Accumulate(Microsoft.Tts.Cosmos.TMOC.CorpusStatistic)">
+            <summary>
+            Gets or sets add up another statistics to this.
+            </summary>
+            <param name="other">Other.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.ToRow(ScopeRuntime.Row)">
+            <summary>
+            To row method.
+            </summary>
+            <param name="dstrow">The dataset row.</param>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.CorpusName">
+            <summary>
+            Gets or sets the name of corpus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.UtteranceNum">
+            <summary>
+            Gets or sets number of utterance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.DataSize">
+            <summary>
+            Gets or sets data size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.SpeechDuration">
+            <summary>
+            Gets or sets duration in seconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.WordNum">
+            <summary>
+            Gets or sets number of words in corpus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.SpkNum">
+            <summary>
+            Gets or sets number of speaker in corpus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.MaleSpkNum">
+            <summary>
+            Gets or sets number of male speakr in corpus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.CorpusStatistic.FemaleSpkNum">
+            <summary>
+            Gets or sets number of female speakr in corpus.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocCorpus">
+            <summary>
+            This infomation are pared from input xml file.
+            All the name are abosolute path containing the VC path.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CorpusName">
+            <summary>
+            Corpus Name.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.SubCorpusID">
+            <summary>
+            Whether this is a subCorpus.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.Weight">
+            <summary>
+            Corpus weight.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.FblStream">
+            <summary>
+            Fbl stream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.HypFile">
+            <summary>
+            The hypfile in plain text format.
+            Used for corpus I/O.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.HypFileSS">
+            <summary>
+            The hypfile in SStream format.
+            Using within training.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CorpusStream">
+            <summary>
+            The corpus stream created from fblstream and hypFile.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.AlignmentStream">
+            <summary>
+            The sstream to reuse alignment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.LatticeStream">
+            <summary>
+            The sstream to reuse lattice.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.Stats">
+            <summary>
+            The corpus statistics.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.TmocCorpus"/> class. The default constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalSpeechDuration(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the duration of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>Duration.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalDataSize(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the duration of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>Data size.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalUtteranceNum(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the utterance number of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>The number of total utt.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalTotalFblStreamClusterNum(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the cluster number of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>The number of total cluster.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalTotalFblStreamSize(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the fbl stream size of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>Total stream size.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CalTotalCorpusStreamSize(Microsoft.Tts.Cosmos.TMOC.TmocCorpus[])">
+            <summary>
+            Sum up the corpus stream size of all the corpus.
+            </summary>
+            <param name="corpusarr">Corpus array.</param>
+            <returns>Total stream size.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.GetFblStreamClusterNum(System.Int32)">
+            <summary>
+            Get the cluster number of the structurred stream by utterance number. defaultly, 2000 utterances make a cluster.
+            </summary>
+            <param name="utterNum">Utter numbers.</param>
+            <returns>The cluster number.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.SubCorpusName(System.String,System.Int32)">
+            <summary>
+            Get the name of subcorpus when split a big corpus into smaller ones.
+            </summary>
+            <param name="corpusName">The corpus name.</param>
+            <param name="subCorpusID">The sub corpus ID.</param>
+            <returns>The new corpus name.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CheckInput">
+            <summary>
+            Check the existence of the files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.ShallowClone">
+            <summary>
+            Shallow clone method.
+            </summary>
+            <returns>Tmoc corpus.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocCorpus.CorpusNameNormalize">
+            <summary>
+            Gets the normalized corpus name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocPath">
+            <summary>
+            The class of TMOC path.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.GetPathForCommandline(System.String)">
+            <summary>
+            Get path for commandline.
+            </summary>
+            <param name="filename">File name.</param>
+            <returns>Sub file name.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.GetNonemptyDirectoryName(System.String)">
+            <summary>
+            Get none empty directory name.
+            </summary>
+            <param name="filename">File name.</param>
+            <returns>Directory name.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.GetPathnameWithNewExtension(System.String,System.String)">
+            <summary>
+            Get path name with new extension.
+            </summary>
+            <param name="pathname">Path name.</param>
+            <param name="newExtension">New extension.</param>
+            <returns>Path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.GetLocalFullPath(System.String)">
+            <summary>
+            Return the full path of the input local path.
+            If not local path, just return.
+            </summary>
+            <param name="pathname">Path name.</param>
+            <returns>Full path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.IsCosmosPath(System.String)">
+            <summary>
+            Returns if the filepath is .
+            1. full cosmos path (http(s):// ).
+            2. relative cosmos path (/).
+            </summary>
+            <param name="fname">The filepath.</param>
+            <returns>Boolean evaluation.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.IsCosmosRelativePath(System.String)">
+            <summary>
+            Determine whether it is a cosmos relative path starting with "/".
+            </summary>
+            <param name="fname">Fname.</param>
+            <returns>New fname.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.IsFullPath(System.String)">
+            <summary>
+            Whether is a absolute path local or http.
+            </summary>
+            <param name="path">Path.</param>
+            <returns>Is or not an absolute uri.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.IsLocalFullPath(System.String)">
+            <summary>
+            Whether is a absolute local path.
+            </summary>
+            <param name="path">Path.</param>
+            <returns>Is or not an absolute uri.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.IsCosmosFullPath(System.String)">
+            <summary>
+            Returns if the filepath is .
+            1. full cosmos path start with http(s):// .
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>Is or not a path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.Combine(System.String[])">
+            <summary>
+            Combine the path.
+            </summary>
+            <param name="args">The args.</param>
+            <returns>The full path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.MakeRelativePath(System.String,System.String,System.Char)">
+            <summary>
+            Get the relative path.
+            </summary>
+            <param name="fullpath">The full path.</param>
+            <param name="rootPath">The root path.</param>
+            <param name="slash">Which slash you prefer ? '\\' '/' or do not change, default not change.</param>
+            <returns>The relative path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.RelativeToFullVCPath(System.String,System.String)">
+            <summary>
+            Converta relative path to full vc path, will concatenate the VCpath.
+            The slash will be automatically normalize to '\\' for local path and.
+            '/' for http VC path.
+            </summary>
+            <param name="relativePath">Relative path.</param>
+            <param name="nameVC">VC name.</param>
+            <returns>The full path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.RelativeToFullVCPath(System.String)">
+            <summary>
+            Converta relative path to full vc path, will concatenate the VCpath.
+            The slash will be automatically normalize to '\\' for local path and.
+            '/' for http VC path.
+            </summary>
+            <param name="relativePath">Relative path.</param>
+            <returns>Full path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocPath.FullVCToRelativePath(System.String,System.Char)">
+            <summary>
+            Convert the full vc path into relative path within VC.
+            </summary>
+            <param name="fullVCPath">The full VC path.</param>
+            <param name="slash">Which slash you prefer ? "\" "/" or do not change, default not change.</param>
+            <returns>Relative path.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocPath.FileFormatType">
+            <summary>
+            The enumeration of file format type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocPath.FileFormatType.ASCII">
+            <summary>
+            ASCII.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocPath.FileFormatType.UTF8">
+            <summary>
+            UTF8.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.TmocPath.FileFormatType.UNKOWN">
+            <summary>
+            Unknown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocDirectory">
+            <summary>
+            The class of TMOC directory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.Exists(System.String,System.Int32)">
+            <summary>
+            Check the diretory exists or not, deal with both local or vc path.
+            </summary>
+            <param name="path">Path.</param>
+            <param name="maxRetry">The max retry.</param>
+            <returns>Is existed.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.Delete(System.String)">
+            <summary>
+            Delete a directory, either local or VC directory.
+            </summary>
+            <param name="pathname">Path name.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.GetFilesOnVC(System.String)">
+            <summary>
+            Return all the files under the directory, not recursive .
+            </summary>
+            <param name="pathname">Path name.</param>
+            <returns>Return the list of files in full vc path. </returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.GetDirInfoWithRetry(System.String,System.Int32)">
+            <summary>
+            Get directory information with retry.
+            </summary>
+            <param name="pathname">Path name.</param>
+            <param name="maxRetry">The max retry.</param>
+            <returns>Directory information.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.GetFiles(System.String,System.IO.SearchOption)">
+            <summary>
+            Get files.
+            </summary>
+            <param name="pathname">Path name.</param>
+            <param name="option">The option.</param>
+            <returns>The files path.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.GetFilesOnVC(System.String,System.IO.SearchOption)">
+            <summary>
+            Return all the files under the directory, either recursive or non-resursive.
+            </summary>
+            <param name="pathname">Path name.</param>
+            <param name="searchOption">The search option.</param>
+            <returns>The full vc path of all the files.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CopyLocalToCosmos(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Copy a local directory into cosmos.
+            </summary>
+            <param name="srcDir">The source dir.</param>
+            <param name="vcname">The vc name.</param>
+            <param name="tgtDir">The target dir.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CopyCosmosToLocal(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Copy cosmos file to local.
+            </summary>
+            <param name="vcname">The vc name.</param>
+            <param name="srcDir">The source dir.</param>
+            <param name="tgtDir">The target dir.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CopyOnLocal(System.String,System.String,System.Boolean)">
+            <summary>
+            Copy directory on local.
+            </summary>
+            <param name="sourceDirName">The source dir name.</param>
+            <param name="destDirName">The destination.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CreateForFile(System.String)">
+            <summary>
+            Create the directory for a file.
+            </summary>
+            <param name="fname">The fname.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CreateDirectory(System.String)">
+            <summary>
+            Create the directory.
+            </summary>
+            <param name="pathname">The fname.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.CreateForFiles(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Create dir for a list of files .
+            </summary>
+            <param name="fnameList">The fname list.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.IsNetworkPath(System.String)">
+            <summary>
+            Return true if a share is a network share.
+            </summary>
+            <param name="path">The path.</param>
+            <returns>If a share is a network share.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.GetFilesOnVCResursive(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Resursive search of all files.
+            </summary>
+            <param name="pathname">The path name.</param>
+            <param name="flist">The file list to fill.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.DeleteOnLocal(System.String)">
+            <summary>
+            Delete of a local directory, enhancement of Directory.Delete.
+            Resursively.
+            </summary>
+            <param name="pathname">Path name.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocDirectory.DeleteOnVC(System.String)">
+            <summary>
+            Delete of a directory on VC, resursively.
+            </summary>
+            <param name="pathname">Path name.</param>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocFile">
+            <summary>
+            The class of TMOC file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CalculateNebularArgument(System.String,System.Int32)">
+            <summary>
+            Calculate the value for job's NebularArgument parameter.
+            </summary>
+            <param name="file">The file name.</param>
+            <param name="tokenNumber">Default value is 13.</param>
+            <returns>The number of nubular argument.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ZipAndSplit(System.String,System.Int32)">
+            <summary>
+            Zip file and split file.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="count">The count.</param>
+            <returns>The file list.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ZipFiles(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Zip files into zip file.
+            </summary>
+            <param name="fList">The f list.</param>
+            <param name="zipFileName">The zip file name.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CompressFile(System.String)">
+            <summary>
+            Compress file.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>Zip.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.DecompressFile(System.String,System.Boolean)">
+            <summary>
+            Decompress file.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="useDefaultFolder">The default folder.</param>
+            <returns>The fname without extension.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.SplitFile(System.String,System.Int32)">
+            <summary>
+            Split file.
+            </summary>
+            <param name="inputFile">The input file.</param>
+            <param name="chunksize">The chunk size.</param>
+            <returns>The file list.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CombineAndDecompress(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Combine file list and decompress files.
+            </summary>
+            <param name="fileList">The file list.</param>
+            <param name="outFileName">The output file name.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Exists(System.String)">
+            <summary>
+            Make a judgement of if file exists, both support local path and full VC path with http:.
+            </summary>
+            <param name="fname">File name, can be Local path or vc path. if vc path, must be the full path.</param>
+            <returns>If the file exists.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.NormalizeOutput(System.String,System.Boolean)">
+            <summary>
+            Normalize the text.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="isFile">If it is file.</param>
+            <returns>Content.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.EncodeOutput(System.String)">
+            <summary>
+            Encode the text uploaded to COSMOS.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>The all text of fname.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ExistsOnVC(System.String)">
+            <summary>
+            Whether a file exist on VC.
+            </summary>
+            <param name="fname">
+            1. full vc path with http:.
+            2. relative path with /.</param>
+            <returns>If it is exists on VC with retry.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Exists(System.String[])">
+            <summary>
+            Check if a array of files exist.
+            </summary>
+            <param name="files">The files.</param>
+            <returns>Exist or not exist.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Exists(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Check if file is existed.
+            </summary>
+            <param name="files">The files.</param>
+            <returns>Exist or not exist.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.FileSize(System.String)">
+            <summary>
+            Get the file size in bytes.
+            </summary>
+            <param name="fileName">The file name.</param>
+            <returns>The size of file in bytes.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ExpireIn(System.String,System.TimeSpan)">
+            <summary>
+            Set expiration date.
+            </summary>
+            <param name="fileName">The file name.</param>
+            <param name="expireIn">The expire in.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.FileSizeWithRetry(System.String,System.Int32)">
+            <summary>
+            Check file size with retry.
+            </summary>
+            <param name="fileName">The file name.</param>
+            <param name="maxRetry">The number of max retry.</param>
+            <returns>The length of file.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsExistedOrIncompleteVCStream(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Throw exception if stream is not there or incomplete.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="compression">The compression.</param>
+            <param name="maxRetry">The number of max retry.</param>
+            <returns>If it is complete.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Delete(System.String)">
+            <summary>
+            General delete, will detect whether on local or on VC.
+            If path start with http:// or / it will be a VC path.
+            Otherwise a local path.
+            </summary>
+            <param name="fname">File name to be deleted.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.DeleteOnVC(System.String)">
+            <summary>
+            Delete a file on VC.
+            </summary>
+            <param name="fname">The fname.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Delete(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            General copy, will detect whether on local or on VC.
+            If path start with http:// or / it will be a VC path.
+            Otherwise a local path.
+            </summary>
+            <param name="files">The files.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopyOnVC(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an existing stream on VC to a new file. Overwriting a file of the same name is allowed.
+            Be careful since it might be very slow, e.g., ten minutes or more.
+            </summary>
+            <param name="sourceFileName">The file to copy.</param>
+            <param name="destFileName">The name of the destination file. This cannot be a directory.</param>
+            <param name="overwrite">True if the destination file can be overwritten; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopySmallBinaryFileOnVC(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Copy small binary file on VC.
+            </summary>
+            <param name="copyList">The copy list.</param>
+            <param name="overwrite">If overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopyOnLocal(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an existing file to a new file. Overwriting a file of the same name is allowed.
+            Extension of TmocFile.Copy, force to override readonly .
+            </summary>
+            <param name="sourceFileName">The file to copy.</param>
+            <param name="destFileName">The name of the destination file. This cannot be a directory.</param>
+            <param name="overwrite">True if the destination file can be overwritten; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopySmallBinaryFileOnLocal(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Copy small binary file on local.
+            </summary>
+            <param name="copyList">The copy list.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.Copy(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            CAUSITION** to use this.
+            Copy with this on VC will be very slow, *10 min* for each file irrespective of the file size.
+            General copy, will detect whether on local or on VC.
+            If path start with http:// or / it will be a VC path.
+            Otherwise a local path.
+            </summary>
+            <param name="sourceFileName">The file to copy.</param>
+            <param name="destFileName">The name of the destination file. This cannot be a directory.</param>
+            <param name="overwrite">True if the destination file can be overwritten; Otherwise, false.</param>
+            <param name="isBinary">True if the sourceFileName is structured stream; Otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopySmallBinaryFile(System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Copy small binary files.
+            **CAUSION TO USE CORRECTLY**
+            It is faster to copy small files ~100M on VC.
+            But only for the files used as RESOURCE files later.
+            Do not use it to copy strutures stream or files to be used for extractors.
+            Use it for model files and lexicon copy only.
+            </summary>
+            <param name="copyList">The copy list.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopyLocalToCosmos(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Copy local file into cosmos.
+            </summary>
+            <param name="sourceFile">Source files name.</param>
+            <param name="destinationStream">Relative or full vc path of destination.</param>
+            <param name="overwrite">Overwrite.</param>
+            <param name="isBinary">Is binary.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CopyCosmosToLocal(System.String,System.String,System.Boolean)">
+            <summary>
+            Copy from local file into cosmos.
+            </summary>
+            <param name="sourceStream">Relative or full vc path of source stream on cosmos.</param>
+            <param name="destinationFile">The destination file.</param>
+            <param name="overwrite">Overwrite.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.RemoveReadOnlyAttr(System.String)">
+            <summary>
+            Remove the read only attribute of the files.
+            </summary>
+            <param name="fname">The fname.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsAsciiFile(System.String)">
+            <summary>
+            Determine whether input file is Ascii-format.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>If the type is Microsoft.Tts.Offline.TMOC.TmocPath.FileFormatType.ASCII.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsUTF8File(System.String)">
+            <summary>
+            Determine whether input file is UTF8.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>If the type is Microsoft.Tts.Offline.TMOC.TmocPath.FileFormatType.UTF8.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsAsciiUTF8File(System.String)">
+            <summary>
+            Determine whether input file is ASCII and UTF8.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>If the type is Microsoft.Tts.Offline.TMOC.TmocPath.FileFormatType.ASCII or UTF8.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CvtUTF8toASCIIStr(System.String)">
+            <summary>
+            Convert UTF8 to ASCII string.
+            </summary>
+            <param name="text">The text.</param>
+            <returns>The string of text.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CvtUTF8toASCIIFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Convert UTF8 to ASCII file.
+            </summary>
+            <param name="infname">The in fname.</param>
+            <param name="outfname">The out fname.</param>
+            <param name="outputUnixFormat">The output unix format.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.DeleteOnLocal(System.String)">
+            <summary>
+            Delete a file on local drive.
+            </summary>
+            <param name="fname">The fname.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ExistsOnVCWithRetry(System.String,System.Int32)">
+            <summary>
+            Exists with retries.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="maxRetries">The max retries.</param>
+            <returns>If the file is Exists.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.CheckAsciiUTF8File(System.String)">
+            <summary>
+            Determine whether input stream is ASCII or UTF8-format.
+            only content instead of file format matters.
+            UTF8/ASCII/UNKONWN.
+            </summary>
+            <param name="fname">The fname.</param>
+            <returns>File format type.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsUTF8String(System.Byte[])">
+            <summary>
+            Determine whether input stream is ASCII or UTF8-format.
+            UTF8/ASCII/UNKONWN.
+            </summary>
+            <param name="str">The string.</param>
+            <returns>File format type.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.IsInCompleteVCStream(System.String,System.Int32)">
+            <summary>
+            To see if the stream is complete or not.
+            </summary>
+            <param name="fname">The fname.</param>
+            <param name="maxRetry">The max retyies.</param>
+            <returns>Is it in complete VC stream.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocFile.ExpireInWithRetry(System.String,System.TimeSpan,System.Int32)">
+            <summary>
+            Set expriation date.
+            </summary>
+            <param name="fileName">The filename.</param>
+            <param name="expireIn">The expire in.</param>
+            <param name="maxRetry">The max retyies.</param>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.VCList">
+            <summary>
+            A list of vc.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.VCList.GetVcTokeNum(System.String)">
+            <summary>
+            Get the token number of the given VC.
+            </summary>
+            <param name="nameVC">The VC name.</param>
+            <returns>Token number.</returns>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.JobSubmitter">
+            <summary>
+            The class of job submitter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.cosmosUserError">
+            <summary>
+            The possible cosmos system errors .
+            Will add more if we encounter more.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.tmpLocalDir">
+            <summary>
+            The directory to store generated job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.JobSubmitter"/> class. Initialize the job summit for local run mode.
+            </summary>
+            <param name="tmpLocalDir">The local directory for saving the scope scrips temporarily.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.#ctor(Microsoft.Tts.Cosmos.Config.TmocVcConfig,System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.TMOC.JobSubmitter"/> class. Intialize the job submmit for runing in cosmos.
+            </summary>
+            <param name="configVC">The vc to use.</param>
+            <param name="tmpLocalDir">The tmp dir to store the tmp generated scripts.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.IsUserError(System.String)">
+            <summary>
+            Whether the error msg is a COSMOS system error or not.
+            </summary>
+            <param name="errorMsg">Error message.</param>
+            <returns>If the errorMsg contains cosmosUserError.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.IsUserInputErrorException(System.String)">
+            <summary>
+            Whether the job failure is caused by user input error exception.
+            </summary>
+            <param name="errorMsg">The error message.</param>
+            <returns>True.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.SetLocalRunEnv(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Settings that control scope environment for script compilation and execution.
+            </summary>
+            <param name="workingRoot">Root directory for script cache folders and temporary folders for script execution. </param>
+            <param name="scopePath">This directory is used as a base directory for relative resouce and reference files (local execution only). </param>
+            <param name="tmpDirectory">Directory for storing temporary files created by Scope editor or API methods. </param>
+            <param name="inputStreamPath">This directory is used as a base directory for relative streams in EXTRACT command (local execution only). </param>
+            <param name="outputStreamPath">This directory is used as a base directory for relative streams in OUTPUT command (local execution only). </param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.SubmitAndWaitJob(System.String,System.String,System.String,System.String,System.Int32,System.Nullable{System.Boolean},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Run the job and block until finish.
+            </summary>
+            <param name="jobscripts">The local path of the scritps.</param>
+            <param name="jobName">The name for saving scripts file and loging.</param>
+            <param name="jobDisplayName">The friendly display name on Cosmos.</param>
+            <param name="scriptBackupDir">Script backup dir.</param>
+            <param name="nebularArguments">The nebularArguments such as "-ExtractGroupDefaultDataSize 150000".</param>
+            <param name="isLocalRun">Is local run.</param>
+            <param name="maxUnavailability">The max unavailability.</param>
+            <param name="tokens">The tokens.</param>
+            <param name="wait">Wait.</param>
+            <returns>If it is finish.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.BuildJobScripts(System.String,System.String,System.String)">
+            <summary>
+            Save the scripts to a file for job submitting. and upload this file to workfolder for backup.
+            </summary>
+            <param name="jobscriptsStr">Job scripts string.</param>
+            <param name="jobName">Job name.</param>
+            <param name="scriptBackupDir">The dir to store the scripts as a backup.</param>
+            <returns>Script file.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.RunJobLocal(System.String,System.String)">
+            <summary>
+            Run the job locally.
+            </summary>
+            <param name="scriptsfn">The script fn.</param>
+            <param name="jobName">The job name.</param>
+            <returns>Success or failed.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.RunJobOnVC(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Run Job on VC cluster.
+            </summary>
+            <param name="scriptsfn">Scope scripts file.</param>
+            <param name="jobname">The job name.</param>
+            <param name="nebulaArgs">The nebula args.</param>
+            <param name="maxUnavailability">The max unavailability.</param>
+            <param name="tokens">The tokens.</param>
+            <param name="wait">If wait.</param>
+            <returns>Job guide.</returns>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.LocalrunENV.WorkingRoot">
+            <summary>
+            Working root.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.LocalrunENV.ScopePath">
+            <summary>
+            The path of scope.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.LocalrunENV.TmpDirectory">
+            <summary>
+            Temporary directory.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.LocalrunENV.InputStreamPath">
+            <summary>
+            The path of input stream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Tts.Cosmos.TMOC.JobSubmitter.LocalrunENV.OutputStreamPath">
+            <summary>
+            The path of output stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.TMOC.TmocGlobal">
+            <summary>
+            Tmoc global instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.DecideVcPercetage(System.Double)">
+            <summary>
+            Decide Vc percentage.
+            </summary>
+            <param name="totalSpeechDuration">Total speech duration.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.Initalize(System.String,System.String)">
+            <summary>
+            Load the setting from the config.xml.
+            </summary>
+            <param name="inputXml">The input xml.</param>
+            <param name="workingDir">The working directory.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.CleanupRunningJob">
+            <summary>
+            Clean up running job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.MakeLocalTempWorkDirectory">
+            <summary>
+            Make the local temporary directory for this training. It makes a runxxx in the current direcoty and make sure it is not used before.
+            </summary>
+            <returns>The full path of tmp work directory.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.Instance">
+            <summary>
+            Gets the instance of TMOC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.VcConfig">
+            <summary>
+            Gets the property of vc config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.TmocWorkRoot">
+            <summary>
+            Gets the working Directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.JobEngine">
+            <summary>
+            Gets the job submitter engine.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.TmocPackageRoot">
+            <summary>
+            Gets the Tmoc package root.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.TmocBinaryRoot">
+            <summary>
+            Gets the Tmoc binary root.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.LocalTempWorkingDir">
+            <summary>
+            Gets the local temp directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.VcPercentAllocation">
+            <summary>
+            Gets VC percent allocation. An integer number between 1 and 100.
+            Will be calculated from the maxTokenNum. 
+            VCPercentAllocation = maxTokenNum/totalToken * 100%.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.IsAutoSetTokenNum">
+            <summary>
+            Gets a value indicating whether the core number will determined automatically. If true, maxTokenNum will the VCConfig.DefaultMaxToken first.Then reset to a value automatically caculated from the duration of the speech corpus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.TMOC.TmocGlobal.RunningJobsSet">
+            <summary>
+            Gets record running/queuing jobs in Cosmos.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation">
+            <summary>
+            The class of CosmosParallelCompuation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Tts.Cosmos.Utility.ParallelComputation_COSMOS">
+            <summary>
+            ParallelComputation base class for COSMOS.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.ParallelComputation_COSMOS.CreateComputationPlatform(Microsoft.Tts.Offline.Utility.ComputationPlatform,Microsoft.Tts.Offline.Utility.ParallelComputation.PlatformPreparationWork,Microsoft.Tts.Cosmos.Utility.ParallelComputation_COSMOS@,System.String,System.String)">
+            <summary>
+            The factory to build compuation platform.
+            </summary>
+            <param name="mode">The mode of compuation platform.</param>
+            <param name="preparationWork">The preparation work.</param>
+            <param name="computationPlatform">The platform for parallel computation.</param>
+            <param name="xmlConfig">Xml config.</param>
+            <param name="workingFolder">The working folder.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.ParallelComputation_COSMOS.CreateComputationPlatform(Microsoft.Tts.Offline.Utility.ComputationPlatform,Microsoft.Tts.Cosmos.Utility.ParallelComputation_COSMOS@)">
+            <summary>
+            Overload CreateComputationPlatform(ComputationPlatform mode, PlatformPreparationWork preparationWork) with the second para as null.
+            </summary>
+            <param name="mode">The mode of compuation platform.</param>
+            <param name="comPlatform">The platform for parallel computation.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation"/> class. The constuctor for CosmosParallelCompuation class.
+            </summary>
+            <param name="inputConfig">Input config.</param>
+            <param name="workingDir">Working folder.</param>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.SubmitJob">
+            <summary>
+            The SubmitJob() methods to submit job directly.
+            </summary>
+            <returns>Bollean value.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.Initialize">
+            <summary>
+            The Initialize() methods to initalize the necessary configuration.
+            </summary>
+            <returns>Bollean value.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.BroadCast">
+            <summary>
+            The BroadCast() methods to initalize the necessary configuration.
+            </summary>
+            <returns>Bollean value.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.Reduce">
+            <summary>
+            The Reduce() methods to initalize the necessary configuration.
+            </summary>
+            <returns>Bollean value.</returns>
+        </member>
+        <member name="M:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.ValidateResult">
+            <summary>
+            The ValidateResult() methods to initalize the necessary configuration.
+            </summary>
+            <returns>Bollean value.</returns>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.JobScript">
+            <summary>
+            Gets or sets the script of the job.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.JobName">
+            <summary>
+            Gets or sets the name of the job.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.JobDisplayName">
+            <summary>
+            Gets or sets the display of the job name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.NebularArgument">
+            <summary>
+            Gets or sets the argument of Nebular.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.IsLocalRun">
+            <summary>
+            Gets or sets flag represent whether to run the job locally.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Tts.Cosmos.Utility.CosmosParallelCompuation.Tokens">
+            <summary>
+            Gets or sets the number of tokens.
+            </summary>
+        </member>
+    </members>
+</doc>

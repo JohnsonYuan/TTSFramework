@@ -14,6 +14,8 @@
     </xs:sequence>
     <xs:attribute name="name" type="xs:string" use="required"/>
     <xs:attribute name="ID" type="xs:unsignedInt" />
+    <xs:attribute name="Mean" type="xs:float" />
+    <xs:attribute name="InvStdDev" type="xs:float" />
   </xs:complexType>
 
   <xs:complexType name="ValueType">
@@ -21,7 +23,7 @@
       <xs:element name="Category" type="CategoryType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="name" type="xs:string" use="required" />
-    <xs:attribute name="ID" type="xs:unsignedInt" use="optional"/>
+    <xs:attribute name="ID" type="xs:unsignedInt" use="optional"/> 
     <xs:attribute name="posTagging" type="xs:boolean" default="false" use="optional" />
   </xs:complexType>
 

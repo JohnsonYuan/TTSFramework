@@ -122,13 +122,6 @@ namespace Microsoft.Tts.ScriptSynthesizer
                 throw new ArgumentNullException("serviceProvider");
             }
 
-            if (!serviceProvider.Engine.IsHts)
-            {
-                string message = string.Format(CultureInfo.InvariantCulture, 
-                    "Only support Hts engine.");
-                throw new NotSupportedException(message);
-            }
-
             _commonConfig = commonConfig;
             _config = config;
 
@@ -300,7 +293,13 @@ namespace Microsoft.Tts.ScriptSynthesizer
             {
                 if (uttWord.IsPronounceable)
                 {
-                    string wordText = utt.OriginalText.Substring((int)uttWord.TextOffset,
+                    int wordOffset = (int)uttWord.TextOffset - utt.TextOffset;
+                    if (utt.OriginalText.Length < wordOffset + (int)uttWord.TextLength)
+                    {
+                        throw new InvalidDataException("Invalid text offset for word " + uttWord.WordText);
+                    }
+
+                    string wordText = utt.OriginalText.Substring(wordOffset,
                         (int)uttWord.TextLength).ToLower(CultureInfo.CurrentCulture);
                     if (wordIndex < scriptSentence.PronouncedWords.Count &&
                         !wordText.Equals(scriptSentence.PronouncedWords[wordIndex].Description.ToLower(CultureInfo.CurrentCulture)))

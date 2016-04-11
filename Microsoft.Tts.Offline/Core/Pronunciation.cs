@@ -59,6 +59,16 @@ namespace Microsoft.Tts.Offline.Core
 
         /// <summary>
         /// Vowel plus sonorant count less than minimum
+        /// {0} : pronunciation.
+        /// </summary>
+        /// <remarks>In lexicon pronunciation, in some languages the pronunciation may made up by more than one word and a word is made up by only this one syllable
+        /// , we'll not remove these words from lexicon, just report this issue as warning.</remarks>
+        [ErrorAttribute(Message = "The pronunciation has more than one syllable, and one of the syllable has incorrect number (minimum should be {1}) for vowel plus sonorant in pronunciation /{0}/",
+            Severity = ErrorSeverity.Warning)]
+        VowelAndSonorantCountLessThanMinimumInTheSingleSyllableWord,
+
+        /// <summary>
+        /// Vowel plus sonorant count less than minimum
         /// {0} : pronunciation
         /// {1} : Minimum of vowel plus sonorant Count.
         /// </summary>
@@ -588,6 +598,8 @@ namespace Microsoft.Tts.Offline.Core
             else
             {
                 Collection<Phone> syllable = new Collection<Phone>();
+                bool last = true;
+                bool current = false;
                 for (int i = 0; i < phones.Length; i++)
                 {
                     Phone phone = ttsPhoneSet.GetPhone(phones[i]);
@@ -599,7 +611,9 @@ namespace Microsoft.Tts.Offline.Core
 
                     if (phone.HasFeature(PhoneFeature.Syllable))
                     {
-                        errorSet.Merge(ValidateSyllable(syllable, pron, ttsPhoneSet.SyllableStructure));
+                        current = phones[i].Equals("&") ? true : false;
+                        errorSet.Merge(ValidateSyllable(syllable, pron, ttsPhoneSet.SyllableStructure, last && current));
+                        last = current;
                         syllable.Clear();
                     }
                     else
@@ -608,7 +622,7 @@ namespace Microsoft.Tts.Offline.Core
                     }
                 }
 
-                errorSet.Merge(ValidateSyllable(syllable, pron, ttsPhoneSet.SyllableStructure));
+                errorSet.Merge(ValidateSyllable(syllable, pron, ttsPhoneSet.SyllableStructure, last));
             }
 
             return errorSet;
@@ -620,9 +634,10 @@ namespace Microsoft.Tts.Offline.Core
         /// <param name="syllable">Syllable.</param>
         /// <param name="pron">The whole pronunciation string.</param>
         /// <param name="syllableStructure">Syllable structure.</param>
+        ///  <param name="isWordBoundarySyllable">Is Word Boundary Syllable.</param>
         /// <returns>ErrorSet.</returns>
         public static ErrorSet ValidateSyllable(Collection<Phone> syllable, string pron,
-            SyllableStructure syllableStructure)
+            SyllableStructure syllableStructure, bool isWordBoundarySyllable)
         {
             ErrorSet errorSet = new ErrorSet();
             if (syllable == null || syllable.Count == 0)
@@ -688,11 +703,15 @@ namespace Microsoft.Tts.Offline.Core
 
                 if (syllableStructure.SonorantAndVowelCount.Min != CountRange.NotApplicable &&
                     vowelCount + sonorantCount < syllableStructure.SonorantAndVowelCount.Min)
-                {
-                    // whether the pron has only one syllable
+                {   // whether the pron has only one syllable
                     if (syllable.Count == SplitIntoPhones(pron).Length)
                     {
                         errorSet.Add(PronunciationError.VowelAndSonorantCountLessThanMinimumForSingleSyllableWord, pron,
+                            syllableStructure.SonorantAndVowelCount.Min.ToString(CultureInfo.InvariantCulture));
+                    }
+                    else if (syllable.Count == 1 && isWordBoundarySyllable)
+                    {
+                        errorSet.Add(PronunciationError.VowelAndSonorantCountLessThanMinimumInTheSingleSyllableWord, pron,
                             syllableStructure.SonorantAndVowelCount.Min.ToString(CultureInfo.InvariantCulture));
                     }
                     else

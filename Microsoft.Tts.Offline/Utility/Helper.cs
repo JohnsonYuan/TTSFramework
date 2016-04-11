@@ -3556,6 +3556,69 @@ namespace Microsoft.Tts.Offline.Utility
         #region Public static comparing operations
 
         /// <summary>
+        /// Compare two dictionaries by key/value.
+        /// </summary>
+        /// <typeparam name="TKey">Key.</typeparam>
+        /// <typeparam name="TValue">TValue.</typeparam>
+        /// <param name="left">Left key/value pair.</param>
+        /// <param name="right">Right key/value pair.</param>
+        /// <returns>True if equal, otherwise false.</returns>
+        public static bool CompareDictionary<TKey, TValue>(IDictionary<TKey, TValue> left, IDictionary<TKey, TValue> right)
+        {
+            return left.CompareDictionary(right, null);
+        }
+
+        /// <summary>
+        /// Compare two dictionaries by key/value and value comparer.
+        /// </summary>
+        /// <typeparam name="TKey">Key.</typeparam>
+        /// <typeparam name="TValue">TValue.</typeparam>
+        /// <param name="left">Left key/value pair.</param>
+        /// <param name="right">Right key/value pair.</param>
+        /// <param name="valueComparer">Value comparer.</param>
+        /// <returns>True if equal, otherwise false.</returns>
+        public static bool CompareDictionary<TKey, TValue>(
+            this IDictionary<TKey, TValue> left, IDictionary<TKey, TValue> right,
+            IEqualityComparer<TValue> valueComparer)
+        {
+            if (left == right)
+            {
+                return true;
+            }
+
+            if ((left == null) || (right == null))
+            {
+                return false;
+            }
+
+            if (left.Count != right.Count)
+            {
+                return false;
+            }
+
+            if (valueComparer == null)
+            {
+                valueComparer = EqualityComparer<TValue>.Default;
+            }
+
+            foreach (var keyValuePair in left)
+            {
+                TValue rightValue;
+                if (!right.TryGetValue(keyValuePair.Key, out rightValue))
+                {
+                    return false;
+                }
+
+                if (!valueComparer.Equals(keyValuePair.Value, rightValue))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Compare two file as binary mode.
         /// </summary>
         /// <param name="leftFile">Path of left file to compare.</param>

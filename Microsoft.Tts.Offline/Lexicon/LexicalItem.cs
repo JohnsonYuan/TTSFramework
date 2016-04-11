@@ -3484,6 +3484,7 @@ namespace Microsoft.Tts.Offline.Core
         private string _text;
         private string _comment;
         private string _alias;
+        private string _cacheValue;
         private bool _reviewed;
 
         private Language _language;
@@ -3692,6 +3693,17 @@ namespace Microsoft.Tts.Offline.Core
         /// Or to record its partent LexiconDocument instance in lexicon reviewer.
         /// </summary>
         public object Parent { get; set; }
+
+        /// <summary>
+        /// Gets lexicon item cache value.
+        /// </summary>
+        public string CacheValue
+        {
+            get
+            {
+                return _cacheValue;
+            }
+        }
 
         #endregion
 
@@ -4639,6 +4651,48 @@ namespace Microsoft.Tts.Offline.Core
             foreach (LexiconPronunciation pron in _pronunciations)
             {
                 pron.ToNewAttributeFormatPronunciation(errorSet);
+            }
+        }
+
+        /// <summary>
+        /// Write a lexicon item to string.
+        /// </summary>
+        /// <returns>String of lexicon item.</returns>
+        public string WriteToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.NamespaceHandling = NamespaceHandling.OmitDuplicates;
+            StringWriter stringWriter = null;
+
+            try
+            {
+                stringWriter = new StringWriter(sb);
+                using (XmlWriter xmlWriter = XmlWriter.Create(stringWriter, settings))
+                {
+                    stringWriter = null;
+                    WriteToXml(xmlWriter);
+                }
+            }
+            finally
+            {
+                if (stringWriter != null)
+                {
+                    stringWriter.Dispose();
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Sets lexicon item cache value.
+        /// </summary>
+        public void SetCacheValue()
+        {
+            if (string.IsNullOrEmpty(_cacheValue))
+            {
+                _cacheValue = this.WriteToString();
             }
         }
 

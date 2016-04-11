@@ -43,6 +43,7 @@ namespace Microsoft.Tts.Offline.Utility
         public static bool CompareVoiceFont(string leftFile, string rightFile)
         {
             var apmTag = BitConverter.ToInt32("APM ".Select(c => (byte)c).ToArray(), 0);
+            var nnmTag = BitConverter.ToInt32("NNM ".Select(c => (byte)c).ToArray(), 0);
             var atmTag = BitConverter.ToInt32("ATM ".Select(c => (byte)c).ToArray(), 0);
 
             int buildNumberOffset = BuildNumberOffset;
@@ -58,7 +59,7 @@ namespace Microsoft.Tts.Offline.Utility
                     {
                         int tag = reader.ReadInt32();
 
-                        if (tag != apmTag && tag != atmTag)
+                        if (tag != apmTag && tag != atmTag && tag != nnmTag)
                         {
                             buildNumberOffset = TtsBuildNumberOffset;
                         }

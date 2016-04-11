@@ -32,6 +32,11 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <QCustomOutput Include="$(TTS_ROOT)\tools\offline\src\framework\microsoft.tts.offline\$(O)\microsoft.tts.offline.dll">
+      <Visible>false</Visible>
+    </QCustomOutput>
+  </ItemGroup>
+  <ItemGroup>
     <!--Assembly References-->
     <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\Scope.exe" />
     <Reference Include="$(TTS_ROOT)\tools\Offline\Extern\ScopeSDK\$(BuildArchitecture)\ScopeRuntime.exe" />
@@ -56,7 +61,7 @@
     <Reference Condition="'$(BUILD_PRODUCT)'=='NT'" Include="$(PUBLIC_ROOT)\internal\sdktools\ref\Microsoft.Office.Interop.Excel.dll" />
     <Reference Condition="'$(BUILD_PRODUCT)'=='NT'" Include="System.Speech" />
     <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_ROOT)\external\office\Microsoft.Office.Interop.Excel.dll" />
-    <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_OBJ_ROOT)\src\serviceprovider\Engine\Build.Internal\$(O)\ServiceProvider.dll" />
+    <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_ROOT)\src\serviceprovider\Engine\Build.Internal\$(O)\ServiceProvider.dll" />
     <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_ROOT)\external\speechfx\System.Speech.dll" />
     <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.dll" />
     <Reference Condition="'$(BUILD_PRODUCT)'!='NT'" Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.Properties.dll" />
@@ -231,7 +236,7 @@
     <Compile Include="Interop\WaveInventoryCreator.cs" />
     <Compile Include="Interop\TunFile.cs" />
     <Compile Include="Compiler\CrfModelCompiler.cs" />
-	<Compile Include="Compiler\RNNModelPolyphoneCompiler.cs" />
+    <Compile Include="Compiler\RNNModelPolyphoneCompiler.cs" />
     <Compile Include="Compiler\PhonemeMapCompiler.cs" />
     <Compile Include="Compiler\PhoneSetCompiler.cs" />
     <Compile Include="Compiler\PosSetCompiler.cs" />
@@ -450,6 +455,21 @@
     <EmbeddedResource Include="..\..\..\..\..\data\ca-ES\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.ca_ES.schema.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\cs-CZ\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.cs_CZ.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\cs-CZ\Language\TAData\Phone\PhoneSet.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.cs_CZ.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\cs-CZ\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.cs_CZ.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\cs-CZ\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.cs_CZ.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\cs-CZ\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.cs_CZ.schema.xml</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\..\data\da-DK\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.da_DK.TruncateRules.xml</LogicalName>
     </EmbeddedResource>
@@ -515,6 +535,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\..\data\de-DE\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.de_DE.schema.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\el-GR\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.el_GR.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\el-GR\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.el_GR.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\el-GR\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.el_GR.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\el-GR\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.el_GR.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\el-GR\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.el_GR.schema.xml</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\..\data\en-AU\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.en_AU.TruncateRules.xml</LogicalName>
@@ -723,6 +758,51 @@
     <EmbeddedResource Include="..\..\..\..\..\data\fr-FR\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.fr_FR.schema.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\he-IL\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.he_IL.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\he-IL\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.he_IL.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\he-IL\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.he_IL.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\he-IL\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.he_IL.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\he-IL\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.he_IL.schema.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\hu-HU\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.hu-HU.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\hu-HU\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.hu_HU.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\hu-HU\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.hu_HU.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\hu-HU\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.hu_HU.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\hu-HU\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.hu_HU.schema.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\id-ID\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.id_ID.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\id-ID\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.id_ID.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\id-ID\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.id_ID.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\id-ID\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.id_ID.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\id-ID\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.id_ID.schema.xml</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\..\data\it-IT\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.it_IT.TruncateRules.xml</LogicalName>
     </EmbeddedResource>
@@ -906,6 +986,21 @@
     <EmbeddedResource Include="..\..\..\..\..\data\pt-PT\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.pt_PT.schema.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\ro-RO\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.ro_RO.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\ro-RO\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.ro_RO.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\ro-RO\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.ro_RO.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\ro-RO\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.ro_RO.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\ro-RO\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.ro_RO.schema.xml</LogicalName>
+    </EmbeddedResource> 
     <EmbeddedResource Include="..\..\..\..\..\data\ru-RU\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.ru_RU.TruncateRules.xml</LogicalName>
     </EmbeddedResource>
@@ -927,6 +1022,21 @@
     <EmbeddedResource Include="..\..\..\..\..\data\ru-RU\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.ru_RU.schema.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\sk-SK\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.sk_SK.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\sk-SK\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.sk_SK.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\sk-SK\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.sk_SK.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\sk-SK\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.sk_SK.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\sk-SK\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.sk_SK.schema.xml</LogicalName>
+    </EmbeddedResource> 
     <EmbeddedResource Include="..\..\..\..\..\data\sv-SE\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.sv_SE.TruncateRules.xml</LogicalName>
     </EmbeddedResource>
@@ -948,6 +1058,21 @@
     <EmbeddedResource Include="..\..\..\..\..\data\sv-SE\Language\TAData\Lexicon\schema.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.sv_SE.schema.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\th-TH\Language\Model.Rule\Truncate\TruncateRules.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.th_TH.TruncateRules.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\th-TH\Language\TAData\Phone\phoneset.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.th_TH.phoneset.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\th-TH\Language\TAData\Phone\Tts2SrPhone.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.th_TH.Tts2SrPhone.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\th-TH\Language\TAData\Unit\UnitTable.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.th_TH.UnitTable.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\..\data\th-TH\Language\TAData\Lexicon\schema.xml">
+      <LogicalName>Microsoft.Tts.Offline.Language.th_TH.schema.xml</LogicalName>
+    </EmbeddedResource> 
     <EmbeddedResource Include="..\..\..\..\..\data\tr-TR\Language\Model.Rule\Truncate\TruncateRules.xml">
       <LogicalName>Microsoft.Tts.Offline.Language.tr_TR.TruncateRules.xml</LogicalName>
     </EmbeddedResource>
@@ -1180,22 +1305,22 @@
     </BinplaceCompiled>
   </ItemGroup>
   <ItemGroup Condition="'$(BUILD_PRODUCT)'!='NT'">
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline\UnitTest</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\symbols.pri\Offline\$(PDBFolder)</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).xml">
+    <Binplace Include="$(OutputPath)$(AssemblyName).xml">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Offline</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(TargetFileName)">
+    <Binplace Include="$(OutputPath)$(TargetFileName)">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release</DestinationFolder>
     </Binplace>
-    <Binplace Include="$(OutputPath)\$(AssemblyName).pdb">
+    <Binplace Include="$(OutputPath)$(AssemblyName).pdb">
       <DestinationFolder>$(BinplaceDistribPath)\dev\tts\$(SPEECH_BUILD_TYPE)\bin\Release\symbols.pri\$(PDBFolder)</DestinationFolder>
     </Binplace>
     <Robocopy Include="$(TTS_ROOT)\tools\Offline\Extern\HPC\Microsoft.Hpc.Scheduler.dll">

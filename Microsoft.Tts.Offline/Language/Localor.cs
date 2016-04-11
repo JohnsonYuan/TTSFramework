@@ -49,6 +49,13 @@ namespace Microsoft.Tts.Offline
         CaES = 1027,
 
         /// <summary>
+        /// Czech (Czech Republic).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        CsCZ = 1029,
+
+        /// <summary>
         /// Danish (Denmark).
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
@@ -75,6 +82,13 @@ namespace Microsoft.Tts.Offline
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
             "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
         DeDE = 1031,
+
+        /// <summary>
+        /// Greek(Greece).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        ElGR = 1032,
 
         /// <summary>
         /// English (Australia).
@@ -159,13 +173,34 @@ namespace Microsoft.Tts.Offline
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
             "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
         FrFR = 1036,
-        
+
+        /// <summary>
+        /// Hebrew (Israel).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        HeIL = 1037,
+
         /// <summary>
         /// Hindi (India).
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
             "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
         HiIN = 1081,
+
+        /// <summary>
+        /// Hungarian (Hungary).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        HuHU = 1038,
+
+        /// <summary>
+        /// Indonesian(Indonesia).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        IdID = 1057,
 
         /// <summary>
         /// Italian (Italy).
@@ -231,6 +266,13 @@ namespace Microsoft.Tts.Offline
         PtPT = 2070,
 
         /// <summary>
+        /// Romanian (Romania).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        RoRO = 1048,
+
+        /// <summary>
         /// Russian (Russia).
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
@@ -238,11 +280,25 @@ namespace Microsoft.Tts.Offline
         RuRU = 1049,
 
         /// <summary>
+        /// Slovak (Slovakia).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        SkSK = 1051,
+
+        /// <summary>
         /// Swedish (Sweden).
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
             "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
         SvSE = 1053,
+
+        /// <summary>
+        /// Thai(Thailand).
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
+            "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ignore.")]
+        ThTH = 1054,
 
         /// <summary>
         /// Turkish (Turkey).
